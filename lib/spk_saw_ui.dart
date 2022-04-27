@@ -15,15 +15,15 @@ class _SpkSawUiDashboard extends State<SpkSawUi> {
         children: [
           Container(
             width: 80,
-            color: Color.fromRGBO(0, 64, 150, 100),
+            color: const Color.fromRGBO(0, 64, 150, 100),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 _buildIconDashboardIventory(),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 _buildIconDashboardCalculate(),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 _buildIconDashboardRanking()
               ],
             ),
@@ -46,7 +46,7 @@ class _SpkSawUiDashboard extends State<SpkSawUi> {
         print("test on tap");
       },
       child: Column(
-        children: [
+        children: const [
           Icon(
             Icons.inventory_2_outlined,
             color: Colors.white,
@@ -71,7 +71,7 @@ class _SpkSawUiDashboard extends State<SpkSawUi> {
         print("test on tap");
       },
       child: Column(
-        children: [
+        children: const [
           Icon(
             Icons.calculate_outlined,
             color: Colors.white,
@@ -96,7 +96,7 @@ class _SpkSawUiDashboard extends State<SpkSawUi> {
         print("test on tap");
       },
       child: Column(
-        children: [
+        children: const [
           Icon(
             Icons.emoji_events_outlined,
             color: Colors.white,
