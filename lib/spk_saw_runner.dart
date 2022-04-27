@@ -1,6 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/bloc/manage_page_saw_bloc.dart';
+import 'package:spk_saw_whey_protein/custom_widget/failure_alert_dialog.dart';
 import 'package:spk_saw_whey_protein/spk_saw_ui.dart';
 
 class SpkSawRunner extends StatelessWidget {
@@ -26,12 +27,20 @@ class SpkSawRunner extends StatelessWidget {
           BlocListener<ManagePageSawBloc,ManagePageSawState>(
             listener: (context , state) {
               if (state is ManagePageSawFailed) {
-                
+                showDialog(
+                  context: context,
+                  builder: (_) {
+                    return FailureAlertDialog(
+                      errorMessage: "Navigation failed, please try again next time",
+                      errorTitle: "Failed to load page",
+                    );
+                  },
+                );
               }
             }
           )
         ],
-        child: SpkSawUi()
+        child: const SpkSawUi()
       )
     );
   }
