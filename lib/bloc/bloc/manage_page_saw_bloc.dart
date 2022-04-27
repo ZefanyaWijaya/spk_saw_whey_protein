@@ -9,7 +9,6 @@ class ManagePageSawBloc
       emit(ManagePageSawLoading());
       try {
         emit(ManagePageSawDoneToListWheyPage());
-         print("LIST WHEY PAGE DONE");
       } catch (exception){
         emit(ManagePageSawFailed());
       }
@@ -18,7 +17,6 @@ class ManagePageSawBloc
       emit(ManagePageSawLoading());
       try {
         emit(ManagePageSawDoneToCalculateWheyPage());
-         print("CALCULATE WHEY PAGE DONE");
       } catch (exception){
         emit(ManagePageSawFailed());
       }
@@ -26,9 +24,7 @@ class ManagePageSawBloc
     on<GoToRankingWheyPage>((event, emit) {
       emit(ManagePageSawLoading());
       try {
-        print("Befor ranking whey page");
         emit(ManagePageSawDoneToRankingWheyPage());
-        print("RANKING WHEY PAGE DONE");
       } catch (exception){
         emit(ManagePageSawFailed());
       }

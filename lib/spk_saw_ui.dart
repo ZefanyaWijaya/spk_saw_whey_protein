@@ -26,9 +26,9 @@ class _SpkSawUiDashboard extends State<SpkSawUi> {
                     const SizedBox(height: 50),
                     iconState is ManagePageSawDoneToListWheyPage ?  _buildIconDashboardIventoryOnPressed() : _buildIconDashboardIventory(),
                     const SizedBox(height: 50),
-                    _buildIconDashboardCalculate(),
+                    iconState is ManagePageSawDoneToCalculateWheyPage ? _buildIconDashboardCalculateOnPressed() : _buildIconDashboardCalculate(),
                     const SizedBox(height: 50),
-                    _buildIconDashboardRanking()
+                    iconState is ManagePageSawDoneToRankingWheyPage ? _buildIconDashboardRankingOnPressed() : _buildIconDashboardRanking()
                   ],
                 );
               }
@@ -194,7 +194,7 @@ class _SpkSawUiDashboard extends State<SpkSawUi> {
       child: Column(
         children: const [
           Icon(
-            Icons.emoji_events_outlined,
+            Icons.emoji_events,
             color: Colors.white,
             size: 30,
           ),
