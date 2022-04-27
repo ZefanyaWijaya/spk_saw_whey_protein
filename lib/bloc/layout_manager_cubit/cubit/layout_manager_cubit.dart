@@ -7,7 +7,7 @@ import 'package:flutter/cupertino.dart';
 part 'layout_manager_state.dart';
 
 class LayoutManagerCubit extends Cubit<LayoutManagerState> {
-  LayoutManagerCubit() : super(LayoutManagerState.unknown());
+  LayoutManagerCubit() : super(const LayoutManagerState.unknown());
 
   void updateLayoutState(BoxConstraints constraints) {
     if (constraints.maxWidth > 920) {
