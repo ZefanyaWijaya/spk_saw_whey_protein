@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:spk_saw_whey_protein/views/list_whey_protein/widgets/searchbox_list_whey_protein.dart';
 
 class ListWheyProtein extends StatefulWidget {
   const ListWheyProtein({
@@ -33,9 +34,9 @@ class ListWheyProteinState extends State<ListWheyProtein> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Flexible(
+              const Flexible(
                 flex: 65,
-                child: SearchboxListSampleAdmin(),
+                child: SearchboxListWheyProtein(),
               ),
               Flexible(
                 flex: 35,
@@ -44,40 +45,40 @@ class ListWheyProteinState extends State<ListWheyProtein> {
             ],
           ),
         ),
-        Padding(
-          padding: EdgeInsets.only(top: 48),
-          child: FilterListSampleAdmin(),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 48),
-          child: TabelListSampleAdmin(constraints: widget.constraints),
-        ),
-        Padding(
-          padding: EdgeInsets.only(right: 30, bottom: 30),
-          child: BlocBuilder<ListSampleAdminBySearchBloc,
-              ListSampleAdminBySearchState>(
-            builder: (context, state) {
-              if (state is ListSampleAdminBySearchDone) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    jumlahDataTampil(),
-                    NumberNavigateWidget(
-                      key: Key("${DateTime.now()}"),
-                      onPressedNavigate:
-                          BlocProvider.of<ListSampleAdminSettingsCubit>(context)
-                              .goToPage,
-                      currentPage: state.paginationData.currPage,
-                      maxPage: state.paginationData.maxPage,
-                    ),
-                  ],
-                );
-              } else {
-                return Container();
-              }
-            },
-          ),
-        ),
+        // Padding(
+        //   padding: EdgeInsets.only(top: 48),
+        //   child: FilterListSampleAdmin(),
+        // ),
+        // Padding(
+        //   padding: EdgeInsets.symmetric(vertical: 48),
+        //   child: TabelListSampleAdmin(constraints: widget.constraints),
+        // ),
+        // Padding(
+        //   padding: EdgeInsets.only(right: 30, bottom: 30),
+        //   child: BlocBuilder<ListSampleAdminBySearchBloc,
+        //       ListSampleAdminBySearchState>(
+        //     builder: (context, state) {
+        //       if (state is ListSampleAdminBySearchDone) {
+        //         return Row(
+        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //           children: [
+        //             jumlahDataTampil(),
+        //             NumberNavigateWidget(
+        //               key: Key("${DateTime.now()}"),
+        //               onPressedNavigate:
+        //                   BlocProvider.of<ListSampleAdminSettingsCubit>(context)
+        //                       .goToPage,
+        //               currentPage: state.paginationData.currPage,
+        //               maxPage: state.paginationData.maxPage,
+        //             ),
+        //           ],
+        //         );
+        //       } else {
+        //         return Container();
+        //       }
+        //     },
+        //   ),
+        // ),
       ],
     );
   }
