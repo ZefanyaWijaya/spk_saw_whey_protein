@@ -1,6 +1,4 @@
 
-import 'package:meta/meta.dart';
-import 'package:bloc/bloc.dart';
 part 'manage_page_saw_event.dart';
 part 'manage_page_saw_state.dart';
 
