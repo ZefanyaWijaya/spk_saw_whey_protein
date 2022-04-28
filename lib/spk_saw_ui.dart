@@ -18,7 +18,7 @@ class _SpkSawUiDashboard extends State<SpkSawUi> {
         children: [
           Container(
             width: 80,
-            color: const Color.fromRGBO(0, 64, 150, 100),
+            color: const Color.fromARGB(162, 0, 65, 150),
             child: BlocBuilder<ManagePageSawBloc , ManagePageSawState>(
               builder: (context , iconState) {
                 return Column(

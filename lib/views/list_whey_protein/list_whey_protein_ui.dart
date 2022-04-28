@@ -87,7 +87,7 @@ class ListWheyProteinState extends State<ListWheyProtein> {
       style: TextStyle(
         fontSize: 32,
         fontWeight: FontWeight.bold,
-        color: Color.fromRGBO(2, 106, 199, 100),
+        color: Color.fromRGBO(2, 106, 199, 1),
       ),
     );
   }
@@ -96,7 +96,7 @@ class ListWheyProteinState extends State<ListWheyProtein> {
 
   Widget inputSampleButton() {
     return Padding(
-      padding: EdgeInsets.only(right: 30),
+      padding: const EdgeInsets.only(right: 30),
       child: Container(
         width: 180,
         height: 45,
