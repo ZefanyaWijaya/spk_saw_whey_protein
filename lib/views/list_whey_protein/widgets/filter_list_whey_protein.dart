@@ -40,37 +40,161 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
               ),
             ),
             //FILTER HARGA
-            Container(
-              height: 48,
-              width: 75,
-              child: InputDecorator(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                )),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton(
-                    value: dropdownValueHarga,
-                    icon: const Icon(Icons.keyboard_arrow_down),
-                    items: items.map((String harga) {
-                      return DropdownMenuItem(
-                        value: harga,
-                        child: Text(
-                          harga,
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                      );
-                    }).toList(),
-                    onChanged: (String? newValue) {
-                      // BlocProvider.of<ListSampleAdminSettingsCubit>(context)
-                      //     .changeShowDataPerPage(newValue!);
-                      setState(() {
-                        dropdownValueHarga = newValue!;
-                      });
-                    },
+            Flexible(
+              flex: 20,
+              child: Container(
+                height: 48,
+                // width: 75,
+                child: InputDecorator(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  )),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton(
+                      value: dropdownValueHarga,
+                      icon: const Icon(Icons.keyboard_arrow_down),
+                      items: items.map((String harga) {
+                        return DropdownMenuItem(
+                          value: harga,
+                          child: Text(
+                            harga,
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        // BlocProvider.of<ListSampleAdminSettingsCubit>(context)
+                        //     .changeShowDataPerPage(newValue!);
+                        setState(() {
+                          dropdownValueHarga = newValue!;
+                        });
+                      },
+                    ),
                   ),
                 ),
               ),
+            ),
+            Flexible(
+              flex: 1,
+              child: Container(),
+            ),
+            Flexible(
+              flex: 20,
+              child: Container(
+                height: 48,
+                // width: 75,
+                child: InputDecorator(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  )),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton(
+                      value: dropdownValueHarga,
+                      icon: const Icon(Icons.keyboard_arrow_down),
+                      items: items.map((String harga) {
+                        return DropdownMenuItem(
+                          value: harga,
+                          child: Text(
+                            harga,
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        // BlocProvider.of<ListSampleAdminSettingsCubit>(context)
+                        //     .changeShowDataPerPage(newValue!);
+                        setState(() {
+                          dropdownValueHarga = newValue!;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Flexible(
+              flex: 1,
+              child: Container(),
+            ),
+            Flexible(
+              flex: 20,
+              child: Container(
+                height: 48,
+                // width: 75,
+                child: InputDecorator(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  )),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton(
+                      value: dropdownValueHarga,
+                      icon: const Icon(Icons.keyboard_arrow_down),
+                      items: items.map((String harga) {
+                        return DropdownMenuItem(
+                          value: harga,
+                          child: Text(
+                            harga,
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        // BlocProvider.of<ListSampleAdminSettingsCubit>(context)
+                        //     .changeShowDataPerPage(newValue!);
+                        setState(() {
+                          dropdownValueHarga = newValue!;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Flexible(
+              flex: 1,
+              child: Container(),
+            ),
+            Flexible(
+              flex: 20,
+              child: Container(
+                height: 48,
+                // width: 75,
+                child: InputDecorator(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  )),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton(
+                      value: dropdownValueHarga,
+                      icon: const Icon(Icons.keyboard_arrow_down),
+                      items: items.map((String harga) {
+                        return DropdownMenuItem(
+                          value: harga,
+                          child: Text(
+                            harga,
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        // BlocProvider.of<ListSampleAdminSettingsCubit>(context)
+                        //     .changeShowDataPerPage(newValue!);
+                        setState(() {
+                          dropdownValueHarga = newValue!;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Flexible(
+              flex: 17,
+              child: Container(),
             ),
           ],
         );

@@ -34,19 +34,10 @@ class SearchboxListWheyProteinState extends State<SearchboxListWheyProtein> {
           child: Row(
             children: [
               Flexible(
-                flex: state.windowSize!.width <= 1024 ? 30 : 20,
-                fit: FlexFit.tight,
-                child: Container()
-              ),
-              Flexible(
-                flex: state.windowSize!.width <= 1024 ? 30 : 40,
+                flex: 40,
+                // flex: state.windowSize!.width <= 1024 ? 30 : 40,
                 fit: FlexFit.tight,
                 child: searchTextField(),
-              ),
-              Flexible(
-                flex: 30,
-                fit: FlexFit.tight,
-                child: Container()
               ),
               Flexible(
                 flex: 10,
@@ -54,6 +45,7 @@ class SearchboxListWheyProteinState extends State<SearchboxListWheyProtein> {
                 child: searchButton(),
               ),
               Flexible(
+                flex: 50,
                 child: Container()
               ),
             ],
@@ -115,7 +107,7 @@ class SearchboxListWheyProteinState extends State<SearchboxListWheyProtein> {
   Widget searchButton() {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: Theme.of(context).primaryColor,
+        primary: const Color.fromRGBO(2, 106, 199, 1),
         fixedSize: const Size(65, 45),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(

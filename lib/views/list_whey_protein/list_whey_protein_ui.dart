@@ -26,13 +26,14 @@ class ListWheyProteinState extends State<ListWheyProtein> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const SizedBox(height : 20),
         titleText(),
         Padding(
           padding: const EdgeInsets.only(top: 48),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Flexible(
+              const Flexible(
                 flex: 65,
                 // child: Container(),
                 child: SearchboxListWheyProtein(),
@@ -44,10 +45,10 @@ class ListWheyProteinState extends State<ListWheyProtein> {
             ],
           ),
         ),
-        // const Padding(
-        //   padding: EdgeInsets.only(top: 48),
-        //   child: FilterListWheyProtein(),
-        // ),
+        const Padding(
+          padding: EdgeInsets.only(top: 48),
+          child: FilterListWheyProtein(),
+        ),
         // Padding(
         //   padding: EdgeInsets.symmetric(vertical: 48),
         //   child: TabelListSampleAdmin(constraints: widget.constraints),
@@ -113,7 +114,7 @@ class ListWheyProteinState extends State<ListWheyProtein> {
           ),
           style: ElevatedButton.styleFrom(
               elevation: 0,
-              primary: Color.fromRGBO(2, 106, 199, 1),
+              primary: const Color.fromRGBO(2, 106, 199, 1),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               )),
