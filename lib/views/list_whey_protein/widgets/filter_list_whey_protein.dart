@@ -14,11 +14,52 @@ class FilterListWheyProtein extends StatefulWidget {
 
 class FilterListWheyProteinState extends State<FilterListWheyProtein> {
 
-  String dropdownValueHarga = 'Test 1';
+  String dropdownValueHarga = 'Harga : Semua Kategori';
   List<String> items = [
-    'Test 1',
-    "Test 2",
-    "Test 3"
+    'Harga : Semua Kategori', //send key nothing or ''     
+    'Kurang dari Rp 5.000',   //send key a
+    "Rp 5.001 - Rp 10.000",   //send key b 
+    "Rp 10.001 - Rp 15.000",  //send key c
+    "Rp 15.001 - Rp 20.000",  //send key d
+    "Rp 20.001 - Rp 25.000",  //send key e
+    "Rp 25.001 - Rp 30.000",  //send key f
+    "Lebih dari Rp 30.000"    //send key g
+  ];
+
+  String dropdownValueProtein = 'Protein : Semua Kategori';
+  List<String> itemsProtein = [
+    'Protein : Semua Kategori',  //send key nothing or '' 
+    'Kurang dari 5 gr',    //send key a
+    '6 gr - 10 gr',   //send key b
+    '11 gr - 15 gr',  //send key c
+    '16 gr - 20 gr',  //send key d
+    '21 gr - 25 gr',  //send key e
+    '26 gr - 30 gr',  //send key f
+    'Lebih dari 30 gr'//send key g
+  ];
+
+  String dropdownValueCalories = 'Calories : Semua Kategori';
+  List<String> itemsCalories = [
+    "Calories : Semua Kategori",  //send key nothing or '' 
+    "Kurang dari 100 calories",     //send key a
+    "101 calories - 125 calories",  //send key b
+    "126 calories - 126 calories",  //send key c
+    "151 calories - 175 calories",  //send key d
+    "176 calories - 200 calories",  //send key e
+    "201 calories - 225 calories",  //send key f
+    "226 calories - 250 calories",  //send key g
+    "Lebih dari 250 calories",      //send key h
+  ];
+
+  String dropdownValueVariants = 'Variant Rasa : Semua Kategori';
+  List<String> itemsVariants = [
+    'Variant Rasa : Semua Kategori',  //send key nothing or '' 
+    '1 Variant Rasa',     //send key a
+    '2 Variant Rasa',     //send key b
+    '3 Variant Rasa',     //send key c
+    '4 Variant Rasa',     //send key d
+    '5 Variant Rasa',     //send key e
+    'Lebih dari 5 Variant Rasa',      //send key f
   ];
 
 
@@ -79,6 +120,7 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
               flex: 1,
               child: Container(),
             ),
+            //FILTER PROTEIN
             Flexible(
               flex: 20,
               child: Container(
@@ -91,13 +133,13 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
                   )),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
-                      value: dropdownValueHarga,
+                      value: dropdownValueProtein,
                       icon: const Icon(Icons.keyboard_arrow_down),
-                      items: items.map((String harga) {
+                      items: itemsProtein.map((String protein) {
                         return DropdownMenuItem(
-                          value: harga,
+                          value: protein,
                           child: Text(
-                            harga,
+                            protein,
                             style: const TextStyle(fontSize: 16),
                           ),
                         );
@@ -106,7 +148,7 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
                         // BlocProvider.of<ListSampleAdminSettingsCubit>(context)
                         //     .changeShowDataPerPage(newValue!);
                         setState(() {
-                          dropdownValueHarga = newValue!;
+                          dropdownValueProtein = newValue!;
                         });
                       },
                     ),
@@ -118,6 +160,7 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
               flex: 1,
               child: Container(),
             ),
+            //FILTER CALORIES
             Flexible(
               flex: 20,
               child: Container(
@@ -130,13 +173,13 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
                   )),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
-                      value: dropdownValueHarga,
+                      value: dropdownValueCalories,
                       icon: const Icon(Icons.keyboard_arrow_down),
-                      items: items.map((String harga) {
+                      items: itemsCalories.map((String calories) {
                         return DropdownMenuItem(
-                          value: harga,
+                          value: calories,
                           child: Text(
-                            harga,
+                            calories,
                             style: const TextStyle(fontSize: 16),
                           ),
                         );
@@ -145,7 +188,7 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
                         // BlocProvider.of<ListSampleAdminSettingsCubit>(context)
                         //     .changeShowDataPerPage(newValue!);
                         setState(() {
-                          dropdownValueHarga = newValue!;
+                          dropdownValueCalories = newValue!;
                         });
                       },
                     ),
@@ -157,6 +200,7 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
               flex: 1,
               child: Container(),
             ),
+            //FILTER VARIANT RASA
             Flexible(
               flex: 20,
               child: Container(
@@ -169,13 +213,13 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
                   )),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
-                      value: dropdownValueHarga,
+                      value: dropdownValueVariants,
                       icon: const Icon(Icons.keyboard_arrow_down),
-                      items: items.map((String harga) {
+                      items: itemsVariants.map((String variants) {
                         return DropdownMenuItem(
-                          value: harga,
+                          value: variants,
                           child: Text(
-                            harga,
+                            variants,
                             style: const TextStyle(fontSize: 16),
                           ),
                         );
@@ -184,7 +228,7 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
                         // BlocProvider.of<ListSampleAdminSettingsCubit>(context)
                         //     .changeShowDataPerPage(newValue!);
                         setState(() {
-                          dropdownValueHarga = newValue!;
+                          dropdownValueVariants = newValue!;
                         });
                       },
                     ),
