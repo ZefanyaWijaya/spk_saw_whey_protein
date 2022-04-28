@@ -100,6 +100,8 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
                           value: harga,
                           child: Text(
                             harga,
+                            softWrap: true,
+                            maxLines: 3,
                             style: const TextStyle(fontSize: 16),
                           ),
                         );
@@ -140,6 +142,8 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
                           value: protein,
                           child: Text(
                             protein,
+                            softWrap: true,
+                            maxLines: 3,
                             style: const TextStyle(fontSize: 16),
                           ),
                         );
@@ -180,6 +184,8 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
                           value: calories,
                           child: Text(
                             calories,
+                            maxLines: 3,
+                            softWrap: true,
                             style: const TextStyle(fontSize: 16),
                           ),
                         );
@@ -213,13 +219,15 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
                   )),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
-                      value: dropdownValueVariants,
+                      value: dropdownValueVariants, 
                       icon: const Icon(Icons.keyboard_arrow_down),
                       items: itemsVariants.map((String variants) {
                         return DropdownMenuItem(
                           value: variants,
                           child: Text(
                             variants,
+                            maxLines: 3,
+                            softWrap: true,
                             style: const TextStyle(fontSize: 16),
                           ),
                         );
