@@ -27,26 +27,26 @@ class ListWheyProteinState extends State<ListWheyProtein> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         titleText(),
-        // Padding(
-        //   padding: const EdgeInsets.only(top: 48),
-        //   child: Row(
-        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //     children: [
-        //       const Flexible(
-        //         flex: 65,
-        //         child: SearchboxListWheyProtein(),
-        //       ),
-        //       Flexible(
-        //         flex: 35,
-        //         child: inputSampleButton(),
-        //       ),
-        //     ],
-        //   ),
-        // ),
-        // const Padding(
-        //   padding: EdgeInsets.only(top: 48),
-        //   child: FilterListWheyProtein(),
-        // ),
+        Padding(
+          padding: const EdgeInsets.only(top: 48),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Flexible(
+                flex: 65,
+                child: SearchboxListWheyProtein(),
+              ),
+              Flexible(
+                flex: 35,
+                child: inputSampleButton(),
+              ),
+            ],
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.only(top: 48),
+          child: FilterListWheyProtein(),
+        ),
         // Padding(
         //   padding: EdgeInsets.symmetric(vertical: 48),
         //   child: TabelListSampleAdmin(constraints: widget.constraints),
