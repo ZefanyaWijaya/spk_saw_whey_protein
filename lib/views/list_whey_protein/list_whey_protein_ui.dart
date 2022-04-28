@@ -34,8 +34,8 @@ class ListWheyProteinState extends State<ListWheyProtein> {
             children: [
               Flexible(
                 flex: 65,
-                child: Container(),
-                // child: SearchboxListWheyProtein(),
+                // child: Container(),
+                child: SearchboxListWheyProtein(),
               ),
               Flexible(
                 flex: 35,

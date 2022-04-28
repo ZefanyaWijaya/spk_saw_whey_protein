@@ -16,10 +16,6 @@ class SearchboxListWheyProteinState extends State<SearchboxListWheyProtein> {
   bool showClearButton = false;
   bool clearDateTime = false;
 
-
-  late List<String> searchTypeStringList;
-
- 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LayoutManagerCubit, LayoutManagerState>(
@@ -28,16 +24,28 @@ class SearchboxListWheyProteinState extends State<SearchboxListWheyProtein> {
           child: Row(
             children: [
               Flexible(
+                flex: state.windowSize!.width <= 1024 ? 30 : 20,
+                fit: FlexFit.tight,
+                child: Container()
+              ),
+              Flexible(
                 flex: state.windowSize!.width <= 1024 ? 30 : 40,
                 fit: FlexFit.tight,
                 child: searchTextField(),
+              ),
+              Flexible(
+                flex: 30,
+                fit: FlexFit.tight,
+                child: Container()
               ),
               Flexible(
                 flex: 10,
                 fit: FlexFit.tight,
                 child: searchButton(),
               ),
-              Flexible(child: Container()),
+              Flexible(
+                child: Container()
+              ),
             ],
           ),
         );
@@ -124,5 +132,4 @@ class SearchboxListWheyProteinState extends State<SearchboxListWheyProtein> {
       child: const Icon(Icons.search, color: Colors.white),
     );
   }
-
 }
