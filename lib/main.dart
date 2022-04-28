@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     //   height: 100,
     //   child: SpkSawRunner()
     // );
-    return MaterialApp(
+    return const MaterialApp(
       // title: 'Flutter Demo',
       // theme: ThemeData(
       //   primarySwatch: Colors.blue,

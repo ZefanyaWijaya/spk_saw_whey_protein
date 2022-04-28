@@ -82,12 +82,12 @@ class ListWheyProteinState extends State<ListWheyProtein> {
   }
 
   Widget titleText() {
-    return Text(
-      'Daftar Sample PCR',
+    return const Text(
+      'List Whey Product',
       style: TextStyle(
         fontSize: 32,
         fontWeight: FontWeight.bold,
-        color: Theme.of(context).primaryColor,
+        color: Color.fromRGBO(2, 106, 199, 100),
       ),
     );
   }
