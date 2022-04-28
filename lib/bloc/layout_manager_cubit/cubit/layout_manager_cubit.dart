@@ -1,9 +1,6 @@
-import 'dart:ui';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
-
 part 'layout_manager_state.dart';
 
 class LayoutManagerCubit extends Cubit<LayoutManagerState> {

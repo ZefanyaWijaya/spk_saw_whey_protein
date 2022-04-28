@@ -20,6 +20,16 @@ class SearchboxListWheyProteinState extends State<SearchboxListWheyProtein> {
   Widget build(BuildContext context) {
     return BlocBuilder<LayoutManagerCubit, LayoutManagerState>(
       builder: (context, state) {
+        // if (state.windowSize!.width < 920) {
+        //   return const Scaffold(
+        //     body: Center(
+        //       child: Text(
+        //         'View not supported for current layout',
+        //         style: TextStyle(fontSize: 14),
+        //       ),
+        //     ),
+        //   );
+        // } 
         return Container(
           child: Row(
             children: [

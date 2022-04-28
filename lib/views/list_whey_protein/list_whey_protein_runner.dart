@@ -13,6 +13,7 @@ class ListWheyProteinRunner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: LayoutBuilder(builder: (context, constraints) {
+        settingsLayout.updateLayoutState(constraints);
         return SingleChildScrollView( 
           child: MultiBlocProvider(
             providers: [
@@ -20,10 +21,30 @@ class ListWheyProteinRunner extends StatelessWidget {
                 create: (context) => settingsLayout,
               ),
             ],
-            child: Padding(
-              padding: const EdgeInsets.only(left: 48, top: 30),
-              child: ListWheyProtein(constraints: constraints),
+            child: BlocBuilder<LayoutManagerCubit, LayoutManagerState>(
+              bloc: settingsLayout,
+              builder: (context, state) {
+                if (state.layoutType != LayoutType.Desktop) {
+                  
+                    return const Scaffold(
+                      body : Center(
+                        heightFactor: 60,
+                        child: Text(
+                          'View not supported for current layout',
+                          style: TextStyle(fontSize: 14),
+                        ),
+                      ),
+                    );
+                  
+                } else {
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 48, top: 30),
+                    child: ListWheyProtein(constraints: constraints),
+                  );
+                }
+              },
             ),
+            
           ),
           
         );
