@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spk_saw_whey_protein/views/list_whey_protein/table_list_whey_protein.dart';
 import 'package:spk_saw_whey_protein/views/list_whey_protein/widgets/filter_list_whey_protein.dart';
 import 'package:spk_saw_whey_protein/views/list_whey_protein/widgets/searchbox_list_whey_protein.dart';
 class ListWheyProtein extends StatefulWidget {
@@ -49,10 +50,10 @@ class ListWheyProteinState extends State<ListWheyProtein> {
           padding: EdgeInsets.only(top: 48),
           child: FilterListWheyProtein(),
         ),
-        // Padding(
-        //   padding: EdgeInsets.symmetric(vertical: 48),
-        //   child: TabelListSampleAdmin(constraints: widget.constraints),
-        // ),
+        const Padding(
+          padding: EdgeInsets.symmetric(vertical: 50),
+          child: TabelListWheyProtein(),
+        ),
         // Padding(
         //   padding: EdgeInsets.only(right: 30, bottom: 30),
         //   child: BlocBuilder<ListSampleAdminBySearchBloc,
