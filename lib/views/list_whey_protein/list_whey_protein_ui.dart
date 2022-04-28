@@ -32,9 +32,10 @@ class ListWheyProteinState extends State<ListWheyProtein> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Flexible(
+              Flexible(
                 flex: 65,
-                child: SearchboxListWheyProtein(),
+                child: Container(),
+                // child: SearchboxListWheyProtein(),
               ),
               Flexible(
                 flex: 35,
@@ -43,10 +44,10 @@ class ListWheyProteinState extends State<ListWheyProtein> {
             ],
           ),
         ),
-        const Padding(
-          padding: EdgeInsets.only(top: 48),
-          child: FilterListWheyProtein(),
-        ),
+        // const Padding(
+        //   padding: EdgeInsets.only(top: 48),
+        //   child: FilterListWheyProtein(),
+        // ),
         // Padding(
         //   padding: EdgeInsets.symmetric(vertical: 48),
         //   child: TabelListSampleAdmin(constraints: widget.constraints),
@@ -107,12 +108,12 @@ class ListWheyProteinState extends State<ListWheyProtein> {
            
           },
           child: const Text(
-            'Input Sample',
+            'Add Whey',
             style: TextStyle(fontSize: 16),
           ),
           style: ElevatedButton.styleFrom(
               elevation: 0,
-              primary: Theme.of(context).primaryColor,
+              primary: Color.fromRGBO(2, 106, 199, 1),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               )),
