@@ -115,11 +115,10 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 10),
                   const Divider(
-                    height: 20,
-                    thickness: 10.0,
-                    color: Color.fromRGBO(83, 81, 81, 1), //TILETEXTCOLOUR
+                    thickness: 1,
+                    color: Colors.black, //TILETEXTCOLOUR
                     
                   ),
                   Container(
