@@ -2,6 +2,8 @@
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spk_saw_whey_protein/bloc/get_list_whey_protein/bloc/list_whey_protein_get_by_search_bloc.dart';
 import 'package:spk_saw_whey_protein/views/list_whey_protein/card_list_whey_protein.dart';
 
 class TabelListWheyProtein extends StatefulWidget {
@@ -123,34 +125,94 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                   ),
                   Container(
                     height: 500,
-                    child : Scrollbar(
-                      controller: scrollController,
-                      showTrackOnHover: true,
-                      isAlwaysShown: true,
-                      child: Container(
-                        width: 1850,
-                        child: ListView.builder(
-                          controller: scrollController,
-                          itemCount: 10,
-                          itemBuilder: (context, index) {
-                            return const CardListWheyProtein();
-                            // return CardListSampleAdmin(
-                            //   sampleData: state.listSample[index],
-                            //   cellWidthData: {
-                            //     '_cellWidthNamaSample': _cellWidthNamaSample,
-                            //     '_cellWidthBatchPickup': _cellWidthBatchPickup,
-                            //     '_cellWidthNamaPasien': _cellWidthNamaPasien,
-                            //     '_cellWidthSTanggalLahir': _cellWidthSTanggalLahir,
-                            //     '_cellWidthTanggalPickup': _cellWidthTanggalPickup,
-                            //     '_cellWidthJJenisLayanan': _cellWidthJJenisLayanan,
-                            //     '_cellWidthPartner': _cellWidthPartner,
-                            //     '_cellWidthStatus': _cellWidthStatus,
-                            //     '_colSpacing': _colSpacing
-                            //   },
-                            // );
-                          },
-                        ),
-                      ),
+                    child : BlocBuilder<ListWheyProteinGetBySearchBloc,ListWheyProteinGetBySearchState>(
+                      builder: (context, state) {
+                        if(state is ListWheyProteinGetBySearchDone) {
+                          if(state.listWheyProtein.isNotEmpty){
+                            return Scrollbar(
+                              controller: scrollController,
+                              showTrackOnHover: true,
+                              isAlwaysShown: true,
+                              child: Container(
+                                width: 1850,
+                                child: ListView.builder(
+                                  controller: scrollController,
+                                  itemCount: state.listWheyProtein.length,
+                                  itemBuilder: (context, index) {
+                                    return  CardListWheyProtein(
+                                      dataWhey: state.listWheyProtein[index],
+                                    );
+                                    // return CardListSampleAdmin(
+                                    //   sampleData: state.listSample[index],
+                                    //   cellWidthData: {
+                                    //     '_cellWidthNamaSample': _cellWidthNamaSample,
+                                    //     '_cellWidthBatchPickup': _cellWidthBatchPickup,
+                                    //     '_cellWidthNamaPasien': _cellWidthNamaPasien,
+                                    //     '_cellWidthSTanggalLahir': _cellWidthSTanggalLahir,
+                                    //     '_cellWidthTanggalPickup': _cellWidthTanggalPickup,
+                                    //     '_cellWidthJJenisLayanan': _cellWidthJJenisLayanan,
+                                    //     '_cellWidthPartner': _cellWidthPartner,
+                                    //     '_cellWidthStatus': _cellWidthStatus,
+                                    //     '_colSpacing': _colSpacing
+                                    //   },
+                                    // );
+                                  },
+                                ),
+                              ),
+                            );
+                          } else {
+                            return Center(
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: const [
+                                  Icon(
+                                    Icons.description,
+                                    color: Color.fromRGBO(83, 81, 81, 1),
+                                  ),
+                                  Text(
+                                    'Data tidak ditemukan',
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(83, 81, 81, 1),
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                        } else if (state is ListWheyProteinGetBySearchLoading) {
+                          return const Center(child: CircularProgressIndicator());
+                        } else if (state is ListWheyProteinGetBySearchFailed) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 24.0),
+                            child: Center(
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.only(right: 4.0),
+                                    child: Icon(
+                                      Icons.report_problem,
+                                      color: Color.fromRGBO(83, 81, 81, 1),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 4.0),
+                                    child: Text(
+                                      state.errorMessage,
+                                      style: const TextStyle(
+                                        color: Color.fromRGBO(83, 81, 81, 1),
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        } 
+                        return Container();
+                      }
                     ),
                   ),
                 ],

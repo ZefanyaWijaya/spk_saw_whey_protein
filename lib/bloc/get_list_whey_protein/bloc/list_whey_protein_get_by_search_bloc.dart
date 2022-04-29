@@ -19,6 +19,7 @@ class ListWheyProteinGetBySearchBloc
 
     on<ListWheyProteinGetBySearchAndFilter>((event, emit) async {
       emit(ListWheyProteinGetBySearchLoading());
+      print("EVENT GET WHEY DIJALANKAN");
       try {
         GetListWheyProteinBySearchModel listWheyProteinData = await _repository.getListWheyBySearchRepo(
           calories: settingsCubit.calories,

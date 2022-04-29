@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 class GetListWheyProteinBySearchModel extends Equatable {
   final List<GetListWheyProteinData> data;
 
-  const GetListWheyProteinBySearchModel({
+  GetListWheyProteinBySearchModel({
     required this.data
   });
 
@@ -36,7 +36,7 @@ class GetListWheyProteinData extends Equatable {
   final int availableVariantProduct;
   final String moreDetail;
 
-  const GetListWheyProteinData({
+  GetListWheyProteinData({
     required this.wheyProteinName,
     required this.pricePerServing,
     required this.proteinPerServing,

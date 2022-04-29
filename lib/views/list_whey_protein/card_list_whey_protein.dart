@@ -2,17 +2,30 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spk_saw_whey_protein/bloc/get_list_whey_protein/bloc/list_whey_protein_get_by_search_bloc.dart';
+import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/list_whey_protein_model.dart';
 
 class CardListWheyProtein extends StatefulWidget {
-  const CardListWheyProtein(
-      {Key? key})
-      : super(key: key);
+  const CardListWheyProtein({
+    Key? key,
+    required this.dataWhey
+  }) : super(key: key);
+
+  final GetListWheyProteinData dataWhey;
 
   @override
   CardListWheyProteinState createState() => CardListWheyProteinState();
 }
 
 class CardListWheyProteinState extends State<CardListWheyProtein> {
+
+  @override
+  void initState() {
+    BlocProvider.of<ListWheyProteinGetBySearchBloc>(context).add(ListWheyProteinGetBySearchAndFilter());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -71,11 +84,12 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
   }
 
   Widget wheyProteinName() {
-    return const Padding(
+    return Padding(
       padding: EdgeInsets.only(left: 25),
       child: Text(
-        "Optimum Nutrition Gold 100% Whey Isolate Powder",
-        style: TextStyle(
+        // "Optimum Nutrition Gold 100% Whey Isolate Powder",
+        widget.dataWhey.wheyProteinName,
+        style: const TextStyle(
           fontSize: 20,
           color: Color.fromRGBO(83, 81, 81, 1), 
         ),
@@ -84,11 +98,12 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
   }
 
   Widget pricePerServing() {
-    return const Padding(
+    return Padding(
       padding: EdgeInsets.only(left: 15),
       child: Text(
-        "Rp. 13.800",
-        style: TextStyle(
+        // "Rp. 13.800",
+        widget.dataWhey.pricePerServing.toString(),
+        style: const TextStyle(
           fontSize: 20,
           color: Color.fromRGBO(83, 81, 81, 1), 
         ),
@@ -97,11 +112,12 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
   }
 
   Widget proteinPerServing() {
-    return const Padding(
+    return Padding(
       padding: EdgeInsets.only(left: 5),
       child: Text(
-        "25 gr",
-        style: TextStyle(
+        // "25 gr",
+        widget.dataWhey.proteinPerServing.toString(),
+        style: const TextStyle(
           fontSize: 20,
           color: Color.fromRGBO(83, 81, 81, 1), 
         ),
@@ -110,9 +126,10 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
   }
 
   Widget caloriesPerServing() {
-    return const Text(
-      "120 Calories",
-      style: TextStyle(
+    return Text(
+      // "120 Calories",
+      widget.dataWhey.caloriesPerServing.toString(),
+      style: const TextStyle(
         fontSize: 20,
         color: Color.fromRGBO(83, 81, 81, 1),
       ),
@@ -120,9 +137,10 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
   }
 
   Widget availableVariants() {
-    return const Text(
-      "3 Variants",
-      style: TextStyle(
+    return  Text(
+      // "3 Variants",
+      widget.dataWhey.availableVariantProduct.toString(),
+      style: const TextStyle(
         fontSize: 20,
         color: Color.fromRGBO(83, 81, 81, 1),
       ),
@@ -130,9 +148,10 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
   }
 
   Widget details() {
-    return const Text(
-      "test",
-      style: TextStyle(
+    return Text(
+      // "test",
+      widget.dataWhey.moreDetail,
+      style: const TextStyle(
         fontSize: 20,
         color: Color.fromRGBO(83, 81, 81, 1),
       ),
