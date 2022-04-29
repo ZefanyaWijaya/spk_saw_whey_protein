@@ -115,20 +115,22 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 200),
                   const Divider(
-                    thickness: 10,
+                    height: 20,
+                    thickness: 10.0,
                     color: Color.fromRGBO(83, 81, 81, 1), //TILETEXTCOLOUR
-                    endIndent: 35,
+                    
                   ),
                   Container(
+                    color: Colors.red,
                     height: 350,
                     child : Scrollbar(
                       controller: scrollController,
                       showTrackOnHover: true,
                       isAlwaysShown: true,
                       child: Container(
-                        width: 1200,
+                        width: 1900,
                         child: ListView.builder(
                           controller: scrollController,
                           itemCount: 3,
