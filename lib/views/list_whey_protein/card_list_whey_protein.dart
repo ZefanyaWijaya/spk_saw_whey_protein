@@ -27,21 +27,21 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            width: 300,
+            width: 400,
             child: wheyProteinName(),
           ),
           const SizedBox(
             width: 10
           ),
           Container(
-            width: 300,
+            width: 200,
             child: pricePerServing(),
           ),
           const SizedBox(
             width: 10
           ),
           Container(
-            width: 300,
+            width: 250,
             child: proteinPerServing(),
           ),
           const SizedBox(
@@ -71,31 +71,40 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
   }
 
   Widget wheyProteinName() {
-    return const Text(
-      "Optimum Nutrition Gold 100% Whey Isolate Powder",
-      style: TextStyle(
-        fontSize: 20,
-        color: Color.fromRGBO(83, 81, 81, 1), 
+    return const Padding(
+      padding: EdgeInsets.only(left: 25),
+      child: Text(
+        "Optimum Nutrition Gold 100% Whey Isolate Powder",
+        style: TextStyle(
+          fontSize: 20,
+          color: Color.fromRGBO(83, 81, 81, 1), 
+        ),
       ),
     );
   }
 
   Widget pricePerServing() {
-    return const Text(
-      "Rp. 13.800",
-      style: TextStyle(
-        fontSize: 20,
-        color: Color.fromRGBO(83, 81, 81, 1), 
+    return const Padding(
+      padding: EdgeInsets.only(left: 15),
+      child: Text(
+        "Rp. 13.800",
+        style: TextStyle(
+          fontSize: 20,
+          color: Color.fromRGBO(83, 81, 81, 1), 
+        ),
       ),
     );
   }
 
   Widget proteinPerServing() {
-    return const Text(
-      "25 gr",
-      style: TextStyle(
-        fontSize: 20,
-        color: Color.fromRGBO(83, 81, 81, 1), 
+    return const Padding(
+      padding: EdgeInsets.only(left: 5),
+      child: Text(
+        "25 gr",
+        style: TextStyle(
+          fontSize: 20,
+          color: Color.fromRGBO(83, 81, 81, 1), 
+        ),
       ),
     );
   }
