@@ -14,18 +14,19 @@ class SuccessResponse extends ApiResponse {
 }
 
 /// Data model for Failed Response from API Request
-class FailedResponse {
+class FailedResponse extends ApiResponse {
   final String errorKey;
   final String? errorMessage;
  
   FailedResponse({
     required this.errorKey,
     this.errorMessage,
-  
-  });
+    required String message
+  }): super (message: message);
 
   factory FailedResponse.fromJson(Map<String, dynamic> json) {
     return FailedResponse(
+      message: json['message'],
       errorKey: json['error_key'],
       errorMessage: json['error_message'],
     );

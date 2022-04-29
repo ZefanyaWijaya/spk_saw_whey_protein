@@ -19,6 +19,11 @@ class TabelListWheyProtein extends StatefulWidget {
 }
 
 class TabelListWheyProteinState extends State<TabelListWheyProtein> {
+  @override
+  void initState() {
+    BlocProvider.of<ListWheyProteinGetBySearchBloc>(context).add(ListWheyProteinGetBySearchAndFilter());
+    super.initState();
+  }
 
   ScrollController scrollController = ScrollController();
   ScrollController horizontalScrollController = ScrollController();
@@ -121,7 +126,6 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                   const Divider(
                     thickness: 1,
                     color: Colors.black, //TILETEXTCOLOUR
-                    
                   ),
                   Container(
                     height: 500,
@@ -137,6 +141,7 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                                 width: 1850,
                                 child: ListView.builder(
                                   controller: scrollController,
+                                  // itemCount: 10,
                                   itemCount: state.listWheyProtein.length,
                                   itemBuilder: (context, index) {
                                     return  CardListWheyProtein(

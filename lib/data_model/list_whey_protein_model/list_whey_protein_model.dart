@@ -28,7 +28,7 @@ class GetListWheyProteinBySearchModel extends Equatable {
 }
 
 class GetListWheyProteinData extends Equatable {
-
+  final int idWheyProtein;
   final String wheyProteinName;
   final int pricePerServing;
   final int proteinPerServing;
@@ -37,6 +37,7 @@ class GetListWheyProteinData extends Equatable {
   final String moreDetail;
 
   GetListWheyProteinData({
+    required this.idWheyProtein,
     required this.wheyProteinName,
     required this.pricePerServing,
     required this.proteinPerServing,
@@ -48,6 +49,7 @@ class GetListWheyProteinData extends Equatable {
 
   factory GetListWheyProteinData.fromJson(Map<String, dynamic> json) {
     return GetListWheyProteinData(
+      idWheyProtein:  json['id_whey_protein'],
       wheyProteinName: json['whey_protein_name'], 
       pricePerServing: json['price_per_serving'], 
       proteinPerServing: json['protein_per_serving'],
@@ -58,6 +60,7 @@ class GetListWheyProteinData extends Equatable {
   }
 
   @override List<Object> get props => [
+    idWheyProtein,
     wheyProteinName,
     pricePerServing,
     proteinPerServing,

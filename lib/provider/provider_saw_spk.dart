@@ -11,7 +11,6 @@ class SpkSawWheyProtein {
             receiveTimeout: 3500,
           ));
 
-
   final Dio _dio;
 
 
@@ -45,11 +44,11 @@ class SpkSawWheyProtein {
     try {
       final Response response = await _dio.get(
         _url,
-        options: Options(
-          headers: <String, String>{
-            "Content-Type": "application/json",
-          },
-        ),
+        // options: Options(
+        //   headers: <String, String>{
+            
+        //   },
+        // ),
         queryParameters: queryParam,
       );
       if (response.statusCode == 200) {

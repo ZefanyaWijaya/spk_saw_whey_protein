@@ -19,13 +19,6 @@ class CardListWheyProtein extends StatefulWidget {
 }
 
 class CardListWheyProteinState extends State<CardListWheyProtein> {
-
-  @override
-  void initState() {
-    BlocProvider.of<ListWheyProteinGetBySearchBloc>(context).add(ListWheyProteinGetBySearchAndFilter());
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(

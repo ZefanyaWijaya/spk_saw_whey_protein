@@ -26,7 +26,7 @@ class ListWheyProteinGetBySearchBloc
           price: settingsCubit.calories,
           protein: settingsCubit.calories,
           variants: settingsCubit.calories,
-          searchKeywordText: "",
+          searchKeywordText: ""
         );
         emit(ListWheyProteinGetBySearchDone(
           listWheyProtein: listWheyProteinData.data,
