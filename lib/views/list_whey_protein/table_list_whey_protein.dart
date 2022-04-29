@@ -123,8 +123,7 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                     
                   ),
                   Container(
-                    // color: Colors.red,
-                    height: 350,
+                    height: 500,
                     child : Scrollbar(
                       controller: scrollController,
                       showTrackOnHover: true,
@@ -133,7 +132,7 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                         width: 1850,
                         child: ListView.builder(
                           controller: scrollController,
-                          itemCount: 3,
+                          itemCount: 10,
                           itemBuilder: (context, index) {
                             return const CardListWheyProtein();
                             // return CardListSampleAdmin(
