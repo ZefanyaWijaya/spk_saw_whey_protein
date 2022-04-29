@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 
 part 'list_whey_protein_settings_state.dart';
 
@@ -81,6 +80,7 @@ class ListWheyProteinSettingsCubit extends Cubit<ListWheyProteinSettingsState> {
   }
 
   void getKategoriVariants (String variantsCategory) {
+    emit(ListWheyProteinSettingsLoading());
     if(variantsCategory == "1 Variant Rasa") {
       variants = "a";
     } else if (variantsCategory == "2 Variant Rasa") {
@@ -96,5 +96,6 @@ class ListWheyProteinSettingsCubit extends Cubit<ListWheyProteinSettingsState> {
     } else {
       variants = "";
     }
+    emit(ListWheyProteinSettingsDone());
   }
 }

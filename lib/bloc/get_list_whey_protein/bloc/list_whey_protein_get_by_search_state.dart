@@ -7,7 +7,7 @@ class ListWheyProteinGetBySearchInitial extends ListWheyProteinGetBySearchState 
 class ListWheyProteinGetBySearchLoading extends ListWheyProteinGetBySearchState {}
 
 class ListWheyProteinGetBySearchDone extends ListWheyProteinGetBySearchState {
-  final List<GetListWheyProteinBySearchModel> listWheyProtein;
+  final List<GetListWheyProteinData> listWheyProtein;
 
   ListWheyProteinGetBySearchDone({
     required this.listWheyProtein
