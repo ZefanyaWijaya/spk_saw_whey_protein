@@ -43,7 +43,7 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
     "Calories : Semua Kategori",  //send key nothing or '' 
     "Kurang dari 100 calories",     //send key a
     "101 calories - 125 calories",  //send key b
-    "126 calories - 126 calories",  //send key c
+    "126 calories - 150 calories",  //send key c
     "151 calories - 175 calories",  //send key d
     "176 calories - 200 calories",  //send key e
     "201 calories - 225 calories",  //send key f
