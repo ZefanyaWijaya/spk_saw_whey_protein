@@ -10,6 +10,13 @@ class ListWheyProteinSettingsCubit extends Cubit<ListWheyProteinSettingsState> {
   String protein = "";
   String calories ="";
   String variants ="";
+  String keyword ="";
+
+  void getListWheyProteinBySearchBar (String keywordInputted) {
+    emit(ListWheyProteinSettingsLoading());
+    keyword = keywordInputted;
+    emit(ListWheyProteinSettingsDone());
+  }
   
   void getKategoriPriceFilter(String priceCategory){
     emit(ListWheyProteinSettingsLoading());
