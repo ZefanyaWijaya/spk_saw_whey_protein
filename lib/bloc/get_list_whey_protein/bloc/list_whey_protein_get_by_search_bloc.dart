@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/get_list_whey_protein/settingsCubit/cubit/list_whey_protein_settings_cubit.dart';
 import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/list_whey_protein_model.dart';
@@ -12,6 +14,7 @@ class ListWheyProteinGetBySearchBloc
 
   final ListWheyRepository _repository = ListWheyRepository();
   final ListWheyProteinSettingsCubit settingsCubit;
+  late StreamSubscription settingsListener;
 
   ListWheyProteinGetBySearchBloc({
     required this.settingsCubit
@@ -19,7 +22,6 @@ class ListWheyProteinGetBySearchBloc
 
     on<ListWheyProteinGetBySearchAndFilter>((event, emit) async {
       emit(ListWheyProteinGetBySearchLoading());
-      print("EVENT GET WHEY DIJALANKAN");
       try {
         List<GetListWheyProteinData> listWheyProteinData = await _repository.getListWheyBySearchRepo(
           calories: settingsCubit.calories,
@@ -34,6 +36,12 @@ class ListWheyProteinGetBySearchBloc
       } catch (exception) {
         String message = this.errorMessageList(exception);
         emit(ListWheyProteinGetBySearchFailed(errorMessage: message));
+      }
+    });
+
+    settingsListener = settingsCubit.stream.listen((state) {
+      if(state is ListWheyProteinSettingsDone) {
+        add(ListWheyProteinGetBySearchAndFilter());
       }
     });
   }

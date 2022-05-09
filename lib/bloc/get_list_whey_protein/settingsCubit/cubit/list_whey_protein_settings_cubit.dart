@@ -15,7 +15,6 @@ class ListWheyProteinSettingsCubit extends Cubit<ListWheyProteinSettingsState> {
   void getListWheyProteinBySearchBar (String? keywordInputted) {
     emit(ListWheyProteinSettingsLoading());
     keyword = keywordInputted;
-    print(keyword);
     emit(ListWheyProteinSettingsDone());
   }
   
