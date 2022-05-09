@@ -53,7 +53,8 @@ class SpkSawWheyProtein {
       );
       if (response.statusCode == 200) {
         if (response.data['message'] == 'Success') {
-          print('Succes');
+          print('TEST SUCCESS PROVIDER');
+          // print(response.data);
           return GetListWheyProteinBySearchModel.fromJson(response.data);
         } else {
           print('Failed');

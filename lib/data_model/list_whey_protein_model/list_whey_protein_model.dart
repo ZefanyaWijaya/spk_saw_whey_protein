@@ -3,10 +3,12 @@
 import 'package:equatable/equatable.dart';
 
 class GetListWheyProteinBySearchModel extends Equatable {
+  final String message;
   final List<GetListWheyProteinData> data;
 
   GetListWheyProteinBySearchModel({
-    required this.data
+    required this.data,
+    required this.message,
   });
 
   factory GetListWheyProteinBySearchModel.fromJson(Map<String,dynamic> json) {
@@ -18,11 +20,13 @@ class GetListWheyProteinBySearchModel extends Equatable {
     }
 
     return GetListWheyProteinBySearchModel(
+      message: json['message'],
       data: _temp,
     );
   }
   @override
   List<Object> get props => [
+    message,
     data,
   ];
 }

@@ -21,7 +21,7 @@ class ListWheyProteinGetBySearchBloc
       emit(ListWheyProteinGetBySearchLoading());
       print("EVENT GET WHEY DIJALANKAN");
       try {
-        GetListWheyProteinBySearchModel listWheyProteinData = await _repository.getListWheyBySearchRepo(
+        List<GetListWheyProteinData> listWheyProteinData = await _repository.getListWheyBySearchRepo(
           calories: settingsCubit.calories,
           price: settingsCubit.calories,
           protein: settingsCubit.calories,
@@ -29,7 +29,7 @@ class ListWheyProteinGetBySearchBloc
           searchKeywordText: ""
         );
         emit(ListWheyProteinGetBySearchDone(
-          listWheyProtein: listWheyProteinData.data,
+          listWheyProtein: listWheyProteinData,
         ));
       } catch (exception) {
         String message = this.errorMessageList(exception);
