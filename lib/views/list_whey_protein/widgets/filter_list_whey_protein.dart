@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spk_saw_whey_protein/bloc/get_list_whey_protein/settingsCubit/cubit/list_whey_protein_settings_cubit.dart';
 import 'package:spk_saw_whey_protein/bloc/layout_manager_cubit/cubit/layout_manager_cubit.dart';
 
 class FilterListWheyProtein extends StatefulWidget {
@@ -105,10 +106,11 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
                         );
                       }).toList(),
                       onChanged: (String? newValue) {
+                        BlocProvider.of<ListWheyProteinSettingsCubit>(context).getKategoriPriceFilter(newValue!);
                         // BlocProvider.of<ListSampleAdminSettingsCubit>(context)
                         //     .changeShowDataPerPage(newValue!);
                         setState(() {
-                          dropdownValueHarga = newValue!;
+                          dropdownValueHarga = newValue;
                         });
                       },
                     ),

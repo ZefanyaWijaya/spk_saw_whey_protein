@@ -25,9 +25,9 @@ class ListWheyProteinGetBySearchBloc
       try {
         List<GetListWheyProteinData> listWheyProteinData = await _repository.getListWheyBySearchRepo(
           calories: settingsCubit.calories,
-          price: settingsCubit.calories,
-          protein: settingsCubit.calories,
-          variants: settingsCubit.calories,
+          price: settingsCubit.price,
+          protein: settingsCubit.protein,
+          variants: settingsCubit.variants,
           searchKeywordText: settingsCubit.keyword
         );
         emit(ListWheyProteinGetBySearchDone(
