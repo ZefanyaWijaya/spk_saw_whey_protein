@@ -20,7 +20,7 @@ class ListWheyProteinSettingsCubit extends Cubit<ListWheyProteinSettingsState> {
   
   void getKategoriPriceFilter(String priceCategory){
     emit(ListWheyProteinSettingsLoading());
-    if(priceCategory == "Kurang dari Rp 5.000") {
+    if(priceCategory == "Rp 0 - Rp 5.000") {
       price = "a";
     } else if (priceCategory == "Rp 5.001 - Rp 10.000") {
       price = "b";
@@ -42,7 +42,7 @@ class ListWheyProteinSettingsCubit extends Cubit<ListWheyProteinSettingsState> {
 
   void getKategoriProtein(String proteinCategory) {
     emit(ListWheyProteinSettingsLoading());
-    if(proteinCategory == "Kurang dari 5 gr") {
+    if(proteinCategory == "0 gr - 5 gr") {
       protein = "a";
     } else if (proteinCategory == "6 gr - 10 gr") {
       protein = "b";
@@ -64,7 +64,7 @@ class ListWheyProteinSettingsCubit extends Cubit<ListWheyProteinSettingsState> {
 
   void getKategoriCalories (String caloriesCategory) {
     emit(ListWheyProteinSettingsLoading());
-    if(caloriesCategory == "Kurang dari 100 calories") {
+    if(caloriesCategory == "0 calories - 100 calories") {
       calories = "a";
     } else if (caloriesCategory == "101 calories - 125 calories") {
       calories = "b";

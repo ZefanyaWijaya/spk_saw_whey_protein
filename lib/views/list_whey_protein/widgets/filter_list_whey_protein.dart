@@ -16,7 +16,7 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
   String dropdownValueHarga = 'Harga : Semua Kategori';
   List<String> items = [
     'Harga : Semua Kategori', //send key nothing or ''     
-    'Kurang dari Rp 5.000',   //send key a
+    'Rp 0 - Rp 5.000',   //send key a
     "Rp 5.001 - Rp 10.000",   //send key b 
     "Rp 10.001 - Rp 15.000",  //send key c
     "Rp 15.001 - Rp 20.000",  //send key d
@@ -28,7 +28,7 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
   String dropdownValueProtein = 'Protein : Semua Kategori';
   List<String> itemsProtein = [
     'Protein : Semua Kategori',  //send key nothing or '' 
-    'Kurang dari 5 gr',    //send key a
+    '0 gr - 5 gr',    //send key a
     '6 gr - 10 gr',   //send key b
     '11 gr - 15 gr',  //send key c
     '16 gr - 20 gr',  //send key d
@@ -40,7 +40,7 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
   String dropdownValueCalories = 'Calories : Semua Kategori';
   List<String> itemsCalories = [
     "Calories : Semua Kategori",  //send key nothing or '' 
-    "Kurang dari 100 calories",     //send key a
+    "0 calories - 100 calories",     //send key a
     "101 calories - 125 calories",  //send key b
     "126 calories - 150 calories",  //send key c
     "151 calories - 175 calories",  //send key d
@@ -107,8 +107,6 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
                       }).toList(),
                       onChanged: (String? newValue) {
                         BlocProvider.of<ListWheyProteinSettingsCubit>(context).getKategoriPriceFilter(newValue!);
-                        // BlocProvider.of<ListSampleAdminSettingsCubit>(context)
-                        //     .changeShowDataPerPage(newValue!);
                         setState(() {
                           dropdownValueHarga = newValue;
                         });
@@ -149,10 +147,9 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
                         );
                       }).toList(),
                       onChanged: (String? newValue) {
-                        // BlocProvider.of<ListSampleAdminSettingsCubit>(context)
-                        //     .changeShowDataPerPage(newValue!);
+                        BlocProvider.of<ListWheyProteinSettingsCubit>(context).getKategoriProtein(newValue!);
                         setState(() {
-                          dropdownValueProtein = newValue!;
+                          dropdownValueProtein = newValue;
                         });
                       },
                     ),
@@ -191,10 +188,9 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
                         );
                       }).toList(),
                       onChanged: (String? newValue) {
-                        // BlocProvider.of<ListSampleAdminSettingsCubit>(context)
-                        //     .changeShowDataPerPage(newValue!);
+                        BlocProvider.of<ListWheyProteinSettingsCubit>(context).getKategoriCalories(newValue!);
                         setState(() {
-                          dropdownValueCalories = newValue!;
+                          dropdownValueCalories = newValue;
                         });
                       },
                     ),
@@ -233,10 +229,9 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
                         );
                       }).toList(),
                       onChanged: (String? newValue) {
-                        // BlocProvider.of<ListSampleAdminSettingsCubit>(context)
-                        //     .changeShowDataPerPage(newValue!);
+                        BlocProvider.of<ListWheyProteinSettingsCubit>(context).getKategoriVariants(newValue!);
                         setState(() {
-                          dropdownValueVariants = newValue!;
+                          dropdownValueVariants = newValue;
                         });
                       },
                     ),
