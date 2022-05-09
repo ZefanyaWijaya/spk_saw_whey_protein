@@ -30,7 +30,7 @@ class ListWheyRepository {
     );
     if(response is GetListWheyProteinBySearchModel) {
       print('test succes repository');
-      print(response.data);
+      // print(response.data);
       return response.data;
     } else if (response is FailedResponse){
       switch (response.errorKey) {

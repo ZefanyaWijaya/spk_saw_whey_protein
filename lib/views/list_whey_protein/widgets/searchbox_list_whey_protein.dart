@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spk_saw_whey_protein/bloc/get_list_whey_protein/settingsCubit/cubit/list_whey_protein_settings_cubit.dart';
 import 'package:spk_saw_whey_protein/bloc/layout_manager_cubit/cubit/layout_manager_cubit.dart';
 
 class SearchboxListWheyProtein extends StatefulWidget {
@@ -75,7 +76,7 @@ class SearchboxListWheyProteinState extends State<SearchboxListWheyProtein> {
                   icon: const Icon(Icons.cancel_rounded, size: 25),
                   onPressed: () {
                     textController.clear();
-                    // BlocProvider.of<ListSampleAdminSettingsCubit>(context).searchByNameOrIdentityNumber(null);
+                    BlocProvider.of<ListWheyProteinSettingsCubit>(context).getListWheyProteinBySearchBar(null);
                     setState(() {
                       showClearButton = false;
                     });
@@ -86,14 +87,7 @@ class SearchboxListWheyProteinState extends State<SearchboxListWheyProtein> {
           fillColor: Colors.white,
         ),
         onSubmitted: (String value) {
-          // BlocProvider.of<ListSampleAdminSettingsCubit>(context)
-          //     .searchByNameOrIdentityNumber(
-          //   textController.text.trim().isNotEmpty
-          //       ? InputSearchSamplePartner(
-          //           tipe: SearchSampleByType.values.firstWhere((element) => describeEnum(element) == selectedDropdownValue),
-          //           keyword: textController.text.trim())
-          //       : null
-          // );
+          BlocProvider.of<ListWheyProteinSettingsCubit>(context).getListWheyProteinBySearchBar(textController.text.trim());
           setState(() {
             textController.text.isNotEmpty
                 ? showClearButton = true
@@ -117,14 +111,7 @@ class SearchboxListWheyProteinState extends State<SearchboxListWheyProtein> {
         ),
       ),
       onPressed: () {
-        // BlocProvider.of<ListSampleAdminSettingsCubit>(context)
-        //     .searchByNameOrIdentityNumber(
-        //   textController.text.trim().isNotEmpty
-        //       ? InputSearchSamplePartner(
-        //           tipe: SearchSampleByType.values.firstWhere((element) => describeEnum(element) == selectedDropdownValue),
-        //           keyword: textController.text.trim())
-        //       : null
-        // );
+        BlocProvider.of<ListWheyProteinSettingsCubit>(context).getListWheyProteinBySearchBar(textController.text.trim());
         setState(() {
           textController.text.isNotEmpty
               ? showClearButton = true
