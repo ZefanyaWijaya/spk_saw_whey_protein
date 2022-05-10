@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spk_saw_whey_protein/bloc/get_calculate_whey_protein/bloc/get_calculate_whey_protein_by_search_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/layout_manager_cubit/cubit/layout_manager_cubit.dart';
 import 'package:spk_saw_whey_protein/views/calculate_whey_protein/calculate_whey_protein_ui.dart';
 
@@ -7,6 +8,7 @@ class CalculateWheyProteinRunner extends StatelessWidget {
   CalculateWheyProteinRunner({Key? key}) : super(key: key);
 
   final LayoutManagerCubit settingsLayout = LayoutManagerCubit();
+  final GetCalculateWheyProteinBySearchBloc getCalculateWhey = GetCalculateWheyProteinBySearchBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,9 @@ class CalculateWheyProteinRunner extends StatelessWidget {
             providers: [
               BlocProvider<LayoutManagerCubit>(
                 create: (context) => settingsLayout,
+              ),
+              BlocProvider<GetCalculateWheyProteinBySearchBloc>(
+                create: (context) => getCalculateWhey
               ),
             ], 
             child: BlocBuilder<LayoutManagerCubit, LayoutManagerState>(

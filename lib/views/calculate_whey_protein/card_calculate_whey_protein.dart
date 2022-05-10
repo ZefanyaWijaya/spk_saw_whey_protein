@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
+import 'package:spk_saw_whey_protein/data_model/calculate_whey_protein_model/calculate_whey_protein_model.dart';
 
 class CardCalculateWheyProtein extends StatefulWidget {
   const CardCalculateWheyProtein ({
     Key? key,
-    //required data mode pack
+    required this.dataCalculateWhey
   }) : super (key: key);
+
+  final GetCalculateWheyProteinList dataCalculateWhey;
 
   @override
   CardCalculateWheyProteinState createState() => CardCalculateWheyProteinState();
@@ -78,8 +81,8 @@ class CardCalculateWheyProteinState extends State<CardCalculateWheyProtein> {
 
   Widget wheyProteinName() {
     return Text(
-      "Optimum Nutrition Gold 100% Whey Isolate Powder",
-      // widget.dataWhey.wheyProteinName,
+      // "Optimum Nutrition Gold 100% Whey Isolate Powder",
+      widget.dataCalculateWhey.wheyProteinName,
       style: const TextStyle(
         fontSize: 20,
         color: Color.fromRGBO(83, 81, 81, 1), 
@@ -89,8 +92,8 @@ class CardCalculateWheyProteinState extends State<CardCalculateWheyProtein> {
 
   Widget priceSawCost() {
     return Text(
-        "Rp. 13.800",
-        // widget.dataWhey.pricePerServing.toString(),
+        // "Rp. 13.800",
+        widget.dataCalculateWhey.pricePerServing.toString(),
         style: const TextStyle(
           fontSize: 20,
           color: Color.fromRGBO(83, 81, 81, 1), 
@@ -100,8 +103,8 @@ class CardCalculateWheyProteinState extends State<CardCalculateWheyProtein> {
 
   Widget proteinSawBenefit() {
     return Text(
-      "25 gr",
-      // widget.dataWhey.proteinPerServing.toString(),
+      // "25 gr",
+      widget.dataCalculateWhey.proteinPerServing.toString(),
       style: const TextStyle(
         fontSize: 20,
         color: Color.fromRGBO(83, 81, 81, 1), 
@@ -111,8 +114,8 @@ class CardCalculateWheyProteinState extends State<CardCalculateWheyProtein> {
 
   Widget caloriesSawCost() {
     return Text(
-      "120 Calories",
-      // widget.dataWhey.caloriesPerServing.toString(),
+      // "120 Calories",
+      widget.dataCalculateWhey.caloriesPerServing.toString(),
       style: const TextStyle(
         fontSize: 20,
         color: Color.fromRGBO(83, 81, 81, 1),
@@ -121,9 +124,9 @@ class CardCalculateWheyProteinState extends State<CardCalculateWheyProtein> {
   }
 
   Widget availableVariantsSawBenefit() {
-    return  Text(
-      "3 Variants",
-      // widget.dataWhey.availableVariantProduct.toString(),
+    return Text(
+      // "3 Variants",
+      widget.dataCalculateWhey.availableVariantProduct.toString(),
       style: const TextStyle(
         fontSize: 20,
         color: Color.fromRGBO(83, 81, 81, 1),
@@ -133,8 +136,8 @@ class CardCalculateWheyProteinState extends State<CardCalculateWheyProtein> {
 
   Widget otherIngredientsSawBenefit() {
     return Text(
-      "2",
-      // widget.dataWhey.moreDetail,
+      // "2",
+      widget.dataCalculateWhey.otherIngredients.toString(),
       style: const TextStyle(
         fontSize: 20,
         color: Color.fromRGBO(83, 81, 81, 1),
@@ -144,8 +147,8 @@ class CardCalculateWheyProteinState extends State<CardCalculateWheyProtein> {
 
   Widget scoreSaw() {
     return Text(
-      "0.782612",
-      // widget.dataWhey.moreDetail,
+      // "0.782612",
+      widget.dataCalculateWhey.scoreSaw.toString(),
       style: const TextStyle(
         fontSize: 20,
         color: Color.fromRGBO(83, 81, 81, 1),

@@ -33,7 +33,7 @@ class CalculateWheyProteinState extends State<CalculateWheyProtein> {
               ),
               Flexible(
                 flex: 35,
-                child: calculateWheyProtein(),
+                child: calculateWheyProteinButton(),
               ),
             ],
           ),
@@ -46,7 +46,7 @@ class CalculateWheyProteinState extends State<CalculateWheyProtein> {
     );
   }
 
-  Widget calculateWheyProtein() {
+  Widget calculateWheyProteinButton() {
     return Padding(
       padding: const EdgeInsets.only(right: 30),
       child: Container(
@@ -54,7 +54,7 @@ class CalculateWheyProteinState extends State<CalculateWheyProtein> {
         height: 45,
         child: ElevatedButton(
           onPressed: () {
-            //TO DO INPUT PAGE
+            //TO DO UPDATE CALCULATE WHEY
             // event update call api
           },
           child: const Text(

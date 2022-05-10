@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spk_saw_whey_protein/bloc/get_calculate_whey_protein/bloc/get_calculate_whey_protein_by_search_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/layout_manager_cubit/cubit/layout_manager_cubit.dart';
 
 class SearchboxCalculateWheyProtein extends StatefulWidget {
@@ -64,7 +64,7 @@ class SearchboxCalculateWheyProteinState extends State<SearchboxCalculateWheyPro
                   icon: const Icon(Icons.cancel_rounded, size: 25),
                   onPressed: () {
                     textController.clear();
-                    // BlocProvider.of<ListWheyProteinSettingsCubit>(context).getListWheyProteinBySearchBar(null);
+                    BlocProvider.of<GetCalculateWheyProteinBySearchBloc>(context).add(GetCalculateWheyProteinBySearch(keyword: null));
                     setState(() {
                       showClearButton = false;
                     });
@@ -75,7 +75,7 @@ class SearchboxCalculateWheyProteinState extends State<SearchboxCalculateWheyPro
           fillColor: Colors.white,
         ),
         onSubmitted: (String value) {
-          // BlocProvider.of<ListWheyProteinSettingsCubit>(context).getListWheyProteinBySearchBar(textController.text.trim());
+          BlocProvider.of<GetCalculateWheyProteinBySearchBloc>(context).add(GetCalculateWheyProteinBySearch(keyword: textController.text.trim()));
           setState(() {
             textController.text.isNotEmpty
                 ? showClearButton = true
@@ -99,7 +99,7 @@ class SearchboxCalculateWheyProteinState extends State<SearchboxCalculateWheyPro
         ),
       ),
       onPressed: () {
-        // BlocProvider.of<ListWheyProteinSettingsCubit>(context).getListWheyProteinBySearchBar(textController.text.trim());
+        BlocProvider.of<GetCalculateWheyProteinBySearchBloc>(context).add(GetCalculateWheyProteinBySearch(keyword: textController.text.trim()));
         setState(() {
           textController.text.isNotEmpty
               ? showClearButton = true

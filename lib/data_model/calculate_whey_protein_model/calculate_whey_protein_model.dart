@@ -35,7 +35,7 @@ class GetCalculateWheyProteinList extends Equatable {
   final int idCalculateSaw;
   final int idWheyProtein;
   final int otherIngredients;
-  final int scoreSaw;
+  final double scoreSaw;
   final String wheyProteinName;
   final int pricePerServing;
   final int proteinPerServing;

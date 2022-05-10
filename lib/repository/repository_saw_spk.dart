@@ -49,7 +49,7 @@ class ListWheyRepository {
   Future getCalculateWheyBySearch({
     String? searchKeywordText,
   }) async {
-    final response = await _apiProvider.getListWheyProteinBySearch(
+    final response = await _apiProvider.getCalculateWheyBySearch(
       searchKeyword: searchKeywordText,
     );
     if(response is GetCalculateWheyBySearchModel) {

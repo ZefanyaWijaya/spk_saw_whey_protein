@@ -1,5 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spk_saw_whey_protein/bloc/get_calculate_whey_protein/bloc/get_calculate_whey_protein_by_search_bloc.dart';
 import 'package:spk_saw_whey_protein/views/calculate_whey_protein/card_calculate_whey_protein.dart';
 
 class TabelCalculateWheyProtein extends StatefulWidget {
@@ -14,8 +16,8 @@ class TabelCalculateWheyProteinState extends State<TabelCalculateWheyProtein>{
 
    @override
   void initState() {
-    // BlocProvider.of<ListWheyProteinGetBySearchBloc>(context).add(ListWheyProteinGetBySearchAndFilter());
-    // super.initState();
+    BlocProvider.of<GetCalculateWheyProteinBySearchBloc>(context).add(GetCalculateWheyProteinBySearch(keyword: null));
+    super.initState();
   }
 
   ScrollController scrollController = ScrollController();
@@ -133,126 +135,82 @@ class TabelCalculateWheyProteinState extends State<TabelCalculateWheyProtein>{
                   ),
                   Container(
                     height: 600,
-                    child : Scrollbar(
-                      controller: scrollController,
-                      showTrackOnHover: true,
-                      isAlwaysShown: true,
-                      child: Container(
-                        width: 2020,
-                        child: ListView.builder(
-                          controller: scrollController,
-                          // itemCount: 10,
-                          itemCount: 10,
-                          itemBuilder: (context, index) {
-                            return  CardCalculateWheyProtein();
-                            // return CardListSampleAdmin(
-                            //   sampleData: state.listSample[index],
-                            //   cellWidthData: {
-                            //     '_cellWidthNamaSample': _cellWidthNamaSample,
-                            //     '_cellWidthBatchPickup': _cellWidthBatchPickup,
-                            //     '_cellWidthNamaPasien': _cellWidthNamaPasien,
-                            //     '_cellWidthSTanggalLahir': _cellWidthSTanggalLahir,
-                            //     '_cellWidthTanggalPickup': _cellWidthTanggalPickup,
-                            //     '_cellWidthJJenisLayanan': _cellWidthJJenisLayanan,
-                            //     '_cellWidthPartner': _cellWidthPartner,
-                            //     '_cellWidthStatus': _cellWidthStatus,
-                            //     '_colSpacing': _colSpacing
-                            //   },
-                            // );
-                          },
-                        ),
-                      ),
+                    child : BlocBuilder<GetCalculateWheyProteinBySearchBloc,GetCalculateWheyProteinBySearchState>(
+                      builder: (context, state) {
+                        if(state is GetCalculateWheyProteinSearchDone) {
+                          if(state.listCalculateWhey.isNotEmpty){
+                            return Scrollbar(
+                              controller: scrollController,
+                              showTrackOnHover: true,
+                              isAlwaysShown: true,
+                              child: Container(
+                                width: 2020,
+                                child: ListView.builder(
+                                  controller: scrollController,
+                                  // itemCount: 10,
+                                  itemCount: state.listCalculateWhey.length,
+                                  itemBuilder: (context, index) {
+                                    return  CardCalculateWheyProtein(
+                                      dataCalculateWhey: state.listCalculateWhey[index] ,
+                                    );
+                                  },
+                                ),
+                              ),
+                            );
+                          } else {
+                            return Center(
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: const [
+                                  Icon(
+                                    Icons.description,
+                                    color: Color.fromRGBO(83, 81, 81, 1),
+                                  ),
+                                  Text(
+                                    'Data tidak ditemukan',
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(83, 81, 81, 1),
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                        } else if (state is GetCalculateWheyProteinSearchLoading) {
+                          return const Center(child: CircularProgressIndicator());
+                        } else if (state is GetCalculateWheyProteinSearchFailed) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 24.0),
+                            child: Center(
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.only(right: 4.0),
+                                    child: Icon(
+                                      Icons.report_problem,
+                                      color: Color.fromRGBO(83, 81, 81, 1),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 4.0),
+                                    child: Text(
+                                      state.errorMessage,
+                                      style: const TextStyle(
+                                        color: Color.fromRGBO(83, 81, 81, 1),
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        } 
+                        return Container();
+                      }
                     ),
-                    // child : BlocBuilder<ListWheyProteinGetBySearchBloc,ListWheyProteinGetBySearchState>(
-                    //   builder: (context, state) {
-                    //     if(state is ListWheyProteinGetBySearchDone) {
-                    //       if(state.listWheyProtein.isNotEmpty){
-                    //         return Scrollbar(
-                    //           controller: scrollController,
-                    //           showTrackOnHover: true,
-                    //           isAlwaysShown: true,
-                    //           child: Container(
-                    //             width: 1850,
-                    //             child: ListView.builder(
-                    //               controller: scrollController,
-                    //               // itemCount: 10,
-                    //               itemCount: state.listWheyProtein.length,
-                    //               itemBuilder: (context, index) {
-                    //                 return  CardListWheyProtein(
-                    //                   dataWhey: state.listWheyProtein[index],
-                    //                 );
-                    //                 // return CardListSampleAdmin(
-                    //                 //   sampleData: state.listSample[index],
-                    //                 //   cellWidthData: {
-                    //                 //     '_cellWidthNamaSample': _cellWidthNamaSample,
-                    //                 //     '_cellWidthBatchPickup': _cellWidthBatchPickup,
-                    //                 //     '_cellWidthNamaPasien': _cellWidthNamaPasien,
-                    //                 //     '_cellWidthSTanggalLahir': _cellWidthSTanggalLahir,
-                    //                 //     '_cellWidthTanggalPickup': _cellWidthTanggalPickup,
-                    //                 //     '_cellWidthJJenisLayanan': _cellWidthJJenisLayanan,
-                    //                 //     '_cellWidthPartner': _cellWidthPartner,
-                    //                 //     '_cellWidthStatus': _cellWidthStatus,
-                    //                 //     '_colSpacing': _colSpacing
-                    //                 //   },
-                    //                 // );
-                    //               },
-                    //             ),
-                    //           ),
-                    //         );
-                    //       } else {
-                    //         return Center(
-                    //           child: Row(
-                    //             mainAxisSize: MainAxisSize.min,
-                    //             children: const [
-                    //               Icon(
-                    //                 Icons.description,
-                    //                 color: Color.fromRGBO(83, 81, 81, 1),
-                    //               ),
-                    //               Text(
-                    //                 'Data tidak ditemukan',
-                    //                 style: TextStyle(
-                    //                   color: Color.fromRGBO(83, 81, 81, 1),
-                    //                   fontSize: 16,
-                    //                 ),
-                    //               ),
-                    //             ],
-                    //           ),
-                    //         );
-                    //       }
-                    //     } else if (state is ListWheyProteinGetBySearchLoading) {
-                    //       return const Center(child: CircularProgressIndicator());
-                    //     } else if (state is ListWheyProteinGetBySearchFailed) {
-                    //       return Padding(
-                    //         padding: const EdgeInsets.symmetric(vertical: 24.0),
-                    //         child: Center(
-                    //           child: Row(
-                    //             mainAxisSize: MainAxisSize.min,
-                    //             children: [
-                    //               const Padding(
-                    //                 padding: EdgeInsets.only(right: 4.0),
-                    //                 child: Icon(
-                    //                   Icons.report_problem,
-                    //                   color: Color.fromRGBO(83, 81, 81, 1),
-                    //                 ),
-                    //               ),
-                    //               Padding(
-                    //                 padding: const EdgeInsets.only(left: 4.0),
-                    //                 child: Text(
-                    //                   state.errorMessage,
-                    //                   style: const TextStyle(
-                    //                     color: Color.fromRGBO(83, 81, 81, 1),
-                    //                     fontSize: 16,
-                    //                   ),
-                    //                 ),
-                    //               ),
-                    //             ],
-                    //           ),
-                    //         ),
-                    //       );
-                    //     } 
-                    //     return Container();
-                    //   }
-                    // ),
                   ),
                 ],
               ),
