@@ -1,0 +1,5 @@
+class GetCalculateWheyBySearchFailed implements Exception {}
+
+class GetCalculateWheyBySearchErrorInternalServer implements GetCalculateWheyBySearchFailed {}
+
+class GetCalculateWheyUnknownErrorCode implements GetCalculateWheyBySearchFailed{}

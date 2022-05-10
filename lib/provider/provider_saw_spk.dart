@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:spk_saw_whey_protein/data_model/api_response.dart';
+import 'package:spk_saw_whey_protein/data_model/calculate_whey_protein_model/calculate_whey_protein_model.dart';
 import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/list_whey_protein_model.dart';
 
 class SpkSawWheyProtein {
@@ -44,6 +45,40 @@ class SpkSawWheyProtein {
     try {
       final Response response = await _dio.get(
         _url,
+        queryParameters: queryParam,
+      );
+      if (response.statusCode == 200) {
+        if (response.data['message'] == 'Success') {
+          print('TEST SUCCESS PROVIDER');
+          // print(response.data);
+          return GetListWheyProteinBySearchModel.fromJson(response.data);
+        } else {
+          print('Failed');
+          return FailedResponse.fromJson(response.data);
+        }
+      }
+      throw Exception(response.statusCode);
+    } catch (exception) {
+      print('$exception');
+      throw Exception(exception);
+    }
+  }
+
+
+  Future getCalculateWheyBySearch({
+    String? searchKeyword
+   
+  }) async {
+    final _url = '/getcalculatewhey';
+
+    Map<String, dynamic> queryParam = {};
+
+    if (searchKeyword != null) {
+      queryParam['search'] = searchKeyword;
+    }
+    try {
+      final Response response = await _dio.get(
+        _url,
         // options: Options(
         //   headers: <String, String>{
             
@@ -55,7 +90,7 @@ class SpkSawWheyProtein {
         if (response.data['message'] == 'Success') {
           print('TEST SUCCESS PROVIDER');
           // print(response.data);
-          return GetListWheyProteinBySearchModel.fromJson(response.data);
+          return GetCalculateWheyBySearchModel.fromJson(response.data);
         } else {
           print('Failed');
           return FailedResponse.fromJson(response.data);

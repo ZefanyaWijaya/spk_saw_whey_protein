@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:spk_saw_whey_protein/views/calculate_whey_protein/searchbox_whey_protein.dart';
 import 'package:spk_saw_whey_protein/views/calculate_whey_protein/table_calculate_whey_protein.dart';
