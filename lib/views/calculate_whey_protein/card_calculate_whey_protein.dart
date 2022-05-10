@@ -29,7 +29,7 @@ class CardCalculateWheyProteinState extends State<CardCalculateWheyProtein> {
             child: wheyProteinName(),
           ),
           const SizedBox(
-            width: 10
+            width: 20
           ),
           Container(
             width: 200,
@@ -77,43 +77,34 @@ class CardCalculateWheyProteinState extends State<CardCalculateWheyProtein> {
 
 
   Widget wheyProteinName() {
-    return Padding(
-      padding: EdgeInsets.only(left: 25),
-      child: Text(
-        "Optimum Nutrition Gold 100% Whey Isolate Powder",
-        // widget.dataWhey.wheyProteinName,
-        style: const TextStyle(
-          fontSize: 20,
-          color: Color.fromRGBO(83, 81, 81, 1), 
-        ),
+    return Text(
+      "Optimum Nutrition Gold 100% Whey Isolate Powder",
+      // widget.dataWhey.wheyProteinName,
+      style: const TextStyle(
+        fontSize: 20,
+        color: Color.fromRGBO(83, 81, 81, 1), 
       ),
     );
   }
 
   Widget priceSawCost() {
-    return Padding(
-      padding: EdgeInsets.only(left: 15),
-      child: Text(
+    return Text(
         "Rp. 13.800",
         // widget.dataWhey.pricePerServing.toString(),
         style: const TextStyle(
           fontSize: 20,
           color: Color.fromRGBO(83, 81, 81, 1), 
         ),
-      ),
     );
   }
 
   Widget proteinSawBenefit() {
-    return Padding(
-      padding: EdgeInsets.only(left: 5),
-      child: Text(
-        "25 gr",
-        // widget.dataWhey.proteinPerServing.toString(),
-        style: const TextStyle(
-          fontSize: 20,
-          color: Color.fromRGBO(83, 81, 81, 1), 
-        ),
+    return Text(
+      "25 gr",
+      // widget.dataWhey.proteinPerServing.toString(),
+      style: const TextStyle(
+        fontSize: 20,
+        color: Color.fromRGBO(83, 81, 81, 1), 
       ),
     );
   }

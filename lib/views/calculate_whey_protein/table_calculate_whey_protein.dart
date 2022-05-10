@@ -45,6 +45,7 @@ class TabelCalculateWheyProteinState extends State<TabelCalculateWheyProtein>{
               scrollDirection: Axis.horizontal,
               child: Column(
                 children: [
+                  SizedBox(height: 20),
                   Row(
                     children: [
                       Container(
@@ -57,7 +58,7 @@ class TabelCalculateWheyProteinState extends State<TabelCalculateWheyProtein>{
                           ),
                         ),
                       ),
-                      const SizedBox(width: 10),
+                      const SizedBox(width: 20),
                       Container(
                         width: 200,
                         child: const Text(
@@ -131,13 +132,13 @@ class TabelCalculateWheyProteinState extends State<TabelCalculateWheyProtein>{
                     color: Colors.black, //TILETEXTCOLOUR
                   ),
                   Container(
-                    height: 500,
+                    height: 600,
                     child : Scrollbar(
                       controller: scrollController,
                       showTrackOnHover: true,
                       isAlwaysShown: true,
                       child: Container(
-                        width: 2350,
+                        width: 2020,
                         child: ListView.builder(
                           controller: scrollController,
                           // itemCount: 10,
