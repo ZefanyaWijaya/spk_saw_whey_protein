@@ -1,1 +1,87 @@
-//delete soon
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:spk_saw_whey_protein/views/calculate_whey_protein/searchbox_whey_protein.dart';
+import 'package:spk_saw_whey_protein/views/calculate_whey_protein/table_calculate_whey_protein.dart';
+
+class CalculateWheyProtein extends StatefulWidget {
+  const CalculateWheyProtein({
+    Key? key, required this.constraints
+  }) : super(key: key);
+
+  final BoxConstraints constraints;
+
+  @override
+  CalculateWheyProteinState createState() => CalculateWheyProteinState();
+}
+
+class CalculateWheyProteinState extends State<CalculateWheyProtein> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height : 20),
+        titleText(),
+        Padding(
+          padding: EdgeInsets.only(top: 48),
+           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Flexible(
+                flex: 65,
+                // child: Container(),
+                child: SearchboxCalculateWheyProtein(),
+              ),
+              Flexible(
+                flex: 35,
+                child: calculateWheyProtein(),
+              ),
+            ],
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(vertical: 50),
+          child: TabelCalculateWheyProtein(),
+        ),
+      ],
+    );
+  }
+
+  Widget calculateWheyProtein() {
+    return Padding(
+      padding: const EdgeInsets.only(right: 30),
+      child: Container(
+        width: 180,
+        height: 45,
+        child: ElevatedButton(
+          onPressed: () {
+            //TO DO INPUT PAGE
+            // event update call api
+          },
+          child: const Text(
+            'Calculate Whey',
+            style: TextStyle(fontSize: 16),
+          ),
+          style: ElevatedButton.styleFrom(
+              elevation: 0,
+              primary: const Color.fromRGBO(2, 106, 199, 1),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              )),
+        ),
+      ),
+    );
+  }
+
+  Widget titleText() {
+    return const Text(
+      'Calculate Whey Protein',
+      style: TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.bold,
+        color: Color.fromRGBO(2, 106, 199, 1),
+      ),
+    );
+  }
+
+}
