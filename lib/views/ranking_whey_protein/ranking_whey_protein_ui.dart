@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spk_saw_whey_protein/views/ranking_whey_protein/widgets/filter_ranking_whey.dart';
 
 class RankingWheyProtein extends StatefulWidget {
   const RankingWheyProtein ({
@@ -21,7 +22,7 @@ class RankingWheyProteinState extends State<RankingWheyProtein> {
         const SizedBox(height : 20),
         titleText(),
         const SizedBox(height: 70),
-        ListProductText(),
+        listProductText(),
         const SizedBox(height: 50),
         IntrinsicHeight(
           child: Row(
@@ -46,14 +47,15 @@ class RankingWheyProteinState extends State<RankingWheyProtein> {
                   thickness: 2,
                 )
               ),
-              Flexible(
+              const Flexible(
                 fit: FlexFit.tight,
                 flex: 49,
-                child: Container(
-                    width: 200,
-                  height: 200,
-                  color: Colors.red,
-                )
+                child: FilterRankingWheyProtein(),
+                // child: Container(
+                //     width: 200,
+                //   height: 200,
+                //   color: Colors.red,
+                // )
               ),
             ],
           ),
@@ -73,11 +75,11 @@ class RankingWheyProteinState extends State<RankingWheyProtein> {
     );
   }
 
-  Widget ListProductText() {
+  Widget listProductText() {
     return const Text(
       'List Product',
       style: TextStyle(
-        fontSize: 22,
+        fontSize: 26,
         fontWeight: FontWeight.bold,
         color: Color.fromRGBO(2, 106, 199, 1),
       ),
