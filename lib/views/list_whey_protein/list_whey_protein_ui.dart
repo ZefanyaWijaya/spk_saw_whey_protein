@@ -54,32 +54,6 @@ class ListWheyProteinState extends State<ListWheyProtein> {
           padding: EdgeInsets.symmetric(vertical: 50),
           child: TabelListWheyProtein(),
         ),
-        // Padding(
-        //   padding: EdgeInsets.only(right: 30, bottom: 30),
-        //   child: BlocBuilder<ListSampleAdminBySearchBloc,
-        //       ListSampleAdminBySearchState>(
-        //     builder: (context, state) {
-        //       if (state is ListSampleAdminBySearchDone) {
-        //         return Row(
-        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //           children: [
-        //             jumlahDataTampil(),
-        //             NumberNavigateWidget(
-        //               key: Key("${DateTime.now()}"),
-        //               onPressedNavigate:
-        //                   BlocProvider.of<ListSampleAdminSettingsCubit>(context)
-        //                       .goToPage,
-        //               currentPage: state.paginationData.currPage,
-        //               maxPage: state.paginationData.maxPage,
-        //             ),
-        //           ],
-        //         );
-        //       } else {
-        //         return Container();
-        //       }
-        //     },
-        //   ),
-        // ),
       ],
     );
   }

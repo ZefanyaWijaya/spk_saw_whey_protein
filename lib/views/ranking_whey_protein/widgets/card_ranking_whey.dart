@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:spk_saw_whey_protein/data_model/ranking_whey_protein_model/ranking_whey_protein_model.dart';
 
 class CardRankingWheyProtein extends StatelessWidget {
   const CardRankingWheyProtein({
     Key? key,
+    required this.dataRanking
   }) : super (key: key);
+
+  final GetListRankingWheyProteinData dataRanking;
 
 
   @override
@@ -25,9 +29,7 @@ class CardRankingWheyProtein extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _buildRankingByList(),
-              
               _buildWheyProteinname(),
-       
               _buildScoreSaw()
     
             ],
@@ -39,7 +41,9 @@ class CardRankingWheyProtein extends StatelessWidget {
 
   Widget _buildRankingByList (){
     return const Text(
-      "1 ", style: TextStyle(
+      "1",
+      // dataRanking. 
+      style: TextStyle(
         color: Colors.black,
         fontSize: 18,
         fontWeight: FontWeight.bold
@@ -50,8 +54,10 @@ class CardRankingWheyProtein extends StatelessWidget {
   Widget _buildWheyProteinname (){
     return Container(
       width: 400,
-      child: const Text(
-        "Muscle Booster Optimum Nutrion Evowhey Siasdasfsa asfsafas asfdsafas asfsaf asfsafas safsafas", style: TextStyle(
+      child: Text(
+        // "Muscle Booster Optimum Nutrion Evowhey Siasdasfsa asfsafas asfdsafas asfsaf asfsafas safsafas", 
+        dataRanking.wheyProteinName,
+        style: const TextStyle(
           color: Colors.black,
           fontSize: 18,
           fontWeight: FontWeight.bold
@@ -61,8 +67,10 @@ class CardRankingWheyProtein extends StatelessWidget {
   }
 
   Widget _buildScoreSaw (){
-    return const Text(
-      "0,7829172", style: TextStyle(
+    return Text(
+      // "0,7829172", 
+      dataRanking.scoreSaw.toString(),
+      style: const TextStyle(
         color: Colors.black,
         fontSize: 18,
         fontWeight: FontWeight.bold
