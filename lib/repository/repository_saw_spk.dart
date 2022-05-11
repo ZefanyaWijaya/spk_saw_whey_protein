@@ -2,8 +2,10 @@
 import 'package:dio/dio.dart';
 import 'package:spk_saw_whey_protein/data_model/api_response.dart';
 import 'package:spk_saw_whey_protein/data_model/calculate_whey_protein_model/calculate_whey_protein_model.dart';
+import 'package:spk_saw_whey_protein/data_model/ranking_whey_protein_model/ranking_whey_protein_model.dart';
 import 'package:spk_saw_whey_protein/provider/provider_saw_spk.dart';
 import 'package:spk_saw_whey_protein/repository/exceptions/list_calculate_whey_exceptions.dart';
+import 'package:spk_saw_whey_protein/repository/exceptions/list_ranking_whey_protein_exceptions.dart';
 import 'package:spk_saw_whey_protein/repository/exceptions/list_whey_protein_exceptions.dart';
 
 import '../data_model/list_whey_protein_model/list_whey_protein_model.dart';
@@ -66,5 +68,36 @@ class ListWheyRepository {
       }
     }
     throw GetCalculateWheyBySearchFailed();
+  }
+
+  Future getListRankingWheyProtein({
+    String? calories,
+    String? price,
+    String? protein,
+    String? variants,
+    String? othersIngredients
+
+  }) async {
+    final response = await _apiProvider.getRankingWheyProteinBySearch(
+      calories: calories,
+      price: price,
+      protein: protein,
+      variants: variants,
+      others: othersIngredients
+    );
+    if(response is GetRankingWheyProteinPack) {
+      print('test succes repository');
+      // print(response.data);
+      return response.data;
+    } else if (response is FailedResponse){
+      switch (response.errorKey) {
+        case "error_internal_server" :
+          throw GetListRankingWheyProteinErrorInternalServer();
+        default :
+          print('List Ranking Whey Protein By Search Failed, unknown error key: ${response.errorKey}');
+          throw GetListRankingWheyUnknownErrorCode();
+      }
+    }
+    throw GetListRankingWheyProteinFailed();
   }
 }

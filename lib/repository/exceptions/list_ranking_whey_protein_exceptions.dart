@@ -1,0 +1,5 @@
+class GetListRankingWheyProteinFailed implements Exception {}
+
+class GetListRankingWheyProteinErrorInternalServer implements GetListRankingWheyProteinFailed{}
+
+class GetListRankingWheyUnknownErrorCode implements GetListRankingWheyProteinFailed{}
