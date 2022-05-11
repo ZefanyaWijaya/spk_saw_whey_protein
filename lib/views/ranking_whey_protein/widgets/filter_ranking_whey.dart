@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spk_saw_whey_protein/bloc/get_ranking_whey_protein/cubit/cubit/settings_ranking_whey_cubit.dart';
 import 'package:spk_saw_whey_protein/bloc/layout_manager_cubit/cubit/layout_manager_cubit.dart';
 
 class FilterRankingWheyProtein extends StatefulWidget {
@@ -107,9 +108,9 @@ class FilterRankingWheyProteinState extends State<FilterRankingWheyProtein> {
                         );
                       }).toList(),
                       onChanged: (String? newValue) {
-                        // BlocProvider.of<ListWheyProteinSettingsCubit>(context).getKategoriPriceFilter(newValue!);
+                        BlocProvider.of<SettingsRankingWheyCubit>(context).getKategoriRankingPriceFilter(newValue!);
                         setState(() {
-                          dropdownValueHarga = newValue!;
+                          dropdownValueHarga = newValue;
                         });
                       },
                     ),
@@ -143,9 +144,9 @@ class FilterRankingWheyProteinState extends State<FilterRankingWheyProtein> {
                         );
                       }).toList(),
                       onChanged: (String? newValue) {
-                        // BlocProvider.of<ListWheyProteinSettingsCubit>(context).getKategoriProtein(newValue!);
+                        BlocProvider.of<SettingsRankingWheyCubit>(context).getKategoriRankingProtein(newValue!);
                         setState(() {
-                          dropdownValueProtein = newValue!;
+                          dropdownValueProtein = newValue;
                         });
                       },
                     ),
@@ -179,9 +180,9 @@ class FilterRankingWheyProteinState extends State<FilterRankingWheyProtein> {
                         );
                       }).toList(),
                       onChanged: (String? newValue) {
-                        // BlocProvider.of<ListWheyProteinSettingsCubit>(context).getKategoriCalories(newValue!);
+                        BlocProvider.of<SettingsRankingWheyCubit>(context).getKategoriRankingCalories(newValue!);
                         setState(() {
-                          dropdownValueCalories = newValue!;
+                          dropdownValueCalories = newValue;
                         });
                       },
                     ),
@@ -215,9 +216,9 @@ class FilterRankingWheyProteinState extends State<FilterRankingWheyProtein> {
                         );
                       }).toList(),
                       onChanged: (String? newValue) {
-                        // BlocProvider.of<ListWheyProteinSettingsCubit>(context).getKategoriVariants(newValue!);
+                        BlocProvider.of<SettingsRankingWheyCubit>(context).getKategoriRankingVariants(newValue!);
                         setState(() {
-                          dropdownValueVariants = newValue!;
+                          dropdownValueVariants = newValue;
                         });
                       },
                     ),
@@ -251,9 +252,9 @@ class FilterRankingWheyProteinState extends State<FilterRankingWheyProtein> {
                         );
                       }).toList(),
                       onChanged: (String? newValue) {
-                        // BlocProvider.of<ListWheyProteinSettingsCubit>(context).getKategoriPriceFilter(newValue!);
+                        BlocProvider.of<SettingsRankingWheyCubit>(context).getKategoriRankingOthersIngredients(newValue!);
                         setState(() {
-                          dropdownOtherIngredients = newValue!;
+                          dropdownOtherIngredients = newValue;
                         });
                       },
                     ),
@@ -263,8 +264,6 @@ class FilterRankingWheyProteinState extends State<FilterRankingWheyProtein> {
               const SizedBox(height: 50),
               setFilterButton()
 
-
-              
             ],
           ),
         );
