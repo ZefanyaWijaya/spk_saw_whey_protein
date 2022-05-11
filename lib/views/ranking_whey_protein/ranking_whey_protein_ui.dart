@@ -28,20 +28,27 @@ class RankingWheyProteinState extends State<RankingWheyProtein> {
         const SizedBox(height: 50),
         IntrinsicHeight(
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ListView.builder(
-              //   // padding: const EdgeInsets.only(right: 40),
-              //   physics: NeverScrollableScrollPhysics(),
-              //   itemCount : 10,
-              //   itemBuilder: (context, index) {
-              //     return const Padding(
-              //       padding: EdgeInsets.only(bottom: 20.0),
-              //       child: CardRankingWheyProtein(),
-              //     );
-              //   },
-              //   shrinkWrap: true,
-              // ),
+              Flexible(
+                fit: FlexFit.tight,
+                flex: 49,
+                child: SizedBox(
+                  height: 500,
+                  child: ListView.builder(
+                    padding: const EdgeInsets.only(right: 20 , top: 40),
+                    physics: const ClampingScrollPhysics(),
+                    itemCount : 10,
+                    itemBuilder: (context, index) {
+                      return const Padding(
+                        padding: EdgeInsets.only(bottom: 20.0),
+                        child: CardRankingWheyProtein(),
+                      );
+                    },
+                  ),
+                ),
+              ),
               const Flexible(
                 fit: FlexFit.tight,
                 flex: 2,

@@ -8,27 +8,30 @@ class CardRankingWheyProtein extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-        side: const BorderSide(
-          // color: CustomColors.tertiaryGrey,
-          color: Color.fromRGBO(2, 106, 199, 1),
-          width: 1,
+    return SizedBox(
+      height: 100,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+          side: const BorderSide(
+            // color: CustomColors.tertiaryGrey,
+            color: Color.fromRGBO(2, 106, 199, 1),
+            width: 1,
+          ),
         ),
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(24),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            _buildRankingByList(),
-            
-            _buildWheyProteinname(),
-     
-            _buildScoreSaw()
-
-          ],
+        child: Padding(
+          padding: EdgeInsets.all(24),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _buildRankingByList(),
+              
+              _buildWheyProteinname(),
+       
+              _buildScoreSaw()
+    
+            ],
+          ),
         ),
       ),
     );
