@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spk_saw_whey_protein/bloc/get_ranking_whey_protein/bloc/get_list_ranking_whey_bloc.dart';
+import 'package:spk_saw_whey_protein/bloc/get_ranking_whey_protein/cubit/cubit/settings_ranking_whey_cubit.dart';
 import 'package:spk_saw_whey_protein/bloc/layout_manager_cubit/cubit/layout_manager_cubit.dart';
 import 'package:spk_saw_whey_protein/views/ranking_whey_protein/ranking_whey_protein_ui.dart';
 
@@ -7,6 +9,8 @@ class RankingWheyProteinRunner extends StatelessWidget {
   RankingWheyProteinRunner({Key? key}) : super(key: key);
 
   final LayoutManagerCubit settingsLayout = LayoutManagerCubit();
+  final SettingsRankingWheyCubit settingsCubitRunner = SettingsRankingWheyCubit();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +22,14 @@ class RankingWheyProteinRunner extends StatelessWidget {
             providers: [
               BlocProvider<LayoutManagerCubit>(
                 create: (context) => settingsLayout,
+              ),
+              BlocProvider<SettingsRankingWheyCubit>(
+                create: (context) => settingsCubitRunner,
+              ),
+              BlocProvider<GetListRankingWheyBloc>(
+                create: (context) => GetListRankingWheyBloc(
+                  settingsCubit: settingsCubitRunner
+                )
               ),
             ],
             child: BlocBuilder<LayoutManagerCubit, LayoutManagerState>(
