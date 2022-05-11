@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:spk_saw_whey_protein/views/ranking_whey_protein/widgets/card_ranking_whey.dart';
 import 'package:spk_saw_whey_protein/views/ranking_whey_protein/widgets/filter_ranking_whey.dart';
+
 
 class RankingWheyProtein extends StatefulWidget {
   const RankingWheyProtein ({
@@ -28,15 +30,18 @@ class RankingWheyProteinState extends State<RankingWheyProtein> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Flexible(
-                fit: FlexFit.tight,
-                flex: 49,
-                child: Container(
-                  width: 200,
-                  height: 200,
-                  color: Colors.red,
-                )
-              ),
+              // ListView.builder(
+              //   // padding: const EdgeInsets.only(right: 40),
+              //   physics: NeverScrollableScrollPhysics(),
+              //   itemCount : 10,
+              //   itemBuilder: (context, index) {
+              //     return const Padding(
+              //       padding: EdgeInsets.only(bottom: 20.0),
+              //       child: CardRankingWheyProtein(),
+              //     );
+              //   },
+              //   shrinkWrap: true,
+              // ),
               const Flexible(
                 fit: FlexFit.tight,
                 flex: 2,
@@ -51,11 +56,6 @@ class RankingWheyProteinState extends State<RankingWheyProtein> {
                 fit: FlexFit.tight,
                 flex: 49,
                 child: FilterRankingWheyProtein(),
-                // child: Container(
-                //     width: 200,
-                //   height: 200,
-                //   color: Colors.red,
-                // )
               ),
             ],
           ),
