@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/manage_saw_page_bloc/manage_page_saw_bloc.dart';
 import 'package:spk_saw_whey_protein/views/calculate_whey_protein/calculate_whey_protein_runner.dart';
 import 'package:spk_saw_whey_protein/views/list_whey_protein/list_whey_protein_runner.dart';
+import 'package:spk_saw_whey_protein/views/ranking_whey_protein/ranking_whey_protein_runner.dart';
 
 class SpkSawUi extends StatefulWidget {
   const SpkSawUi({Key? key }) : super(key: key);
@@ -50,7 +51,8 @@ class _SpkSawUiDashboard extends State<SpkSawUi> {
                   // return const Text("test calculate Whey");
                   return  CalculateWheyProteinRunner();
                 }else if (state is ManagePageSawDoneToRankingWheyPage) {
-                  return const Text("test ranking Whey");
+                  // return const Text("test ranking Whey");
+                  return RankingWheyProteinRunner();
                 }
                 return Container();
               }
