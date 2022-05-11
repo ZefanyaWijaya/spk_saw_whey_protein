@@ -35,7 +35,7 @@ class RankingWheyProteinState extends State<RankingWheyProtein> {
                 fit: FlexFit.tight,
                 flex: 49,
                 child: SizedBox(
-                  height: 500,
+                  height: 650,
                   child: ListView.builder(
                     padding: const EdgeInsets.only(right: 20 , top: 40),
                     physics: const ClampingScrollPhysics(),

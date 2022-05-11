@@ -8,8 +8,8 @@ class CardRankingWheyProtein extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 100,
+    return Container(
+      constraints: const BoxConstraints(minHeight: 100 , maxHeight: 300),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
@@ -20,7 +20,7 @@ class CardRankingWheyProtein extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.all(24),
+          padding: const EdgeInsets.all(24),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -48,11 +48,14 @@ class CardRankingWheyProtein extends StatelessWidget {
   }
 
   Widget _buildWheyProteinname (){
-    return const Text(
-      "Muscle Booster Optimum Nutrion Evowhey", style: TextStyle(
-        color: Colors.black,
-        fontSize: 18,
-        fontWeight: FontWeight.bold
+    return Container(
+      width: 400,
+      child: const Text(
+        "Muscle Booster Optimum Nutrion Evowhey Siasdasfsa asfsafas asfdsafas asfsaf asfsafas safsafas", style: TextStyle(
+          color: Colors.black,
+          fontSize: 18,
+          fontWeight: FontWeight.bold
+        ), softWrap: true, maxLines: 3,
       ),
     );
   }
