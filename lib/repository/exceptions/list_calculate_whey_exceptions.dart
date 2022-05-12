@@ -3,3 +3,10 @@ class GetCalculateWheyBySearchFailed implements Exception {}
 class GetCalculateWheyBySearchErrorInternalServer implements GetCalculateWheyBySearchFailed {}
 
 class GetCalculateWheyUnknownErrorCode implements GetCalculateWheyBySearchFailed{}
+
+
+class PostCalculateWheyFailed implements Exception {}
+
+class PostCalculateWheyFailedErrorInternalServer implements PostCalculateWheyFailed{}
+
+class PostCalculateWheyUnknownErrorCode implements PostCalculateWheyFailed {}

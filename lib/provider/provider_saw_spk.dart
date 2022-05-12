@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:spk_saw_whey_protein/data_model/api_response.dart';
 import 'package:spk_saw_whey_protein/data_model/calculate_whey_protein_model/calculate_whey_protein_model.dart';
+import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/add_whey_protein_model.dart';
 import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/list_whey_protein_model.dart';
 import 'package:spk_saw_whey_protein/data_model/ranking_whey_protein_model/ranking_whey_protein_model.dart';
 
@@ -59,6 +62,30 @@ class SpkSawWheyProtein {
         }
       }
       throw Exception(response.statusCode);
+    } catch (exception) {
+      print('$exception');
+      throw Exception(exception);
+    }
+  }
+
+  Future addNewListWheyData({
+    required AddDataListWheyProtein listWheyProteinData,
+  }) async {
+    final _url = '/addwhey';
+    try {
+      final Response response = await _dio.post(
+        _url,
+        data: jsonEncode(listWheyProteinData),
+      );
+      if (response.statusCode == 200) {
+        if (response.data['message'] == 'Success') {
+          print('Post Success');
+          return SuccessResponse.fromJson(response.data);
+        } else {
+          print('Post Failed');
+          return FailedResponse.fromJson(response.data);
+        }
+      }
     } catch (exception) {
       print('$exception');
       throw Exception(exception);

@@ -3,9 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class formAddAlertDialog extends StatelessWidget {
-  const formAddAlertDialog({
+  formAddAlertDialog({
     Key? key,
   }) : super (key: key);
+
+  final GlobalKey<FormBuilderState> _formKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -67,8 +69,40 @@ class formAddAlertDialog extends StatelessWidget {
             height: 45,
             child: ElevatedButton(
               onPressed: () {
-                //TO DO INPUT PAGE
-                // inputSamplePage();
+                if (_formKey.currentState!.saveAndValidate()) {
+                  final Map<String, dynamic> data =
+                      _formKey.currentState!.value;
+
+                  // final AddSampleDataAdmin newSampleData =
+                  //     AddSampleDataAdmin(
+                  //   pasienNama: data['NamaPasien'],
+                  //   pasienIsWNI: data['WargaNegara'],
+                  //   negaraId: _dropdownNegaraKey
+                  //       .currentState?.getSelectedItem?.negaraId,
+                  //   pasienIdentityNumber: data['NomorPasporAtauNIK'],
+                  //   pasienTanggalLahir: data['TanggalLahir'],
+                  //   pasienAlamatDomisili: data['AlamatDetail'],
+                  //   kelurahanID: selectedKelurahan != null
+                  //       ? selectedKelurahan!.kelurahanId
+                  //       : null,
+                  //   rt: data['RT'],
+                  //   rw: data['RW'],
+                  //   pasienNoTelp: data['NomorTelepon'],
+                  //   pasienJenisKelamin: data['JenisKelamin'],
+                  //   tanggalPickup: data['TanggalPickUp'],
+                  //   layananID: selectedLayanan!.idLayanan,
+                  //   jenisLayananID:
+                  //       selectedJenisLayanan!.idJenisLayanan,
+                  //   jenisSampleID: selectedJenisSample!.jenisSampleID,
+                  //   partnerB2bID: selectedPartner!.partnerId,
+                  //   batchPickupID: selectedBatchPickup!.batchPickupID,
+                  // );
+                  // providerInput.add(
+                  //   InputSampleAdmin(
+                  //     newSampleAdmin: newSampleData,
+                  //   ),
+                  // );
+                }
               
               },
               child: const Text(
