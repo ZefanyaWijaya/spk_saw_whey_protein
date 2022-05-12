@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:spk_saw_whey_protein/bloc/add_list_whey_protein/bloc/post_list_whey_protein_bloc.dart';
+import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/add_whey_protein_model.dart';
 
 class formAddAlertDialog extends StatelessWidget {
   formAddAlertDialog({
@@ -33,28 +36,31 @@ class formAddAlertDialog extends StatelessWidget {
       content: SizedBox(
         width: 650,
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 30),
-              _wheyProteinName(context),
-              const SizedBox(height: 30),
-              _pricePerServing(context),
-              const SizedBox(height: 30),
-              _proteinPerServing(context),
-              const SizedBox(height: 30),
-              _caloriesPerServing(context),
-              const SizedBox(height: 30),
-              _availableVariants(context),
-              const SizedBox(height: 30),
-              _othersIngredients(context),
-              const SizedBox(height: 30),
-              _moreDetails(context),
-        
+          child: FormBuilder(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 30),
+                _wheyProteinName(context),
+                const SizedBox(height: 30),
+                _pricePerServing(context),
+                const SizedBox(height: 30),
+                _proteinPerServing(context),
+                const SizedBox(height: 30),
+                _caloriesPerServing(context),
+                const SizedBox(height: 30),
+                _availableVariants(context),
+                const SizedBox(height: 30),
+                _othersIngredients(context),
+                const SizedBox(height: 30),
+                _moreDetails(context),
+                  
+               
+              ]
              
-            ]
-           
+            ),
           ),
         ),
       ),
@@ -69,39 +75,24 @@ class formAddAlertDialog extends StatelessWidget {
             height: 45,
             child: ElevatedButton(
               onPressed: () {
+                print("test78");
                 if (_formKey.currentState!.saveAndValidate()) {
+                  print("test80");
                   final Map<String, dynamic> data =
                       _formKey.currentState!.value;
-
-                  // final AddSampleDataAdmin newSampleData =
-                  //     AddSampleDataAdmin(
-                  //   pasienNama: data['NamaPasien'],
-                  //   pasienIsWNI: data['WargaNegara'],
-                  //   negaraId: _dropdownNegaraKey
-                  //       .currentState?.getSelectedItem?.negaraId,
-                  //   pasienIdentityNumber: data['NomorPasporAtauNIK'],
-                  //   pasienTanggalLahir: data['TanggalLahir'],
-                  //   pasienAlamatDomisili: data['AlamatDetail'],
-                  //   kelurahanID: selectedKelurahan != null
-                  //       ? selectedKelurahan!.kelurahanId
-                  //       : null,
-                  //   rt: data['RT'],
-                  //   rw: data['RW'],
-                  //   pasienNoTelp: data['NomorTelepon'],
-                  //   pasienJenisKelamin: data['JenisKelamin'],
-                  //   tanggalPickup: data['TanggalPickUp'],
-                  //   layananID: selectedLayanan!.idLayanan,
-                  //   jenisLayananID:
-                  //       selectedJenisLayanan!.idJenisLayanan,
-                  //   jenisSampleID: selectedJenisSample!.jenisSampleID,
-                  //   partnerB2bID: selectedPartner!.partnerId,
-                  //   batchPickupID: selectedBatchPickup!.batchPickupID,
-                  // );
-                  // providerInput.add(
-                  //   InputSampleAdmin(
-                  //     newSampleAdmin: newSampleData,
-                  //   ),
-                  // );
+                  print("test83");
+                  final AddDataListWheyProtein newListWheyData = AddDataListWheyProtein(
+                    wheyProteinName: data['wheyProtein'],
+                    pricePerServing: data['pricePerServ'], 
+                    proteinPerServing: data['proteinPerServ'], 
+                    caloriesPerServing: data['caloriesPerServ'], 
+                    availableVariants: data['availableVarProduct'], 
+                    otherIngredients: data['otherIngredients'], 
+                    moreDetails: data['moreDetails']
+                  );
+                  print("TEST ON UI");
+                  print(newListWheyData);
+                  BlocProvider.of<PostListWheyProteinBloc>(context).add(PostListNewWheyProtein(newListWheyData: newListWheyData));
                 }
               
               },

@@ -22,10 +22,10 @@ class AddDataListWheyProtein {
       "whey_protein_name": this.wheyProteinName,
       "price_per_serving": this.pricePerServing,
       "protein_per_serving" : this.proteinPerServing,
-      "calories_per_serving" : caloriesPerServing,
-      "available_variants" : availableVariants,
-      "other_ingredients" : otherIngredients,
-      "details" : moreDetails,
+      "calories_per_serving" : this.caloriesPerServing,
+      "available_variants" : this.availableVariants,
+      "other_ingredients" : this.otherIngredients,
+      "details" : this.moreDetails,
     };
     return _map;
   }

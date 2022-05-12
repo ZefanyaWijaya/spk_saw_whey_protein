@@ -147,20 +147,6 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                                     return  CardListWheyProtein(
                                       dataWhey: state.listWheyProtein[index],
                                     );
-                                    // return CardListSampleAdmin(
-                                    //   sampleData: state.listSample[index],
-                                    //   cellWidthData: {
-                                    //     '_cellWidthNamaSample': _cellWidthNamaSample,
-                                    //     '_cellWidthBatchPickup': _cellWidthBatchPickup,
-                                    //     '_cellWidthNamaPasien': _cellWidthNamaPasien,
-                                    //     '_cellWidthSTanggalLahir': _cellWidthSTanggalLahir,
-                                    //     '_cellWidthTanggalPickup': _cellWidthTanggalPickup,
-                                    //     '_cellWidthJJenisLayanan': _cellWidthJJenisLayanan,
-                                    //     '_cellWidthPartner': _cellWidthPartner,
-                                    //     '_cellWidthStatus': _cellWidthStatus,
-                                    //     '_colSpacing': _colSpacing
-                                    //   },
-                                    // );
                                   },
                                 ),
                               ),
