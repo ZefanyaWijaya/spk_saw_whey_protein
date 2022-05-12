@@ -11,122 +11,127 @@ class formAddAlertDialog extends StatelessWidget {
   }) : super (key: key);
 
   final GlobalKey<FormBuilderState> _formKey = GlobalKey();
+  final PostListWheyProteinBloc postBloc = PostListWheyProteinBloc();
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      titlePadding:
-      const EdgeInsets.symmetric(horizontal: 48).copyWith(top: 60),
-      title: const SizedBox(
-        width: 650,
-        child: Text(
-          "Add Whey Protein Product",
-          textAlign: TextAlign.left,
-          softWrap: true,
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Color.fromRGBO(2, 106, 199, 1),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<PostListWheyProteinBloc>(
+          create: (context) => postBloc
+        ),
+      ],
+      child: AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        titlePadding:
+        const EdgeInsets.symmetric(horizontal: 48).copyWith(top: 60),
+        title: const SizedBox(
+          width: 650,
+          child: Text(
+            "Add Whey Protein Product",
+            textAlign: TextAlign.left,
+            softWrap: true,
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Color.fromRGBO(2, 106, 199, 1),
+            ),
           ),
         ),
-      ),
-      contentPadding:
-      const EdgeInsets.symmetric(horizontal: 48).copyWith(top: 30),
-      content: SizedBox(
-        width: 650,
-        child: SingleChildScrollView(
-          child: FormBuilder(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 30),
-                _wheyProteinName(context),
-                const SizedBox(height: 30),
-                _pricePerServing(context),
-                const SizedBox(height: 30),
-                _proteinPerServing(context),
-                const SizedBox(height: 30),
-                _caloriesPerServing(context),
-                const SizedBox(height: 30),
-                _availableVariants(context),
-                const SizedBox(height: 30),
-                _othersIngredients(context),
-                const SizedBox(height: 30),
-                _moreDetails(context),
-                  
+        contentPadding:
+        const EdgeInsets.symmetric(horizontal: 48).copyWith(top: 30),
+        content: SizedBox(
+          width: 650,
+          child: SingleChildScrollView(
+            child: FormBuilder(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 30),
+                  _wheyProteinName(context),
+                  const SizedBox(height: 30),
+                  _pricePerServing(context),
+                  const SizedBox(height: 30),
+                  _proteinPerServing(context),
+                  const SizedBox(height: 30),
+                  _caloriesPerServing(context),
+                  const SizedBox(height: 30),
+                  _availableVariants(context),
+                  const SizedBox(height: 30),
+                  _othersIngredients(context),
+                  const SizedBox(height: 30),
+                  _moreDetails(context),
+                ]
                
-              ]
-             
-            ),
-          ),
-        ),
-      ),
-      actionsPadding: const EdgeInsets.symmetric(horizontal: 48)
-          .copyWith(top: 32, bottom: 40),
-      actions: [
-        SizedBox(
-          height: 45,
-          width: 313,
-          child: Container(
-            width: 180,
-            height: 45,
-            child: ElevatedButton(
-              onPressed: () {
-                print("test78");
-                if (_formKey.currentState!.saveAndValidate()) {
-                  print("test80");
-                  final Map<String, dynamic> data =
-                      _formKey.currentState!.value;
-                  print("test83");
-                  final AddDataListWheyProtein newListWheyData = AddDataListWheyProtein(
-                    wheyProteinName: data['wheyProtein'],
-                    pricePerServing: data['pricePerServ'], 
-                    proteinPerServing: data['proteinPerServ'], 
-                    caloriesPerServing: data['caloriesPerServ'], 
-                    availableVariants: data['availableVarProduct'], 
-                    otherIngredients: data['otherIngredients'], 
-                    moreDetails: data['moreDetails']
-                  );
-                  print("TEST ON UI");
-                  print(newListWheyData);
-                  BlocProvider.of<PostListWheyProteinBloc>(context).add(PostListNewWheyProtein(newListWheyData: newListWheyData));
-                }
-              
-              },
-              child: const Text(
-                'Submit Whey Product',
-                style: TextStyle(fontSize: 16),
               ),
-              style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  primary: const Color.fromRGBO(2, 106, 199, 1),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  )),
             ),
           ),
-          // child: OutlinedButton(
-          //   style: OutlinedButton.styleFrom(
-          //     // minimumSize: Size(double.infinity, 45),
-          //     primary: CustomColors.errorRed,
-          //     side: BorderSide(color: CustomColors.errorRed),
-          //     shape: RoundedRectangleBorder(
-          //       borderRadius: BorderRadius.circular(8),
-          //     ),
-          //   ),
-          //   onPressed: () {
-          //     Navigator.pop(context, false);
-          //   },
-          //   child: Text(
-          //     'Batal',
-          //     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          //   ),
-          // ),
         ),
-      ]
+        actionsPadding: const EdgeInsets.symmetric(horizontal: 48)
+            .copyWith(top: 32, bottom: 40),
+        actions: [
+          SizedBox(
+            height: 45,
+            width: 313,
+            child: Container(
+              width: 180,
+              height: 45,
+              child: ElevatedButton(
+                onPressed: () {
+                  print("test78");
+                  if (_formKey.currentState!.saveAndValidate()) {
+                    print("test80");
+                    final Map<String, dynamic> data =
+                        _formKey.currentState!.value;
+                    print("test83");
+                    final AddDataListWheyProtein newListWheyData = AddDataListWheyProtein(
+                      wheyProteinName: data['wheyProtein'],
+                      pricePerServing: data['pricePerServ'], 
+                      proteinPerServing: data['proteinPerServ'], 
+                      caloriesPerServing: data['caloriesPerServ'], 
+                      availableVariants: data['availableVarProduct'], 
+                      otherIngredients: data['otherIngredients'], 
+                      moreDetails: data['moreDetails']
+                    );
+                    print("TEST ON UI");
+                    print(newListWheyData);
+                    BlocProvider.of<PostListWheyProteinBloc>(context).add(PostListNewWheyProtein(newListWheyData: newListWheyData));
+                  }
+                },
+                child: const Text(
+                  'Submit Whey Product',
+                  style: TextStyle(fontSize: 16),
+                ),
+                style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    primary: const Color.fromRGBO(2, 106, 199, 1),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    )),
+              ),
+            ),
+            // child: OutlinedButton(
+            //   style: OutlinedButton.styleFrom(
+            //     // minimumSize: Size(double.infinity, 45),
+            //     primary: CustomColors.errorRed,
+            //     side: BorderSide(color: CustomColors.errorRed),
+            //     shape: RoundedRectangleBorder(
+            //       borderRadius: BorderRadius.circular(8),
+            //     ),
+            //   ),
+            //   onPressed: () {
+            //     Navigator.pop(context, false);
+            //   },
+            //   child: Text(
+            //     'Batal',
+            //     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            //   ),
+            // ),
+          ),
+        ]
+      ),
     );
   }
 
@@ -211,7 +216,7 @@ class formAddAlertDialog extends StatelessWidget {
           textInputAction: TextInputAction.next,
           valueTransformer: (String? pricePerServing) {
             if (pricePerServing != null) {
-              return pricePerServing.trim();
+              return int.tryParse(pricePerServing);
             } else {
               return null;
             }
@@ -260,7 +265,7 @@ class formAddAlertDialog extends StatelessWidget {
           textInputAction: TextInputAction.next,
           valueTransformer: (String? proteinPerServ) {
             if (proteinPerServ != null) {
-              return proteinPerServ.trim();
+              return int.tryParse(proteinPerServ);
             } else {
               return null;
             }
@@ -309,7 +314,7 @@ class formAddAlertDialog extends StatelessWidget {
           textInputAction: TextInputAction.next,
           valueTransformer: (String? caloriesPerServ) {
             if (caloriesPerServ != null) {
-              return caloriesPerServ.trim();
+              return int.tryParse(caloriesPerServ);
             } else {
               return null;
             }
@@ -358,7 +363,7 @@ class formAddAlertDialog extends StatelessWidget {
           textInputAction: TextInputAction.next,
           valueTransformer: (String? availableVarProduct) {
             if (availableVarProduct != null) {
-              return availableVarProduct.trim();
+              return int.tryParse(availableVarProduct);
             } else {
               return null;
             }
@@ -407,7 +412,7 @@ class formAddAlertDialog extends StatelessWidget {
           textInputAction: TextInputAction.next,
           valueTransformer: (String? otherIngredients) {
             if (otherIngredients != null) {
-              return otherIngredients.trim();
+              return int.tryParse(otherIngredients);
             } else {
               return null;
             }

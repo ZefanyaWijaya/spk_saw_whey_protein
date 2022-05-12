@@ -11,7 +11,7 @@ class ListWheyProteinRunner extends StatelessWidget {
 
   final LayoutManagerCubit settingsLayout = LayoutManagerCubit();
   final ListWheyProteinSettingsCubit settingsCubit = ListWheyProteinSettingsCubit();
-  final PostListWheyProteinBloc postBloc = PostListWheyProteinBloc();
+  
 
 
   @override
@@ -33,9 +33,7 @@ class ListWheyProteinRunner extends StatelessWidget {
                   settingsCubit: settingsCubit
                 )
               ),
-              BlocProvider<PostListWheyProteinBloc>(
-                create: (context) => postBloc
-              ),
+             
             ],
             child: BlocBuilder<LayoutManagerCubit, LayoutManagerState>(
               bloc: settingsLayout,
