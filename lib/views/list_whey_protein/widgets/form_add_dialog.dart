@@ -12,13 +12,14 @@ class formAddAlertDialog extends StatelessWidget {
 
   final GlobalKey<FormBuilderState> _formKey = GlobalKey();
   final PostListWheyProteinBloc postBloc = PostListWheyProteinBloc();
+  
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider<PostListWheyProteinBloc>(
-          create: (context) => postBloc
+          create: (BuildContext context) => postBloc
         ),
       ],
       child: AlertDialog(

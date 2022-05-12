@@ -12,8 +12,6 @@ class ListWheyProteinRunner extends StatelessWidget {
   final LayoutManagerCubit settingsLayout = LayoutManagerCubit();
   final ListWheyProteinSettingsCubit settingsCubit = ListWheyProteinSettingsCubit();
   
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
