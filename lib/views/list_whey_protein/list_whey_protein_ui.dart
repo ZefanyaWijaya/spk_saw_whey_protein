@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spk_saw_whey_protein/views/list_whey_protein/table_list_whey_protein.dart';
 import 'package:spk_saw_whey_protein/views/list_whey_protein/widgets/filter_list_whey_protein.dart';
+import 'package:spk_saw_whey_protein/views/list_whey_protein/widgets/form_add_dialog.dart';
 import 'package:spk_saw_whey_protein/views/list_whey_protein/widgets/searchbox_list_whey_protein.dart';
 class ListWheyProtein extends StatefulWidget {
   const ListWheyProtein({
@@ -79,8 +80,12 @@ class ListWheyProteinState extends State<ListWheyProtein> {
         height: 45,
         child: ElevatedButton(
           onPressed: () {
-            //TO DO INPUT PAGE
-            // inputSamplePage();
+            showDialog(
+              context: context, 
+              builder: (_) {
+                return formAddAlertDialog();
+              }
+            );
            
           },
           child: const Text(

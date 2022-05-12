@@ -1,6 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-
 part 'settings_ranking_whey_state.dart';
 
 class SettingsRankingWheyCubit extends Cubit<SettingsRankingWheyState> {
