@@ -145,7 +145,7 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                                   itemCount: state.listWheyProtein.length,
                                   itemBuilder: (context, index) {
                                     return  CardListWheyProtein(
-                                      dataWhey: state.listWheyProtein[index],
+                                      dataWhey: state.listWheyProtein[index], 
                                     );
                                   },
                                 ),

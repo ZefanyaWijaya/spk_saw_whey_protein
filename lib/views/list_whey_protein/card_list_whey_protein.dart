@@ -2,17 +2,20 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:spk_saw_whey_protein/bloc/get_list_whey_protein/bloc/list_whey_protein_get_by_search_bloc.dart';
 import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/list_whey_protein_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CardListWheyProtein extends StatefulWidget {
-  const CardListWheyProtein({
+  CardListWheyProtein({
     Key? key,
-    required this.dataWhey
+    required this.dataWhey,
   }) : super(key: key);
 
   final GetListWheyProteinData dataWhey;
+  
+
+  final Uri _url = Uri.parse("https://flutter.dev");
+  
 
   @override
   CardListWheyProteinState createState() => CardListWheyProteinState();
@@ -140,16 +143,67 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
     );
   }
 
+  void _launchUrl() async {
+    if (!await launchUrl(widget._url)) 
+      throw 'Could not launch to website';
+  }
+
   Widget details() {
-    return Text(
-      // "test",
-      widget.dataWhey.moreDetail,
-      style: const TextStyle(
-        fontSize: 20,
-        color: Color.fromRGBO(83, 81, 81, 1),
+    return Padding(
+      padding: const EdgeInsets.only(right: 30),
+      child: Container(
+        width: 180,
+        height: 45,
+        child: OutlinedButton(
+          onPressed: () {
+            _launchUrl();
+          },
+          child: const Text(
+            ' Link To Website',
+            style: TextStyle(fontSize: 16),
+          ),
+          style: OutlinedButton.styleFrom(
+            // minimumSize: Size(double.infinity, 45),
+            primary: const Color.fromRGBO(2, 106, 199, 1),
+            side: const BorderSide(
+              color: Color.fromRGBO(2, 106, 199, 1),
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+        ),
       ),
     );
+    // return Text(
+    //   // "test",
+    //   widget.dataWhey.moreDetail,
+    //   style: const TextStyle(
+    //     fontSize: 20,
+    //     color: Color.fromRGBO(83, 81, 81, 1),
+    //   ),
+    // );
+
+     // child: OutlinedButton(
+            //   style: OutlinedButton.styleFrom(
+            //     // minimumSize: Size(double.infinity, 45),
+            //     primary: CustomColors.errorRed,
+            //     side: BorderSide(color: CustomColors.errorRed),
+            //     shape: RoundedRectangleBorder(
+            //       borderRadius: BorderRadius.circular(8),
+            //     ),
+            //   ),
+            //   onPressed: () {
+            //     Navigator.pop(context, false);
+            //   },
+            //   child: Text(
+            //     'Batal',
+            //     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            //   ),
+            // ),
   }
+
+  
   
 
 }
