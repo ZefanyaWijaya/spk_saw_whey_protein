@@ -15,14 +15,6 @@ class ListWheyProtein extends StatefulWidget {
 }
 
 class ListWheyProteinState extends State<ListWheyProtein> {
-
-  int dropdownValue = 20;
-  List<int> items = [
-    20,
-    50,
-    100,
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -100,55 +92,6 @@ class ListWheyProteinState extends State<ListWheyProtein> {
               )),
         ),
       ),
-    );
-  }
-
-  Widget jumlahDataTampil() {
-    return Row(
-      children: [
-        const Text(
-          'Tampilkan ',
-          style: TextStyle(fontSize: 19),
-        ),
-        Container(
-          height: 48,
-          width: 75,
-          child: InputDecorator(
-            decoration: InputDecoration(
-                border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-            )),
-            child: DropdownButtonHideUnderline(
-              child: DropdownButton(
-                value: dropdownValue,
-                icon: const Icon(Icons.keyboard_arrow_down),
-                items: items.map((int limit) {
-                  return DropdownMenuItem(
-                    value: limit,
-                    child: Text(
-                      limit.toString(),
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                  );
-                }).toList(),
-                onChanged: (int? newValue) {
-                  //FOR SETTINGS CUBIT SOON
-
-                  // BlocProvider.of<ListSampleAdminSettingsCubit>(context)
-                  //     .changeShowDataPerPage(newValue!);
-                  setState(() {
-                    dropdownValue = newValue!;
-                  });
-                },
-              ),
-            ),
-          ),
-        ),
-        const Text(
-          ' Pengguna per halaman',
-          style: TextStyle(fontSize: 19),
-        ),
-      ],
     );
   }
 

@@ -62,7 +62,7 @@ class ListWheyRepository {
           throw PostCalculateWheyFailedErrorInternalServer();
         default:
           print('Add List Whey Failed, unknown error key: ${response.errorKey}');
-          throw PostCalculateWheyFailedErrorInternalServer();
+          throw PostCalculateWheyUnknownErrorCode();
       }
     }
     throw PostCalculateWheyFailed();
