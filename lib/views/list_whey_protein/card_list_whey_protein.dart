@@ -9,12 +9,13 @@ class CardListWheyProtein extends StatefulWidget {
   CardListWheyProtein({
     Key? key,
     required this.dataWhey,
+  
   }) : super(key: key);
 
   final GetListWheyProteinData dataWhey;
-  
 
   final Uri _url = Uri.parse("https://flutter.dev");
+  // final Uri _url = Uri.parse(dataWhey.moreDetail);
   
 
   @override
@@ -169,7 +170,7 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
               color: Color.fromRGBO(2, 106, 199, 1),
             ),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(12),
             ),
           ),
         ),
