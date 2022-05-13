@@ -122,7 +122,7 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                       ),
                       const SizedBox(width: 80),
                       Container(
-                        width: 200,
+                        width: 120,
                         child: const Text(
                           'Settings',
                           style: TextStyle(
@@ -149,7 +149,7 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                               showTrackOnHover: true,
                               isAlwaysShown: true,
                               child: Container(
-                                width: 1760,
+                                width: 1680,
                                 child: ListView.builder(
                                   controller: scrollController,
                                   // itemCount: 10,

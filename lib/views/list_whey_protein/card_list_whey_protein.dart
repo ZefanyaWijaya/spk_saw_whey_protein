@@ -86,7 +86,7 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
             width: 80
           ),
           Container(
-            width: 200,
+            width: 120,
             child: settings(),
           ),
         ],
@@ -185,23 +185,36 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         InkWell(
-          // onTap: () {
-            
-          // },
-          child: Icon(
+          customBorder: const CircleBorder(),
+          splashColor: const Color.fromRGBO(2, 106, 199, 1),
+          onTap: () {
+            //IF ADMIN ALLOW FUNCTIONS
+
+            //ELSE DO NOTHING
+          },
+          child: const Icon(
             Icons.settings_outlined,
             color: Color.fromRGBO(2, 106, 199, 1),
             size: 40.0,
             semanticLabel: 'Text to announce in accessibility modes',
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(right: 60),
-          child: Icon(
-            Icons.delete_outline,
-            color: Color.fromRGBO(2, 106, 199, 1),
-            size: 40.0,
-            semanticLabel: 'Text to announce in accessibility modes',
+        InkWell(
+          customBorder: const CircleBorder(),
+          splashColor: const Color.fromRGBO(2, 106, 199, 1),
+          onTap: () {
+            //IF ADMIN ALLOW FUNCTIONS
+        
+            //ELSE DO NOTHING
+          },
+          child: const Tooltip(
+            message: "TEST",
+            child: Icon(
+              Icons.delete_outline,
+              color: Color.fromRGBO(2, 106, 199, 1),
+              size: 40.0,
+              semanticLabel: 'Text to announce in accessibility modes',
+            ),
           ),
         ),
       ],
