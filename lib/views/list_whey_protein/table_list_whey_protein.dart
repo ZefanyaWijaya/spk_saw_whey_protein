@@ -89,7 +89,7 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                       ),
                       const SizedBox(width: 10,),
                       Container(
-                        width: 300,
+                        width: 200,
                         child: const Text(
                           'Calories / Serving',
                           style: TextStyle(
@@ -100,7 +100,7 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                       ),
                       const SizedBox(width: 10),
                       Container(
-                        width: 300,
+                        width: 200,
                         child: const Text(
                           'Available Variants',
                           style: TextStyle(
@@ -111,9 +111,20 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                       ),
                       const SizedBox(width: 10),
                       Container(
-                        width: 300,
+                        width: 180,
                         child: const Text(
                           'Details',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 80),
+                      Container(
+                        width: 200,
+                        child: const Text(
+                          'Settings',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
@@ -138,7 +149,7 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                               showTrackOnHover: true,
                               isAlwaysShown: true,
                               child: Container(
-                                width: 1850,
+                                width: 1760,
                                 child: ListView.builder(
                                   controller: scrollController,
                                   // itemCount: 10,

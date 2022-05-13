@@ -65,22 +65,29 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
             width: 10
           ),
           Container(
-            width: 300,
+            width: 200,
             child: caloriesPerServing(),
           ),
           const SizedBox(
             width: 10
           ),
           Container(
-            width: 300,
+            width: 200,
             child: availableVariants(),
           ),
           const SizedBox(
             width: 10
           ),
           Container(
-            width: 300,
+            width: 180,
             child: details(),
+          ),
+          const SizedBox(
+            width: 80
+          ),
+          Container(
+            width: 200,
+            child: settings(),
           ),
         ],
       ),
@@ -88,43 +95,34 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
   }
 
   Widget wheyProteinName() {
-    return Padding(
-      padding: EdgeInsets.only(left: 25),
-      child: Text(
+    return Text(
         // "Optimum Nutrition Gold 100% Whey Isolate Powder",
         widget.dataWhey.wheyProteinName,
         style: const TextStyle(
           fontSize: 20,
           color: Color.fromRGBO(83, 81, 81, 1), 
         ),
-      ),
     );
   }
 
   Widget pricePerServing() {
-    return Padding(
-      padding: EdgeInsets.only(left: 15),
-      child: Text(
-        // "Rp. 13.800",
-        widget.dataWhey.pricePerServing.toString(),
-        style: const TextStyle(
-          fontSize: 20,
-          color: Color.fromRGBO(83, 81, 81, 1), 
-        ),
+    return Text(
+      // "Rp. 13.800",
+      widget.dataWhey.pricePerServing.toString(),
+      style: const TextStyle(
+        fontSize: 20,
+        color: Color.fromRGBO(83, 81, 81, 1), 
       ),
     );
   }
 
   Widget proteinPerServing() {
-    return Padding(
-      padding: EdgeInsets.only(left: 5),
-      child: Text(
-        // "25 gr",
-        widget.dataWhey.proteinPerServing.toString(),
-        style: const TextStyle(
-          fontSize: 20,
-          color: Color.fromRGBO(83, 81, 81, 1), 
-        ),
+    return Text(
+      // "25 gr",
+      widget.dataWhey.proteinPerServing.toString(),
+      style: const TextStyle(
+        fontSize: 20,
+        color: Color.fromRGBO(83, 81, 81, 1), 
       ),
     );
   }
@@ -157,61 +155,56 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
   }
 
   Widget details() {
-    return Padding(
-      padding: const EdgeInsets.only(right: 30),
-      child: Container(
-        width: 180,
-        height: 45,
-        child: OutlinedButton(
-          onPressed: () {
-            _launchUrl();
-          },
-          child: const Text(
-            ' Link To Website',
-            style: TextStyle(fontSize: 16),
+    return Container(
+      width: 180,
+      height: 45,
+      child: OutlinedButton(
+        onPressed: () {
+          _launchUrl();
+        },
+        child: const Text(
+          ' Link To Website',
+          style: TextStyle(fontSize: 16),
+        ),
+        style: OutlinedButton.styleFrom(
+          // minimumSize: Size(double.infinity, 45),
+          primary: const Color.fromRGBO(2, 106, 199, 1),
+          side: const BorderSide(
+            color: Color.fromRGBO(2, 106, 199, 1),
           ),
-          style: OutlinedButton.styleFrom(
-            // minimumSize: Size(double.infinity, 45),
-            primary: const Color.fromRGBO(2, 106, 199, 1),
-            side: const BorderSide(
-              color: Color.fromRGBO(2, 106, 199, 1),
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
           ),
         ),
       ),
     );
-    // return Text(
-    //   // "test",
-    //   widget.dataWhey.moreDetail,
-    //   style: const TextStyle(
-    //     fontSize: 20,
-    //     color: Color.fromRGBO(83, 81, 81, 1),
-    //   ),
-    // );
-
-     // child: OutlinedButton(
-            //   style: OutlinedButton.styleFrom(
-            //     // minimumSize: Size(double.infinity, 45),
-            //     primary: CustomColors.errorRed,
-            //     side: BorderSide(color: CustomColors.errorRed),
-            //     shape: RoundedRectangleBorder(
-            //       borderRadius: BorderRadius.circular(8),
-            //     ),
-            //   ),
-            //   onPressed: () {
-            //     Navigator.pop(context, false);
-            //   },
-            //   child: Text(
-            //     'Batal',
-            //     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            //   ),
-            // ),
   }
 
-  
-  
-
+  Widget settings() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        InkWell(
+          // onTap: () {
+            
+          // },
+          child: Icon(
+            Icons.settings_outlined,
+            color: Color.fromRGBO(2, 106, 199, 1),
+            size: 40.0,
+            semanticLabel: 'Text to announce in accessibility modes',
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 60),
+          child: Icon(
+            Icons.delete_outline,
+            color: Color.fromRGBO(2, 106, 199, 1),
+            size: 40.0,
+            semanticLabel: 'Text to announce in accessibility modes',
+          ),
+        ),
+      ],
+    );
+  }
 }
