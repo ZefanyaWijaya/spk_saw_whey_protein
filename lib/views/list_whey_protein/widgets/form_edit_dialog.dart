@@ -60,50 +60,74 @@ class FormEditAlertDialog extends StatelessWidget {
           ),
         ),
       ),
-      actionsPadding: const EdgeInsets.symmetric(horizontal: 48)
+      actionsPadding: const EdgeInsets.symmetric(horizontal: 40)
           .copyWith(top: 32, bottom: 40),
       actions: [
-        SizedBox(
-          height: 45,
-          width: 313,
-          child: Container(
-            width: 180,
-            height: 45,
-            child: ElevatedButton(
-              onPressed: () {
-                // print("test78");
-                // if (_formKey.currentState!.saveAndValidate()) {
-                //   print("test80");
-                //   final Map<String, dynamic> data =
-                //       _formKey.currentState!.value;
-                //   print("test83");
-                //   final AddDataListWheyProtein newListWheyData = AddDataListWheyProtein(
-                //     wheyProteinName: data['wheyProtein'],
-                //     pricePerServing: data['pricePerServ'], 
-                //     proteinPerServing: data['proteinPerServ'], 
-                //     caloriesPerServing: data['caloriesPerServ'], 
-                //     availableVariants: data['availableVarProduct'], 
-                //     otherIngredients: data['otherIngredients'], 
-                //     moreDetails: data['moreDetails']
-                //   );
-                //   print("TEST ON UI");
-                //   print(newListWheyData);
-                //   // BlocProvider.of<PostListWheyProteinBloc>(context).add(PostListNewWheyProtein(newListWheyData: newListWheyData));
-                // }
-              },
-              child: const Text(
-                'Edit Whey Product',
-                style: TextStyle(fontSize: 16),
-              ),
-              style: ElevatedButton.styleFrom(
-                  elevation: 0,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              width: 300,
+              height: 45,
+              child: OutlinedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text(
+                  'Cancel',
+                  style: TextStyle(fontSize: 16),
+                ),
+                style: OutlinedButton.styleFrom(
+                  // minimumSize: Size(double.infinity, 45),
                   primary: const Color.fromRGBO(2, 106, 199, 1),
+                  side: const BorderSide(
+                    color: Color.fromRGBO(2, 106, 199, 1),
+                  ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
-                  )),
+                  ),
+                ),
+              ),
             ),
-          ),
-         
+            Container(
+              width: 300,
+              height: 45,
+              child: ElevatedButton(
+                onPressed: () {
+                  // print("test78");
+                  // if (_formKey.currentState!.saveAndValidate()) {
+                  //   print("test80");
+                  //   final Map<String, dynamic> data =
+                  //       _formKey.currentState!.value;
+                  //   print("test83");
+                  //   final AddDataListWheyProtein newListWheyData = AddDataListWheyProtein(
+                  //     wheyProteinName: data['wheyProtein'],
+                  //     pricePerServing: data['pricePerServ'], 
+                  //     proteinPerServing: data['proteinPerServ'], 
+                  //     caloriesPerServing: data['caloriesPerServ'], 
+                  //     availableVariants: data['availableVarProduct'], 
+                  //     otherIngredients: data['otherIngredients'], 
+                  //     moreDetails: data['moreDetails']
+                  //   );
+                  //   print("TEST ON UI");
+                  //   print(newListWheyData);
+                  //   // BlocProvider.of<PostListWheyProteinBloc>(context).add(PostListNewWheyProtein(newListWheyData: newListWheyData));
+                  // }
+                },
+                child: const Text(
+                  'Edit Whey Product',
+                  style: TextStyle(fontSize: 16),
+                ),
+                style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    primary: const Color.fromRGBO(2, 106, 199, 1),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    )),
+              ),
+            ),
+          ],
+          
         ),
       ]
     );
