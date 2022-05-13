@@ -6,16 +6,22 @@ import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/list_whe
 import 'package:url_launcher/url_launcher.dart';
 
 class CardListWheyProtein extends StatefulWidget {
+
+  final GetListWheyProteinData dataWhey;
+  final String url;
+  late final Uri _url;
+
   CardListWheyProtein({
     Key? key,
     required this.dataWhey,
+    required this.url, 
+  }) {
+    this._url = Uri.parse(url);
+  } 
+
+ 
+  // final Uri _url = Uri.parse("https://flutter.dev");
   
-  }) : super(key: key);
-
-  final GetListWheyProteinData dataWhey;
-
-  final Uri _url = Uri.parse("https://flutter.dev");
-  // final Uri _url = Uri.parse(dataWhey.moreDetail);
   
 
   @override
