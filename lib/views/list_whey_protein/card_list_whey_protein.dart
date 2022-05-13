@@ -15,20 +15,21 @@ class CardListWheyProtein extends StatefulWidget {
     Key? key,
     required this.dataWhey,
     required this.url, 
-  }) {
-    this._url = Uri.parse(url);
-  } 
-
- 
-  // final Uri _url = Uri.parse("https://flutter.dev");
-  
-  
+  }) : super (key: key); 
 
   @override
   CardListWheyProteinState createState() => CardListWheyProteinState();
 }
 
 class CardListWheyProteinState extends State<CardListWheyProtein> {
+
+  @override
+  void initState() {
+    widget._url = Uri.parse(widget.url);
+    super.initState();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
