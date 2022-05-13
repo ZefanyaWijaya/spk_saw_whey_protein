@@ -3,6 +3,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/list_whey_protein_model.dart';
+import 'package:spk_saw_whey_protein/views/list_whey_protein/widgets/confirmation_delete_product.dart';
+import 'package:spk_saw_whey_protein/views/list_whey_protein/widgets/form_edit_dialog.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CardListWheyProtein extends StatefulWidget {
@@ -189,14 +191,22 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
           splashColor: const Color.fromRGBO(2, 106, 199, 1),
           onTap: () {
             //IF ADMIN ALLOW FUNCTIONS
-
+            showDialog(
+              context: context, 
+              builder: (_) {
+                return FormEditAlertDialog();
+              }
+            );
             //ELSE DO NOTHING
           },
-          child: const Icon(
-            Icons.settings_outlined,
-            color: Color.fromRGBO(2, 106, 199, 1),
-            size: 40.0,
-            semanticLabel: 'Text to announce in accessibility modes',
+          child: const Tooltip(
+            message: "Edit Product (Admin Only)",
+            child: Icon(
+              Icons.settings_outlined,
+              color: Color.fromRGBO(2, 106, 199, 1),
+              size: 40.0,
+              semanticLabel: 'Text to announce in accessibility modes',
+            ),
           ),
         ),
         InkWell(
@@ -204,11 +214,16 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
           splashColor: const Color.fromRGBO(2, 106, 199, 1),
           onTap: () {
             //IF ADMIN ALLOW FUNCTIONS
-        
+            showDialog(
+              context: context, 
+              builder: (_) {
+                return FormDeleteProductAlertDialog();
+              }
+            );
             //ELSE DO NOTHING
           },
           child: const Tooltip(
-            message: "TEST",
+            message: "Delete Product (Admin Only)",
             child: Icon(
               Icons.delete_outline,
               color: Color.fromRGBO(2, 106, 199, 1),

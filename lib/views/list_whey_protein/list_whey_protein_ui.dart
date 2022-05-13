@@ -75,10 +75,9 @@ class ListWheyProteinState extends State<ListWheyProtein> {
             showDialog(
               context: context, 
               builder: (_) {
-                return formAddAlertDialog();
+                return FormAddAlertDialog();
               }
             );
-           
           },
           child: const Text(
             'Add Whey',
