@@ -4,7 +4,9 @@ import 'package:dio/dio.dart';
 import 'package:spk_saw_whey_protein/data_model/api_response.dart';
 import 'package:spk_saw_whey_protein/data_model/calculate_whey_protein_model/calculate_whey_protein_model.dart';
 import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/add_whey_protein_model.dart';
+import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/delete_whey_protein_model.dart';
 import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/list_whey_protein_model.dart';
+import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/update_list_whey_protein.dart';
 import 'package:spk_saw_whey_protein/data_model/ranking_whey_protein_model/ranking_whey_protein_model.dart';
 
 class SpkSawWheyProtein {
@@ -28,7 +30,6 @@ class SpkSawWheyProtein {
    
   }) async {
     final _url = '/listwhey';
-
     Map<String, dynamic> queryParam = {};
 
     if (price != null) {
@@ -92,13 +93,58 @@ class SpkSawWheyProtein {
     }
   }
 
+  
+  Future updateDataWheyListProtein({
+    required UpdateDataListWheyProtein dataUpdated,
+  }) async {
+    final _url = '/updatewhey';
+
+    try {
+      final Response response = await _dio.put(
+        _url,
+        data: jsonEncode(dataUpdated),
+      );
+      if (response.statusCode == 200) {
+        if (response.data['message'] == 'Success') {
+          return SuccessResponse.fromJson(response.data);
+        } else {
+          return FailedResponse.fromJson(response.data);
+        }
+      }
+      throw Exception(response.statusCode);
+    } catch (exception) {
+      print(exception);
+      throw Exception(exception);
+    }
+  }
+
+  Future deleteListWheyData({
+    required DeleteDataListWheyProtein deleteWheyData,
+  }) async {
+    final _url = '/deletewhey';
+    try {
+      final Response response = await _dio.delete(
+        _url,
+        data: jsonEncode(deleteWheyData),
+      );
+      if (response.statusCode == 200) {
+        if (response.data['message'] == 'Success') {
+          return SuccessResponse.fromJson(response.data);
+        } else {
+          return FailedResponse.fromJson(response.data);
+        }
+      }
+      throw Exception(response.statusCode);
+    } catch (exception) {
+      print(exception);
+      throw Exception(exception);
+    }
+  }
 
   Future getCalculateWheyBySearch({
     String? searchKeyword
-   
   }) async {
     final _url = '/getcalculatewhey';
-
     Map<String, dynamic> queryParam = {};
 
     if (searchKeyword != null) {
@@ -107,11 +153,6 @@ class SpkSawWheyProtein {
     try {
       final Response response = await _dio.get(
         _url,
-        // options: Options(
-        //   headers: <String, String>{
-            
-        //   },
-        // ),
         queryParameters: queryParam,
       );
       if (response.statusCode == 200) {
