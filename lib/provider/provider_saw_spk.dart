@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:spk_saw_whey_protein/data_model/api_response.dart';
 import 'package:spk_saw_whey_protein/data_model/calculate_whey_protein_model/calculate_whey_protein_model.dart';
 import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/add_whey_protein_model.dart';
-import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/delete_whey_protein_model.dart';
 import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/list_whey_protein_model.dart';
 import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/update_list_whey_protein.dart';
 import 'package:spk_saw_whey_protein/data_model/ranking_whey_protein_model/ranking_whey_protein_model.dart';
@@ -118,13 +117,19 @@ class SpkSawWheyProtein {
   }
 
   Future deleteListWheyData({
-    required DeleteDataListWheyProtein deleteWheyData,
+    required int idWheyProtein,
   }) async {
     final _url = '/deletewhey';
+    Map<String, dynamic> queryParam = {};
+
+    queryParam['id'] = idWheyProtein;
+
+    // if (idWheyProtein != null) {
+      
+    // }
     try {
       final Response response = await _dio.delete(
         _url,
-        data: jsonEncode(deleteWheyData),
       );
       if (response.statusCode == 200) {
         if (response.data['message'] == 'Success') {

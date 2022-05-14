@@ -2,7 +2,6 @@
 import 'package:spk_saw_whey_protein/data_model/api_response.dart';
 import 'package:spk_saw_whey_protein/data_model/calculate_whey_protein_model/calculate_whey_protein_model.dart';
 import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/add_whey_protein_model.dart';
-import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/delete_whey_protein_model.dart';
 import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/update_list_whey_protein.dart';
 import 'package:spk_saw_whey_protein/data_model/ranking_whey_protein_model/ranking_whey_protein_model.dart';
 import 'package:spk_saw_whey_protein/provider/provider_saw_spk.dart';
@@ -93,10 +92,10 @@ class ListWheyRepository {
   }
 
   Future deleteListWheyProteinRepo({
-    required DeleteDataListWheyProtein deleteDataWhey,
+    required int deleteDataWheyId,
   }) async {
     final response = await _apiProvider.deleteListWheyData(
-      deleteWheyData: deleteDataWhey);
+      idWheyProtein: deleteDataWheyId);
     if (response is SuccessResponse) {
       print('test success repository delete');
       return response;

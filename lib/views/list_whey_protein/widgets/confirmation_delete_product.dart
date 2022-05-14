@@ -12,6 +12,7 @@ class FormDeleteProductAlertDialog extends StatelessWidget {
 
   final GetListWheyProteinData dataWhey;
 
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -74,7 +75,7 @@ class FormDeleteProductAlertDialog extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   //TODO DELETE PROVIDER
-                  BlocProvider.of<DeleteListWheyBloc>(context).add(DeleteListWheyByIdWheyProtein(deleteDataWhey: dataWhey.idWheyProtein))
+                  BlocProvider.of<DeleteListWheyBloc>(context).add(DeleteListWheyByIdWheyProtein(deleteDataWheyId: dataWhey.idWheyProtein ));
                 },
                 child: const Text(
                   'Delete',

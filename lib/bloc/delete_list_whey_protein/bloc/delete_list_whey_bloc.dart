@@ -1,9 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/delete_whey_protein_model.dart';
 import 'package:spk_saw_whey_protein/repository/exceptions/list_ranking_whey_protein_exceptions.dart';
 import 'package:spk_saw_whey_protein/repository/repository_saw_spk.dart';
-
 part 'delete_list_whey_event.dart';
 part 'delete_list_whey_state.dart';
 
@@ -16,7 +14,7 @@ class DeleteListWheyBloc extends Bloc<DeleteListWheyEvent, DeleteListWheyState> 
       emit(DeleteListWheyLoading());
       try {
         await _repository.deleteListWheyProteinRepo(
-          deleteDataWhey: event.deleteDataWhey
+          deleteDataWheyId: event.deleteDataWheyId
         );
         emit(DeleteListWheyDone());
       } catch (exceptions) {

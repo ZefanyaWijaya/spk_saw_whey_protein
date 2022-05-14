@@ -8,14 +8,14 @@ abstract class DeleteListWheyEvent extends Equatable {
 }
 
 class DeleteListWheyByIdWheyProtein extends DeleteListWheyEvent {
-  final DeleteDataListWheyProtein deleteDataWhey;
+  final int deleteDataWheyId;
 
   DeleteListWheyByIdWheyProtein ({
-    required this.deleteDataWhey
+    required this.deleteDataWheyId
   });
 
   @override
   List<Object> get props => [
-        deleteDataWhey
+        deleteDataWheyId
   ];
 }
