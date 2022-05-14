@@ -98,7 +98,6 @@ class SpkSawWheyProtein {
     required UpdateDataListWheyProtein dataUpdated,
   }) async {
     final _url = '/updatewhey';
-
     try {
       final Response response = await _dio.put(
         _url,
