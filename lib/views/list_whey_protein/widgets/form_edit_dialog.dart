@@ -2,13 +2,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/list_whey_protein_model.dart';
 
 class FormEditAlertDialog extends StatelessWidget {
   FormEditAlertDialog({
     Key? key,
+    required this.dataWheyInitialValue,
   }) : super(key: key);
 
   final GlobalKey<FormBuilderState> _formKey = GlobalKey();
+  final GetListWheyProteinData dataWheyInitialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -150,6 +153,7 @@ class FormEditAlertDialog extends StatelessWidget {
           ),
         ),
         FormBuilderTextField(
+          initialValue: dataWheyInitialValue.wheyProteinName,
           name: "wheyProtein",
           decoration: const InputDecoration(
             constraints: BoxConstraints(
@@ -196,6 +200,7 @@ class FormEditAlertDialog extends StatelessWidget {
           ),
         ),
         FormBuilderTextField(
+          initialValue: dataWheyInitialValue.pricePerServing.toString(),
           name: 'pricePerServ',
           decoration: const InputDecoration(
             constraints: BoxConstraints(
@@ -245,6 +250,7 @@ class FormEditAlertDialog extends StatelessWidget {
           ),
         ),
         FormBuilderTextField(
+          initialValue: dataWheyInitialValue.proteinPerServing.toString(),
           name: 'proteinPerServ',
           decoration: const InputDecoration(
             constraints: BoxConstraints(
@@ -294,6 +300,7 @@ class FormEditAlertDialog extends StatelessWidget {
           ),
         ),
         FormBuilderTextField(
+          initialValue: dataWheyInitialValue.caloriesPerServing.toString(),
           name: 'caloriesPerServ',
           decoration: const InputDecoration(
             constraints: BoxConstraints(
@@ -343,6 +350,7 @@ class FormEditAlertDialog extends StatelessWidget {
           ),
         ),
         FormBuilderTextField(
+          initialValue: dataWheyInitialValue.availableVariantProduct.toString(),
           name: 'availableVarProduct',
           decoration: const InputDecoration(
             constraints: BoxConstraints(
@@ -392,6 +400,7 @@ class FormEditAlertDialog extends StatelessWidget {
           ),
         ),
         FormBuilderTextField(
+          initialValue: dataWheyInitialValue.otherIngredients.toString(),
           name: 'otherIngredients',
           decoration: const InputDecoration(
             constraints: BoxConstraints(
@@ -441,6 +450,7 @@ class FormEditAlertDialog extends StatelessWidget {
           ),
         ),
         FormBuilderTextField(
+          initialValue: dataWheyInitialValue.moreDetail,
           name: "moreDetails",
           decoration: const InputDecoration(
             constraints: BoxConstraints(

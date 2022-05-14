@@ -194,7 +194,9 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
             showDialog(
               context: context, 
               builder: (_) {
-                return FormEditAlertDialog();
+                return FormEditAlertDialog(
+                  dataWheyInitialValue : widget.dataWhey,
+                );
               }
             );
             //ELSE DO NOTHING

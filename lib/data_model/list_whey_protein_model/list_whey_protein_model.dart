@@ -39,6 +39,7 @@ class GetListWheyProteinData extends Equatable {
   final int caloriesPerServing;
   final int availableVariantProduct;
   final String moreDetail;
+  final int otherIngredients;
 
   GetListWheyProteinData({
     required this.idWheyProtein,
@@ -47,7 +48,8 @@ class GetListWheyProteinData extends Equatable {
     required this.proteinPerServing,
     required this.caloriesPerServing,
     required this.availableVariantProduct,
-    required this.moreDetail
+    required this.moreDetail,
+    required this.otherIngredients
 
   });
 
@@ -59,7 +61,8 @@ class GetListWheyProteinData extends Equatable {
       proteinPerServing: json['protein_per_serving'],
       caloriesPerServing: json['calories_per_serving'],
       availableVariantProduct: json['available_variant_product'], 
-      moreDetail: json['more_detail_link']
+      moreDetail: json['more_detail_link'],
+      otherIngredients: json['other_ingredients']
     );
   }
 
