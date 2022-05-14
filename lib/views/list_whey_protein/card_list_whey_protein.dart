@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/list_whey_protein_model.dart';
 import 'package:spk_saw_whey_protein/views/list_whey_protein/widgets/confirmation_delete_product.dart';
@@ -219,7 +216,9 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
             showDialog(
               context: context, 
               builder: (_) {
-                return FormDeleteProductAlertDialog();
+                return FormDeleteProductAlertDialog(
+                  dataWhey: widget.dataWhey,
+                );
               }
             );
             //ELSE DO NOTHING

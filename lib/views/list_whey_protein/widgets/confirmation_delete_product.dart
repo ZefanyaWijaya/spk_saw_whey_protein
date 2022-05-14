@@ -1,11 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spk_saw_whey_protein/bloc/delete_list_whey_protein/bloc/delete_list_whey_bloc.dart';
+import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/list_whey_protein_model.dart';
 
 
 class FormDeleteProductAlertDialog extends StatelessWidget {
   FormDeleteProductAlertDialog({
     Key? key,
+    required this.dataWhey
   }) : super(key: key);
+
+  final GetListWheyProteinData dataWhey;
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +74,7 @@ class FormDeleteProductAlertDialog extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   //TODO DELETE PROVIDER
+                  BlocProvider.of<DeleteListWheyBloc>(context).add(DeleteListWheyByIdWheyProtein(deleteDataWhey: dataWhey.idWheyProtein))
                 },
                 child: const Text(
                   'Delete',
