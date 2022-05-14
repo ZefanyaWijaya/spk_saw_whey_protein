@@ -150,7 +150,6 @@ class SpkSawWheyProtein {
   }) async {
     final _url = '/getcalculatewhey';
     Map<String, dynamic> queryParam = {};
-
     if (searchKeyword != null) {
       queryParam['search'] = searchKeyword;
     }
@@ -172,6 +171,26 @@ class SpkSawWheyProtein {
       throw Exception(response.statusCode);
     } catch (exception) {
       print('$exception');
+      throw Exception(exception);
+    }
+  }
+
+  Future updateCalculateWhey() async {
+    final _url = '/update_calculate_whey';
+    try {
+      final Response response = await _dio.put(
+        _url,
+      );
+      if (response.statusCode == 200) {
+        if (response.data['message'] == 'Success') {
+          return SuccessResponse.fromJson(response.data);
+        } else {
+          return FailedResponse.fromJson(response.data);
+        }
+      }
+      throw Exception(response.statusCode);
+    } catch (exception) {
+      print(exception);
       throw Exception(exception);
     }
   }

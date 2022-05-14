@@ -118,7 +118,7 @@ class ListWheyRepository {
       searchKeyword: searchKeywordText,
     );
     if(response is GetCalculateWheyBySearchModel) {
-      print('test succes repository');
+      print('test success repository get calculate');
       // print(response.data);
       return response.data;
     } else if (response is FailedResponse){
@@ -131,6 +131,23 @@ class ListWheyRepository {
       }
     }
     throw GetCalculateWheyBySearchFailed();
+  }
+
+  Future updateCalculateListWheyProtein() async {
+    final response = await _apiProvider.updateCalculateWhey();
+    if (response is SuccessResponse) {
+      print('test success repository update calculate whey');
+      return response;
+    } else if (response is FailedResponse) {
+      switch (response.errorKey) {
+        case 'error_internal_server':
+          throw UpdateCalculateWheyErrorInternalServer();
+        default:
+          print('Delete List Whey Failed, unknown error key: ${response.errorKey}');
+          throw UpdateCalculateWheyUnknownErrorCode();
+      }
+    }
+    throw UpdateCalculateWheyFailed();
   }
 
   Future getListRankingWheyProtein({
