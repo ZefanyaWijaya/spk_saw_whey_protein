@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spk_saw_whey_protein/bloc/update_calculate_whey_protein/bloc/put_calculate_whey_bloc.dart';
 import 'package:spk_saw_whey_protein/views/calculate_whey_protein/searchbox_whey_protein.dart';
 import 'package:spk_saw_whey_protein/views/calculate_whey_protein/table_calculate_whey_protein.dart';
 
@@ -54,8 +56,7 @@ class CalculateWheyProteinState extends State<CalculateWheyProtein> {
         height: 45,
         child: ElevatedButton(
           onPressed: () {
-            //TO DO UPDATE CALCULATE WHEY
-            // event update call api
+            BlocProvider.of<PutCalculateWheyBloc>(context).add(PutCalculateWheyTriggerCalculateScore());
           },
           child: const Text(
             'Calculate Whey',
