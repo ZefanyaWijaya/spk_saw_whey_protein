@@ -29,17 +29,20 @@ class ListWheyProteinRunner extends StatelessWidget {
               BlocProvider<ListWheyProteinSettingsCubit>(
                 create: (context) => settingsCubit
               ),
-              BlocProvider<ListWheyProteinGetBySearchBloc>(
-                create: (context) => ListWheyProteinGetBySearchBloc(
-                  settingsCubit: settingsCubit
-                )
+              BlocProvider<DeleteListWheyBloc>(
+                create: (context) => deleteListWheyBloc
               ),
               BlocProvider<UpdateListWheyBloc>(
                 create: (context) => updateListWheyBloc
               ),
-              BlocProvider<DeleteListWheyBloc>(
-                create: (context) => deleteListWheyBloc
+              BlocProvider<ListWheyProteinGetBySearchBloc>(
+                create: (context) => ListWheyProteinGetBySearchBloc(
+                  settingsCubit: settingsCubit,
+                  delListBloc: deleteListWheyBloc
+                )
               ),
+             
+             
             ],
             child: BlocBuilder<LayoutManagerCubit, LayoutManagerState>(
               bloc: settingsLayout,

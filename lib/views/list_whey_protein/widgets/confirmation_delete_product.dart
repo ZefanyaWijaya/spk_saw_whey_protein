@@ -76,6 +76,7 @@ class FormDeleteProductAlertDialog extends StatelessWidget {
                 onPressed: () {
                   //TODO DELETE PROVIDER
                   BlocProvider.of<DeleteListWheyBloc>(context).add(DeleteListWheyByIdWheyProtein(deleteDataWheyId: dataWhey.idWheyProtein ));
+                  Navigator.pop(context);
                 },
                 child: const Text(
                   'Delete',

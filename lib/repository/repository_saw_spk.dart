@@ -94,8 +94,10 @@ class ListWheyRepository {
   Future deleteListWheyProteinRepo({
     required int deleteDataWheyId,
   }) async {
+    print("testrepo97");
     final response = await _apiProvider.deleteListWheyData(
       idWheyProtein: deleteDataWheyId);
+    print("testrepo100");
     if (response is SuccessResponse) {
       print('test success repository delete');
       return response;

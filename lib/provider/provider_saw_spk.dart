@@ -120,22 +120,31 @@ class SpkSawWheyProtein {
     required int idWheyProtein,
   }) async {
     final _url = '/deletewhey';
+    print("testProvider123");
     Map<String, dynamic> queryParam = {};
+    print("testProvider125");
     queryParam['id'] = idWheyProtein;
+    print("testprovider127");
     try {
+      print("testProvider129");
       final Response response = await _dio.delete(
         _url,
         queryParameters: queryParam
       );
+      print("testProvider134");
       if (response.statusCode == 200) {
         if (response.data['message'] == 'Success') {
+          print("testpro137");
           return SuccessResponse.fromJson(response.data);
         } else {
+          print("testpro140");
           return FailedResponse.fromJson(response.data);
         }
       }
+      print("testpro140");
       throw Exception(response.statusCode);
     } catch (exception) {
+      print("testpro147");
       print(exception);
       throw Exception(exception);
     }

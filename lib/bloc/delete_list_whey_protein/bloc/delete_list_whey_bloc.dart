@@ -13,10 +13,13 @@ class DeleteListWheyBloc extends Bloc<DeleteListWheyEvent, DeleteListWheyState> 
     on<DeleteListWheyByIdWheyProtein>((event, emit) async {
       emit(DeleteListWheyLoading());
       try {
+        print("testbloc16");
         await _repository.deleteListWheyProteinRepo(
           deleteDataWheyId: event.deleteDataWheyId
         );
+        print("testbloc17");
         emit(DeleteListWheyDone());
+        print("testbloc22");
       } catch (exceptions) {
         String message = this.errorMessageList(exceptions);
         emit(DeleteListWheyFailed(errorMessage: message));
