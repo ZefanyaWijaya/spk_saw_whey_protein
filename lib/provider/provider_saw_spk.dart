@@ -121,15 +121,11 @@ class SpkSawWheyProtein {
   }) async {
     final _url = '/deletewhey';
     Map<String, dynamic> queryParam = {};
-
     queryParam['id'] = idWheyProtein;
-
-    // if (idWheyProtein != null) {
-      
-    // }
     try {
       final Response response = await _dio.delete(
         _url,
+        queryParameters: queryParam
       );
       if (response.statusCode == 200) {
         if (response.data['message'] == 'Success') {
