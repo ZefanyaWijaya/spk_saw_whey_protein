@@ -66,6 +66,12 @@ class ListWheyProteinGetBySearchBloc
         add(ListWheyProteinGetBySearchAndFilter());
       }
     });
+
+    editListener = putListBloc.stream.listen((state) {
+      if(state is UpdateListWheyDone) {
+        add(ListWheyProteinGetBySearchAndFilter());
+      }
+    });
   }
 
   String errorMessageList(Object exception) {
