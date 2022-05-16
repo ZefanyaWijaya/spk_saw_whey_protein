@@ -21,6 +21,7 @@ class PutCalculateWheyBloc
         );
         emit(PutCalculateWheyDone());
       } catch (exception){
+        print(exception);
         String message = this.errorMessageList(exception);
         emit(PutCalculateWheyFailed(errorMessage: message));
       }

@@ -7,4 +7,4 @@ abstract class PutCalculateWheyEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class PutCalculateWheyTriggerCalculateScore extends PutCalculateWheyEvent {}
+class PutCalculateWheyTriggerCalculateScore extends PutCalculateWheyEvent {} 
