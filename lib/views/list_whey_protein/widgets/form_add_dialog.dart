@@ -12,8 +12,6 @@ class FormAddAlertDialog extends StatelessWidget {
 
   final GlobalKey<FormBuilderState> _formKey = GlobalKey();
   
-  
-
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -75,12 +73,9 @@ class FormAddAlertDialog extends StatelessWidget {
             height: 45,
             child: ElevatedButton(
               onPressed: () {
-                print("test78");
                 if (_formKey.currentState!.saveAndValidate()) {
-                  print("test80");
                   final Map<String, dynamic> data =
                       _formKey.currentState!.value;
-                  print("test83");
                   final AddDataListWheyProtein newListWheyData = AddDataListWheyProtein(
                     wheyProteinName: data['wheyProtein'],
                     pricePerServing: data['pricePerServ'], 
@@ -90,9 +85,8 @@ class FormAddAlertDialog extends StatelessWidget {
                     otherIngredients: data['otherIngredients'], 
                     moreDetails: data['moreDetails']
                   );
-                  print("TEST ON UI");
-                  print(newListWheyData);
                   BlocProvider.of<PostListWheyProteinBloc>(context).add(PostListNewWheyProtein(newListWheyData: newListWheyData));
+                  Navigator.pop(context);
                 }
               },
               child: const Text(
@@ -100,30 +94,13 @@ class FormAddAlertDialog extends StatelessWidget {
                 style: TextStyle(fontSize: 16),
               ),
               style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  primary: const Color.fromRGBO(2, 106, 199, 1),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  )),
+                elevation: 0,
+                primary: const Color.fromRGBO(2, 106, 199, 1),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                )),
             ),
           ),
-          // child: OutlinedButton(
-          //   style: OutlinedButton.styleFrom(
-          //     // minimumSize: Size(double.infinity, 45),
-          //     primary: CustomColors.errorRed,
-          //     side: BorderSide(color: CustomColors.errorRed),
-          //     shape: RoundedRectangleBorder(
-          //       borderRadius: BorderRadius.circular(8),
-          //     ),
-          //   ),
-          //   onPressed: () {
-          //     Navigator.pop(context, false);
-          //   },
-          //   child: Text(
-          //     'Batal',
-          //     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          //   ),
-          // ),
         ),
       ]
     );

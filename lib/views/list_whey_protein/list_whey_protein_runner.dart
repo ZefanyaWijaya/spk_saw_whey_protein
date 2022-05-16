@@ -43,11 +43,10 @@ class ListWheyProteinRunner extends StatelessWidget {
               BlocProvider<ListWheyProteinGetBySearchBloc>(
                 create: (context) => ListWheyProteinGetBySearchBloc(
                   settingsCubit: settingsCubit,
-                  delListBloc: deleteListWheyBloc
+                  delListBloc: deleteListWheyBloc,
+                  postListBloc: postBloc
                 )
               ),
-             
-             
             ],
             child: BlocBuilder<LayoutManagerCubit, LayoutManagerState>(
               bloc: settingsLayout,

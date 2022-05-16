@@ -1,6 +1,6 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
+import 'package:spk_saw_whey_protein/bloc/add_list_whey_protein/bloc/post_list_whey_protein_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/delete_list_whey_protein/bloc/delete_list_whey_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/get_list_whey_protein/settingsCubit/cubit/list_whey_protein_settings_cubit.dart';
 import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/list_whey_protein_model.dart';
@@ -16,14 +16,16 @@ class ListWheyProteinGetBySearchBloc
   final ListWheyRepository _repository = ListWheyRepository();
   final ListWheyProteinSettingsCubit settingsCubit;
   final DeleteListWheyBloc delListBloc;
+  final PostListWheyProteinBloc postListBloc;
   late StreamSubscription settingsListener;
   late StreamSubscription deleteListener;
+  late StreamSubscription postListener;
 
   ListWheyProteinGetBySearchBloc({
     required this.settingsCubit,
-    required this.delListBloc 
+    required this.delListBloc,
+    required this.postListBloc 
   }) : super(ListWheyProteinGetBySearchInitial()) {
-
     on<ListWheyProteinGetBySearchAndFilter>((event, emit) async {
       emit(ListWheyProteinGetBySearchLoading());
       try {
@@ -51,6 +53,12 @@ class ListWheyProteinGetBySearchBloc
 
     deleteListener = delListBloc.stream.listen((state) {
       if(state is DeleteListWheyDone) {
+        add(ListWheyProteinGetBySearchAndFilter());
+      }
+    });
+
+    postListener = postListBloc.stream.listen((state) { 
+      if(state is PostListWheyProteinDone) {
         add(ListWheyProteinGetBySearchAndFilter());
       }
     });
