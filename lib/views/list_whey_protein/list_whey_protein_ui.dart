@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spk_saw_whey_protein/bloc/add_list_whey_protein/bloc/post_list_whey_protein_bloc.dart';
 import 'package:spk_saw_whey_protein/views/list_whey_protein/table_list_whey_protein.dart';
 import 'package:spk_saw_whey_protein/views/list_whey_protein/widgets/filter_list_whey_protein.dart';
 import 'package:spk_saw_whey_protein/views/list_whey_protein/widgets/form_add_dialog.dart';
@@ -75,7 +77,11 @@ class ListWheyProteinState extends State<ListWheyProtein> {
             showDialog(
               context: context, 
               builder: (_) {
-                return FormAddAlertDialog();
+                // return FormAddAlertDialog();
+                return BlocProvider.value(
+                  value: BlocProvider.of<PostListWheyProteinBloc>(context),
+                  child: FormAddAlertDialog(),
+                );
               }
             );
           },

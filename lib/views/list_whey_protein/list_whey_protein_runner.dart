@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spk_saw_whey_protein/bloc/add_list_whey_protein/bloc/post_list_whey_protein_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/delete_list_whey_protein/bloc/delete_list_whey_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/get_list_whey_protein/bloc/list_whey_protein_get_by_search_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/get_list_whey_protein/settingsCubit/cubit/list_whey_protein_settings_cubit.dart';
@@ -14,6 +15,7 @@ class ListWheyProteinRunner extends StatelessWidget {
   final ListWheyProteinSettingsCubit settingsCubit = ListWheyProteinSettingsCubit();
   final UpdateListWheyBloc updateListWheyBloc = UpdateListWheyBloc();
   final DeleteListWheyBloc deleteListWheyBloc = DeleteListWheyBloc();
+  final PostListWheyProteinBloc postBloc = PostListWheyProteinBloc();
   
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,9 @@ class ListWheyProteinRunner extends StatelessWidget {
               ),
               BlocProvider<UpdateListWheyBloc>(
                 create: (context) => updateListWheyBloc
+              ),
+              BlocProvider<PostListWheyProteinBloc>(
+                create: (BuildContext context) => postBloc
               ),
               BlocProvider<ListWheyProteinGetBySearchBloc>(
                 create: (context) => ListWheyProteinGetBySearchBloc(
