@@ -1,8 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:spk_saw_whey_protein/bloc/update_list_whey_protein/bloc/update_list_whey_bloc.dart';
 import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/list_whey_protein_model.dart';
+import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/update_list_whey_protein.dart';
 
 class FormEditAlertDialog extends StatelessWidget {
   FormEditAlertDialog({
@@ -97,25 +100,22 @@ class FormEditAlertDialog extends StatelessWidget {
               height: 45,
               child: ElevatedButton(
                 onPressed: () {
-                  // print("test78");
-                  // if (_formKey.currentState!.saveAndValidate()) {
-                  //   print("test80");
-                  //   final Map<String, dynamic> data =
-                  //       _formKey.currentState!.value;
-                  //   print("test83");
-                  //   final AddDataListWheyProtein newListWheyData = AddDataListWheyProtein(
-                  //     wheyProteinName: data['wheyProtein'],
-                  //     pricePerServing: data['pricePerServ'], 
-                  //     proteinPerServing: data['proteinPerServ'], 
-                  //     caloriesPerServing: data['caloriesPerServ'], 
-                  //     availableVariants: data['availableVarProduct'], 
-                  //     otherIngredients: data['otherIngredients'], 
-                  //     moreDetails: data['moreDetails']
-                  //   );
-                  //   print("TEST ON UI");
-                  //   print(newListWheyData);
-                  //   // BlocProvider.of<PostListWheyProteinBloc>(context).add(PostListNewWheyProtein(newListWheyData: newListWheyData));
-                  // }
+                  if (_formKey.currentState!.saveAndValidate()) {
+                    final Map<String, dynamic> data =
+                        _formKey.currentState!.value;
+                    final UpdateDataListWheyProtein updatedListWheyData = UpdateDataListWheyProtein(
+                      idWheyProtein: dataWheyInitialValue.idWheyProtein,
+                      wheyProteinName: data['wheyProtein'],
+                      pricePerServing: data['pricePerServ'], 
+                      proteinPerServing: data['proteinPerServ'], 
+                      caloriesPerServing: data['caloriesPerServ'], 
+                      availableVariants: data['availableVarProduct'], 
+                      otherIngredients: data['otherIngredients'], 
+                      moreDetails: data['moreDetails']
+                    );
+                    BlocProvider.of<UpdateListWheyBloc>(context).add(UpdateListWheyByIdWheyProtein(dataWheyUpdated: updatedListWheyData));
+                    Navigator.pop(context);
+                  }
                 },
                 child: const Text(
                   'Edit Whey Product',
@@ -130,7 +130,6 @@ class FormEditAlertDialog extends StatelessWidget {
               ),
             ),
           ],
-          
         ),
       ]
     );

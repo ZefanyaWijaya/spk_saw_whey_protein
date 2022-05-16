@@ -44,7 +44,8 @@ class ListWheyProteinRunner extends StatelessWidget {
                 create: (context) => ListWheyProteinGetBySearchBloc(
                   settingsCubit: settingsCubit,
                   delListBloc: deleteListWheyBloc,
-                  postListBloc: postBloc
+                  postListBloc: postBloc,
+                  putListBloc: updateListWheyBloc
                 )
               ),
             ],
@@ -67,9 +68,7 @@ class ListWheyProteinRunner extends StatelessWidget {
                 }
               },
             ),
-            
           ),
-          
         );
       }),
     );

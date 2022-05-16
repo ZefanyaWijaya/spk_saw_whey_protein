@@ -3,6 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/add_list_whey_protein/bloc/post_list_whey_protein_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/delete_list_whey_protein/bloc/delete_list_whey_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/get_list_whey_protein/settingsCubit/cubit/list_whey_protein_settings_cubit.dart';
+import 'package:spk_saw_whey_protein/bloc/update_list_whey_protein/bloc/update_list_whey_bloc.dart';
 import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/list_whey_protein_model.dart';
 import 'package:spk_saw_whey_protein/repository/exceptions/list_whey_protein_exceptions.dart';
 import 'package:spk_saw_whey_protein/repository/repository_saw_spk.dart';
@@ -17,14 +18,17 @@ class ListWheyProteinGetBySearchBloc
   final ListWheyProteinSettingsCubit settingsCubit;
   final DeleteListWheyBloc delListBloc;
   final PostListWheyProteinBloc postListBloc;
+  final UpdateListWheyBloc putListBloc;
   late StreamSubscription settingsListener;
   late StreamSubscription deleteListener;
   late StreamSubscription postListener;
+  late StreamSubscription editListener;
 
   ListWheyProteinGetBySearchBloc({
     required this.settingsCubit,
     required this.delListBloc,
-    required this.postListBloc 
+    required this.postListBloc,
+    required this.putListBloc, 
   }) : super(ListWheyProteinGetBySearchInitial()) {
     on<ListWheyProteinGetBySearchAndFilter>((event, emit) async {
       emit(ListWheyProteinGetBySearchLoading());

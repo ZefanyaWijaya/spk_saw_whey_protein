@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/delete_list_whey_protein/bloc/delete_list_whey_bloc.dart';
+import 'package:spk_saw_whey_protein/bloc/update_list_whey_protein/bloc/update_list_whey_bloc.dart';
 import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/list_whey_protein_model.dart';
 import 'package:spk_saw_whey_protein/views/list_whey_protein/widgets/confirmation_delete_product.dart';
 import 'package:spk_saw_whey_protein/views/list_whey_protein/widgets/form_edit_dialog.dart';
@@ -193,9 +194,13 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
             showDialog(
               context: context, 
               builder: (_) {
-                return FormEditAlertDialog(
-                  dataWheyInitialValue : widget.dataWhey,
+                return BlocProvider.value(
+                  value: BlocProvider.of<UpdateListWheyBloc>(context),
+                  child: FormEditAlertDialog(dataWheyInitialValue: widget.dataWhey),
                 );
+                // return FormEditAlertDialog(
+                //   dataWheyInitialValue : widget.dataWhey,
+                // );
               }
             );
             //ELSE DO NOTHING
@@ -218,16 +223,12 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
             showDialog(
               context: context,
               builder: (_) {
-                // return FormDeleteProductAlertDialog(
-                //   dataWhey: widget.dataWhey,
-                // );
                 return BlocProvider.value(
                   value: BlocProvider.of<DeleteListWheyBloc>(context),
                   child: FormDeleteProductAlertDialog(dataWhey: widget.dataWhey),
                 );
               }
             );
-            //ELSE DO NOTHING
           },
           child: const Tooltip(
             message: "Delete Product (Admin Only)",
