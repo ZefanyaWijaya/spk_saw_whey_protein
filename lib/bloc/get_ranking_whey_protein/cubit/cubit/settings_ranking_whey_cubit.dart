@@ -29,7 +29,7 @@ class SettingsRankingWheyCubit extends Cubit<SettingsRankingWheyState> {
     } else {
       price = "";
     }
-    emit(SettingsRankingWheyDone());
+    // emit(SettingsRankingWheyDone());
   }
 
   void getKategoriRankingProtein(String proteinCategory) {
@@ -51,7 +51,7 @@ class SettingsRankingWheyCubit extends Cubit<SettingsRankingWheyState> {
     } else {
       protein = "";
     }
-    emit(SettingsRankingWheyDone());
+    // emit(SettingsRankingWheyDone());
   }
 
   void getKategoriRankingCalories (String caloriesCategory) {
@@ -75,7 +75,7 @@ class SettingsRankingWheyCubit extends Cubit<SettingsRankingWheyState> {
     } else {
       calories = "";
     }
-    emit(SettingsRankingWheyDone());
+    // emit(SettingsRankingWheyDone());
   }
 
   void getKategoriRankingVariants (String variantsCategory) {
@@ -95,7 +95,7 @@ class SettingsRankingWheyCubit extends Cubit<SettingsRankingWheyState> {
     } else {
       variants = "";
     }
-    emit(SettingsRankingWheyDone());
+    // emit(SettingsRankingWheyDone());
   }
 
   void getKategoriRankingOthersIngredients (String othersCategory) {
@@ -115,6 +115,6 @@ class SettingsRankingWheyCubit extends Cubit<SettingsRankingWheyState> {
     } else {
       variants = "";
     }
-    emit(SettingsRankingWheyDone());
+    // emit(SettingsRankingWheyDone());
   }
 }

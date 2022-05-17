@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spk_saw_whey_protein/bloc/get_ranking_whey_protein/bloc/get_list_ranking_whey_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/get_ranking_whey_protein/cubit/cubit/settings_ranking_whey_cubit.dart';
 import 'package:spk_saw_whey_protein/bloc/layout_manager_cubit/cubit/layout_manager_cubit.dart';
 
@@ -271,7 +272,6 @@ class FilterRankingWheyProteinState extends State<FilterRankingWheyProtein> {
     );
   }
 
-
   Widget advancedSettingText() {
     return const Text(
       'Advanced Settings',
@@ -291,7 +291,7 @@ class FilterRankingWheyProteinState extends State<FilterRankingWheyProtein> {
         height: 45,
         child: ElevatedButton(
           onPressed: () {
-            //TO DO BLOC PROVIDER TO CUBIT
+            BlocProvider.of<GetListRankingWheyBloc>(context).add(GetListRankingWheyProtein());
           },
           child: const Text(
             'Set Filter',
