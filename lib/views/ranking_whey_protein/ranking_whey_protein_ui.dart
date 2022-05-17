@@ -108,7 +108,7 @@ class RankingWheyProteinState extends State<RankingWheyProtein> {
                               return Padding(
                                 padding: const EdgeInsets.only(bottom: 20.0),
                                 child: CardRankingWheyProtein(
-                                  dataRanking: state.listDataRanking[index]
+                                  dataRanking: state.listDataRanking[index] , ranking : index,
                                 ),
                               );
                             },

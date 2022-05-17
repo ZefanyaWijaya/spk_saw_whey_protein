@@ -4,10 +4,13 @@ import 'package:spk_saw_whey_protein/data_model/ranking_whey_protein_model/ranki
 class CardRankingWheyProtein extends StatelessWidget {
   const CardRankingWheyProtein({
     Key? key,
-    required this.dataRanking
-  }) : super (key: key);
+    required this.dataRanking,
+    required this.ranking 
+  })  : super (key: key);
 
   final GetListRankingWheyProteinData dataRanking;
+  final int ranking;
+
 
 
   @override
@@ -40,10 +43,9 @@ class CardRankingWheyProtein extends StatelessWidget {
   }
 
   Widget _buildRankingByList (){
-    return const Text(
-      "1",
-      // dataRanking. 
-      style: TextStyle(
+    return Text(
+      (ranking + 1).toString(), 
+      style: const TextStyle(
         color: Colors.black,
         fontSize: 18,
         fontWeight: FontWeight.bold
@@ -55,7 +57,6 @@ class CardRankingWheyProtein extends StatelessWidget {
     return Container(
       width: 400,
       child: Text(
-        // "Muscle Booster Optimum Nutrion Evowhey Siasdasfsa asfsafas asfdsafas asfsaf asfsafas safsafas", 
         dataRanking.wheyProteinName,
         style: const TextStyle(
           color: Colors.black,
@@ -77,5 +78,4 @@ class CardRankingWheyProtein extends StatelessWidget {
       ),
     );
   }
-
 }

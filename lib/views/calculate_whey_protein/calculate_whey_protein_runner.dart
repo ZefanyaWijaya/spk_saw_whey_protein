@@ -8,9 +8,8 @@ import 'package:spk_saw_whey_protein/views/calculate_whey_protein/calculate_whey
 class CalculateWheyProteinRunner extends StatelessWidget {
   CalculateWheyProteinRunner({Key? key}) : super(key: key);
 
-  final LayoutManagerCubit settingsLayout = LayoutManagerCubit();
-  final GetCalculateWheyProteinBySearchBloc getCalculateWhey = GetCalculateWheyProteinBySearchBloc();
   final PutCalculateWheyBloc updateCalculateWhey = PutCalculateWheyBloc();
+  final LayoutManagerCubit settingsLayout = LayoutManagerCubit();  
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +22,14 @@ class CalculateWheyProteinRunner extends StatelessWidget {
               BlocProvider<LayoutManagerCubit>(
                 create: (context) => settingsLayout,
               ),
-              BlocProvider<GetCalculateWheyProteinBySearchBloc>(
-                create: (context) => getCalculateWhey
-              ),
               BlocProvider<PutCalculateWheyBloc>(
                 create: (context) => updateCalculateWhey
-              )
+              ),
+              BlocProvider<GetCalculateWheyProteinBySearchBloc>(
+                create: (context) => GetCalculateWheyProteinBySearchBloc(
+                  blocUpdate: updateCalculateWhey
+                )
+              ),
             ], 
             child: BlocBuilder<LayoutManagerCubit, LayoutManagerState>(
               bloc: settingsLayout,
