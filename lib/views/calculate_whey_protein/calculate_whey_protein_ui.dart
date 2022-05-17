@@ -49,25 +49,34 @@ class CalculateWheyProteinState extends State<CalculateWheyProtein> {
   }
 
   Widget calculateWheyProteinButton() {
-    return Padding(
-      padding: const EdgeInsets.only(right: 30),
-      child: Container(
-        width: 180,
-        height: 45,
-        child: ElevatedButton(
-          onPressed: () {
-            BlocProvider.of<PutCalculateWheyBloc>(context).add(PutCalculateWheyTriggerCalculateScore());
-          },
-          child: const Text(
-            'Calculate Whey',
-            style: TextStyle(fontSize: 16),
+    return Tooltip(
+      padding: EdgeInsets.all(20),
+      preferBelow: true,
+      verticalOffset: 20,
+      message: 'Tolong klik calculate terlebih dahulu,' 
+               'apabila ada data whey baru terinput maka' 
+               'score yang ditampilkan bisa berbeda',
+      textStyle: TextStyle(fontSize: 14 , color: Colors.white),
+      child: Padding(
+        padding: const EdgeInsets.only(right: 30),
+        child: Container(
+          width: 180,
+          height: 45,
+          child: ElevatedButton(
+            onPressed: () {
+              BlocProvider.of<PutCalculateWheyBloc>(context).add(PutCalculateWheyTriggerCalculateScore());
+            },
+            child: const Text(
+              'Calculate Whey',
+              style: TextStyle(fontSize: 16),
+            ),
+            style: ElevatedButton.styleFrom(
+                elevation: 0,
+                primary: const Color.fromRGBO(2, 106, 199, 1),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                )),
           ),
-          style: ElevatedButton.styleFrom(
-              elevation: 0,
-              primary: const Color.fromRGBO(2, 106, 199, 1),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              )),
         ),
       ),
     );
