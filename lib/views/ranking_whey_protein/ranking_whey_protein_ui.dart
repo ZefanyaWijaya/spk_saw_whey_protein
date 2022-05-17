@@ -42,7 +42,7 @@ class RankingWheyProteinState extends State<RankingWheyProtein> {
             children: [
               Flexible(
                 fit: FlexFit.tight,
-                flex: 49,
+                flex: 48,
                 child: SizedBox(
                   height: 650,
                   child: BlocBuilder<GetListRankingWheyBloc,GetListRankingWheyState>(
@@ -122,7 +122,7 @@ class RankingWheyProteinState extends State<RankingWheyProtein> {
               ),
               const Flexible(
                 fit: FlexFit.tight,
-                flex: 2,
+                flex: 1,
                 child: VerticalDivider(
                   color: Color.fromRGBO(83, 81, 81, 1),
                   indent: 20,
@@ -132,7 +132,7 @@ class RankingWheyProteinState extends State<RankingWheyProtein> {
               ),
               const Flexible(
                 fit: FlexFit.tight,
-                flex: 49,
+                flex: 51,
                 child: FilterRankingWheyProtein(),
               ),
             ],
