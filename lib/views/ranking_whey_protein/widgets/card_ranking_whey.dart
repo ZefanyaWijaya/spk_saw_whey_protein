@@ -17,33 +17,49 @@ class CardRankingWheyProtein extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LayoutManagerCubit , LayoutManagerState>(
+    return BlocBuilder<LayoutManagerCubit,LayoutManagerState>(
       builder: (context , state) {
-        return Container(
-          constraints: const BoxConstraints(
-            minHeight: 100 , 
-            maxHeight: 400
-          ),
+        return Container(   
           child: Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
               side: const BorderSide(
-                // color: CustomColors.tertiaryGrey,
                 color: Color.fromRGBO(2, 106, 199, 1),
                 width: 1,
               ),
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  _buildRankingByList(),
-                  _buildWheyProteinname(),
-                  _buildScoreSaw()
-        
-                ],
-              ),
+            child: Row(
+              children: [
+                Flexible(
+                  child: Container(),
+                  flex: 5,
+                  fit: FlexFit.tight,
+                ),
+                Flexible(
+                  flex: 10,
+                  child: _buildRankingByList()
+                ),
+                Flexible(
+                  child: Container(),
+                  flex: 5,
+                  fit: FlexFit.tight,
+                ), 
+                Flexible(
+                  flex: 55,
+                  fit: FlexFit.tight,
+                  child: _buildWheyProteinname()
+                ),
+                Flexible(
+                  child: Container(),
+                  flex: state.windowSize!.width < 1400 ? 10 : 15,
+                  fit: FlexFit.tight,
+                ),
+                Flexible(
+                  flex: state.windowSize!.width < 1400 ? 15 : 10,
+                  fit: FlexFit.tight,
+                  child: _buildScoreSaw()
+                )
+              ],
             ),
           ),
         );
@@ -54,7 +70,7 @@ class CardRankingWheyProtein extends StatelessWidget {
 
   Widget _buildRankingByList (){
     return Padding(
-      padding: const EdgeInsets.only(right: 20),
+      padding: EdgeInsets.only(top: 30 , bottom:  30),
       child: Text(
         (ranking + 1).toString(), 
         style: const TextStyle(
@@ -67,64 +83,34 @@ class CardRankingWheyProtein extends StatelessWidget {
   }
 
   Widget _buildWheyProteinname (){
-    return Padding(
-      padding: const EdgeInsets.only(right: 20),
-      child: BlocBuilder<LayoutManagerCubit,LayoutManagerState>(
-        builder: (context , state) {
-          if(state.windowSize!.width < 1500) {
-            return Container(
-              width: 300, 
-              child: Text(
-                dataRanking.wheyProteinName,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold
-                ), softWrap: true, maxLines: 5,
-              ),
-            );
-          } else if (state.windowSize!.width < 1200) {
-            print("test1200");
-            return Container(
-              width: 10, 
-              child: Text(
-                dataRanking.wheyProteinName,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold
-                ), softWrap: true, maxLines: 5,
-              ),
-            );
-          }
-          return Container(
-            width: 400,
-            child: Text(
-              dataRanking.wheyProteinName,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.bold
-              ), softWrap: true, maxLines: 5,
-            ),
-          );
-        }
-      ),
-    );
+   return  Padding(
+     padding: EdgeInsets.only(top: 30 , bottom:  30),
+     child: Container(
+          child: Text(
+            dataRanking.wheyProteinName,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.bold
+            ), softWrap: true, maxLines: 10,
+          ),
+        ),
+   );
   }
 
   Widget _buildScoreSaw (){
     return Padding(
-      padding: const EdgeInsets.only(right: 20),
+      padding: EdgeInsets.only(top: 30 , bottom:  30),
+     
       child: Text(
-        // "0,7829172", 
-        dataRanking.scoreSaw.toString(),
-        style: const TextStyle(
-          color: Colors.black,
-          fontSize: 18,
-          fontWeight: FontWeight.bold
+          // "0,7829172", 
+          dataRanking.scoreSaw.toString(),
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 18,
+            fontWeight: FontWeight.bold
+          ),
         ),
-      ),
     );
   }
 }
