@@ -50,13 +50,16 @@ class CalculateWheyProteinState extends State<CalculateWheyProtein> {
 
   Widget calculateWheyProteinButton() {
     return Tooltip(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       preferBelow: true,
       verticalOffset: 20,
       message: 'Tolong klik calculate terlebih dahulu,' 
                'apabila ada data whey baru terinput maka' 
-               'score yang ditampilkan bisa berbeda',
-      textStyle: TextStyle(fontSize: 14 , color: Colors.white),
+               'score yang ditampilkan dapat berbeda',
+      textStyle: const TextStyle(
+        fontSize: 14 , 
+        color: Colors.white
+      ),
       child: Padding(
         padding: const EdgeInsets.only(right: 30),
         child: Container(
