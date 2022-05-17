@@ -95,6 +95,7 @@ class FilterRankingWheyProteinState extends State<FilterRankingWheyProtein> {
                   )),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
+                      isExpanded: true,
                       value: dropdownValueHarga,
                       icon: const Icon(Icons.keyboard_arrow_down),
                       items: items.map((String harga) {
@@ -131,6 +132,7 @@ class FilterRankingWheyProteinState extends State<FilterRankingWheyProtein> {
                   )),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
+                      isExpanded: true,
                       value: dropdownValueProtein,
                       icon: const Icon(Icons.keyboard_arrow_down),
                       items: itemsProtein.map((String protein) {
@@ -167,6 +169,7 @@ class FilterRankingWheyProteinState extends State<FilterRankingWheyProtein> {
                   )),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
+                      isExpanded: true,
                       value: dropdownValueCalories,
                       icon: const Icon(Icons.keyboard_arrow_down),
                       items: itemsCalories.map((String calories) {
@@ -203,6 +206,7 @@ class FilterRankingWheyProteinState extends State<FilterRankingWheyProtein> {
                   )),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
+                      isExpanded: true,
                       value: dropdownValueVariants, 
                       icon: const Icon(Icons.keyboard_arrow_down),
                       items: itemsVariants.map((String variants) {
@@ -239,6 +243,7 @@ class FilterRankingWheyProteinState extends State<FilterRankingWheyProtein> {
                   )),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
+                      isExpanded: true,
                       value: dropdownOtherIngredients,
                       icon: const Icon(Icons.keyboard_arrow_down),
                       items: itemsOthersIngredients.map((String others) {

@@ -93,6 +93,7 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
                       value: dropdownValueHarga,
+                      isExpanded: true,
                       icon: const Icon(Icons.keyboard_arrow_down),
                       items: items.map((String harga) {
                         return DropdownMenuItem(
@@ -133,6 +134,7 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
                   )),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
+                      isExpanded: true,
                       value: dropdownValueProtein,
                       icon: const Icon(Icons.keyboard_arrow_down),
                       items: itemsProtein.map((String protein) {
@@ -174,6 +176,7 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
                   )),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
+                      isExpanded: true,
                       value: dropdownValueCalories,
                       icon: const Icon(Icons.keyboard_arrow_down),
                       items: itemsCalories.map((String calories) {
@@ -215,6 +218,7 @@ class FilterListWheyProteinState extends State<FilterListWheyProtein> {
                   )),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
+                      isExpanded: true,
                       value: dropdownValueVariants, 
                       icon: const Icon(Icons.keyboard_arrow_down),
                       items: itemsVariants.map((String variants) {
