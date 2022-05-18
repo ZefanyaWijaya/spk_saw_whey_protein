@@ -34,11 +34,12 @@ class CalculateDialogInfo extends StatelessWidget {
               RichText(
                 text: const TextSpan(
                   children: <TextSpan> [
-                    TextSpan(text: "Proses perhitungan yang dilakukan menggunakan metode SAW, dimana terdapat 5 kriteria yang akan dihitung berdasarkan jenis kriterianya, yakni jenis"),
-                    TextSpan(text: "Benefit" , style: TextStyle(fontWeight: FontWeight.bold)),
-                    TextSpan(text: "atau"),
-                    TextSpan(text: "Cost", style: TextStyle(fontWeight: FontWeight.bold)),
-                    TextSpan(text: "danjuga berdasarkan bobot dari setiap kriterianya."),
+                    TextSpan(text: "Proses perhitungan yang dilakukan menggunakan metode SAW, dimana terdapat 5 kriteria yang akan dihitung berdasarkan jenis kriterianya, yakni jenis" ,
+                    style: TextStyle(fontSize: 16 )),
+                    TextSpan(text: " Benefit " , style: TextStyle(fontSize : 16, fontWeight: FontWeight.bold)),
+                    TextSpan(text: "atau" , style:  TextStyle(fontSize: 16)),
+                    TextSpan(text: " Cost ", style: TextStyle(fontSize : 16, fontWeight: FontWeight.bold)),
+                    TextSpan(text: "dan juga berdasarkan bobot dari setiap kriterianya." , style: TextStyle(fontSize: 16)),
                   ]
                 )
               )
@@ -57,7 +58,7 @@ class CalculateDialogInfo extends StatelessWidget {
             height: 45,
             child: ElevatedButton(
               onPressed: () {
-                
+                Navigator.pop(context);
               },
               child: const Text(
                 'Close',

@@ -98,7 +98,7 @@ class CalculateWheyProteinState extends State<CalculateWheyProtein> {
             color: Color.fromRGBO(2, 106, 199, 1),
           ),
         ),
-        const SizedBox(width: 20),
+        const SizedBox(width: 10),
         InkWell(
           customBorder: const CircleBorder(),
           splashColor: const Color.fromRGBO(2, 106, 199, 1),
@@ -114,7 +114,7 @@ class CalculateWheyProteinState extends State<CalculateWheyProtein> {
           child: const Tooltip(
             message: "Calculate Method Info",
             child: Icon(
-              Icons.delete_outline,
+              Icons.info_outline,
               color: Color.fromRGBO(2, 106, 199, 1),
               size: 40.0,
             ),
