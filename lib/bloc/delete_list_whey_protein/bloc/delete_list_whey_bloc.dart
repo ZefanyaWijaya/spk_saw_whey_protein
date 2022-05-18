@@ -31,9 +31,9 @@ class DeleteListWheyBloc extends Bloc<DeleteListWheyEvent, DeleteListWheyState> 
     if (exception is DeleteListWheyFailedErrorInternalServer) {
       return 'Internal Server Error (500). Mohon coba kembali di lain waktu';
     } else if (exception is DeleteListWheyUnknownErrorCode) {
-      return 'Unknown Error Code. Segera hubungi pengembang aplikasi';
+      return 'Unknown Error Code. Segera hubungi pengembang website';
     } else {
-      return 'Gagal Memuat Data';
+      return 'Terjadi Kesalahan, segera hubungi pengembang website';
     }
   }
 }

@@ -78,9 +78,9 @@ class ListWheyProteinGetBySearchBloc
     if (exception is GetListWheyErrorInternalServer) {
       return 'Internal Server Error (500). Mohon coba kembali di lain waktu';
     } else if (exception is GetListWheyUnknownErrorCode) {
-      return 'Unknown Error Code. Segera hubungi pengembang aplikasi';
+      return 'Unknown Error Code. Segera hubungi pengembang website';
     } else {
-      return 'Gagal Memuat Data';
+      return 'Terjadi kesalahan, segera hubungi pengembang website';
     }
   }
 }

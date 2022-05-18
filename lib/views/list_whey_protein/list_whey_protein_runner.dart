@@ -6,6 +6,7 @@ import 'package:spk_saw_whey_protein/bloc/get_list_whey_protein/bloc/list_whey_p
 import 'package:spk_saw_whey_protein/bloc/get_list_whey_protein/settingsCubit/cubit/list_whey_protein_settings_cubit.dart';
 import 'package:spk_saw_whey_protein/bloc/layout_manager_cubit/cubit/layout_manager_cubit.dart';
 import 'package:spk_saw_whey_protein/bloc/update_list_whey_protein/bloc/update_list_whey_bloc.dart';
+import 'package:spk_saw_whey_protein/custom_widget/failure_alert_dialog.dart';
 import 'package:spk_saw_whey_protein/views/list_whey_protein/list_whey_protein_ui.dart';
 
 class ListWheyProteinRunner extends StatelessWidget {
@@ -49,24 +50,108 @@ class ListWheyProteinRunner extends StatelessWidget {
                 )
               ),
             ],
-            child: BlocBuilder<LayoutManagerCubit, LayoutManagerState>(
-              bloc: settingsLayout,
-              builder: (context, state) {
-                if (state.layoutType != LayoutType.Desktop) { 
-                  return const Center(
-                    heightFactor: 60,
-                    child: Text(
-                      'View not supported for current layout',
-                      style: TextStyle(fontSize: 14),
-                    ),
-                  );
-                } else {
-                  return Padding(
-                    padding: const EdgeInsets.only(left: 48, top: 30),
-                    child: ListWheyProtein(constraints: constraints),
-                  );
-                }
-              },
+            child: MultiBlocListener(
+              listeners: [
+                BlocListener<ListWheyProteinGetBySearchBloc , ListWheyProteinGetBySearchState>(
+                  listener: (context , state) {
+                    if( state is ListWheyProteinGetBySearchFailed) {
+                      showDialog(
+                        context: context,
+                        builder: (_) {
+                          return FailureAlertDialog(
+                            errorMessage: state.errorMessage,
+                            errorTitle: "Gagal Memuat Data",
+                          );
+                        },
+                      );
+                    }
+                  }
+                ),
+                BlocListener<DeleteListWheyBloc , DeleteListWheyState>(
+                  listener: (context , state) {
+                    if( state is DeleteListWheyFailed) {
+                      showDialog(
+                        context: context,
+                        builder: (_) {
+                          return FailureAlertDialog(
+                            errorMessage: state.errorMessage,
+                            errorTitle: "Gagal Menghapus Data",
+                          );
+                        },
+                      );
+                    }
+                  }
+                ),
+                BlocListener<UpdateListWheyBloc , UpdateListWheyState>(
+                  listener: (context , state) {
+                    if( state is UpdateListWheyFailed) {
+                      showDialog(
+                        context: context,
+                        builder: (_) {
+                          return FailureAlertDialog(
+                            errorMessage: state.errorMessage,
+                            errorTitle: "Gagal Mengubah Data",
+                          );
+                        },
+                      );
+                    }
+                  }
+                ),
+                BlocListener<PostListWheyProteinBloc , PostListWheyProteinState>(
+                  listener: (context , state) {
+                    if( state is PostListWheyProteinFailedErrorInternalServer) {
+                      showDialog(
+                        context: context,
+                        builder: (_) {
+                          return FailureAlertDialog(
+                            errorMessage: "Internal Server Error (500). Mohon coba kembali di lain waktu",
+                            errorTitle: "Gagal Menambahkan Data",
+                          );
+                        },
+                      );
+                    } else if (state is PostListWheyProteinFailedUnknownErrorCode) {
+                      showDialog(
+                        context: context,
+                        builder: (_) {
+                          return FailureAlertDialog(
+                            errorMessage: "Unknown Error Code. Segera hubungi pengembang webiste",
+                            errorTitle: "Gagal Menambahkan Data",
+                          );
+                        },
+                      );
+                    } else {
+                      showDialog(
+                        context: context,
+                        builder: (_) {
+                          return FailureAlertDialog(
+                            errorMessage: "Terjadi Kesalahan, segera hubungi pengembang website",
+                            errorTitle: "Gagal Menambahkan Data",
+                          );
+                        },
+                      );
+                    }
+                  }
+                ),
+              ],
+              child: BlocBuilder<LayoutManagerCubit, LayoutManagerState>(
+                bloc: settingsLayout,
+                builder: (context, state) {
+                  if (state.layoutType != LayoutType.Desktop) { 
+                    return const Center(
+                      heightFactor: 60,
+                      child: Text(
+                        'View not supported for current layout',
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    );
+                  } else {
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 48, top: 30),
+                      child: ListWheyProtein(constraints: constraints),
+                    );
+                  }
+                },
+              ),
             ),
           ),
         );
