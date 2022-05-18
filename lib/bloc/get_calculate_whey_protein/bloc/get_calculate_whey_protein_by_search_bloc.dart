@@ -48,9 +48,9 @@ class GetCalculateWheyProteinBySearchBloc
     if (exception is GetCalculateWheyBySearchErrorInternalServer) {
       return 'Internal Server Error (500). Mohon coba kembali di lain waktu';
     } else if (exception is GetCalculateWheyUnknownErrorCode) {
-      return 'Unknown Error Code. Segera hubungi pengembang aplikasi';
+      return 'Unknown Error Code. Segera hubungi pengembang website';
     } else {
-      return 'Gagal Memuat Data';
+      return 'Terjadi Kesalahan, segera hubungi pengembang website';
     }
   }
 }

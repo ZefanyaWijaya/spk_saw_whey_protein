@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/get_calculate_whey_protein/bloc/get_calculate_whey_protein_by_search_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/layout_manager_cubit/cubit/layout_manager_cubit.dart';
 import 'package:spk_saw_whey_protein/bloc/update_calculate_whey_protein/bloc/put_calculate_whey_bloc.dart';
+import 'package:spk_saw_whey_protein/custom_widget/failure_alert_dialog.dart';
 import 'package:spk_saw_whey_protein/views/calculate_whey_protein/calculate_whey_protein_ui.dart';
 
 class CalculateWheyProteinRunner extends StatelessWidget {
@@ -31,24 +32,58 @@ class CalculateWheyProteinRunner extends StatelessWidget {
                 )
               ),
             ], 
-            child: BlocBuilder<LayoutManagerCubit, LayoutManagerState>(
-              bloc: settingsLayout,
-              builder: (context, state) {
-                if (state.layoutType != LayoutType.Desktop) { 
-                  return const Center(
-                    heightFactor: 60,
-                    child: Text(
-                      'View not supported for current layout',
-                      style: TextStyle(fontSize: 14),
-                    ),
-                  );
-                } else {
-                  return Padding(
-                    padding: const EdgeInsets.only(left: 48, top: 30),
-                    child: CalculateWheyProtein(constraints: constraints),
-                  );
-                }
-              },
+            child: MultiBlocListener(
+              listeners: [
+                BlocListener<GetCalculateWheyProteinBySearchBloc , GetCalculateWheyProteinBySearchState>(
+                  listener: (context , state) {
+                    if( state is GetCalculateWheyProteinSearchFailed) {
+                      showDialog(
+                        context: context,
+                        builder: (_) {
+                          return FailureAlertDialog(
+                            errorMessage: state.errorMessage,
+                            errorTitle: "Gagal Memuat Data",
+                          );
+                        },
+                      );
+                    }
+                  }
+                ),
+                BlocListener<PutCalculateWheyBloc , PutCalculateWheyState>(
+                  listener: (context , state) {
+                    if( state is PutCalculateWheyFailed) {
+                      showDialog(
+                        context: context,
+                        builder: (_) {
+                          return FailureAlertDialog(
+                            errorMessage: state.errorMessage,
+                            errorTitle: "Gagal Menghitung Ulang Data",
+                          );
+                        },
+                      );
+                    }
+                  }
+                ),
+              ],
+              child: BlocBuilder<LayoutManagerCubit, LayoutManagerState>(
+                bloc: settingsLayout,
+                builder: (context, state) {
+                  if (state.layoutType != LayoutType.Desktop) { 
+                    return const Center(
+                      heightFactor: 60,
+                      child: Text(
+                        'View not supported for current layout',
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    );
+                  } else {
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 48, top: 30),
+                      child: CalculateWheyProtein(constraints: constraints),
+                    );
+                  }
+                },
+              ),
             ),
           ),
         );
