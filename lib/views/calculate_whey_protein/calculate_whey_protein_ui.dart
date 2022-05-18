@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/update_calculate_whey_protein/bloc/put_calculate_whey_bloc.dart';
 import 'package:spk_saw_whey_protein/views/calculate_whey_protein/searchbox_whey_protein.dart';
 import 'package:spk_saw_whey_protein/views/calculate_whey_protein/table_calculate_whey_protein.dart';
+import 'package:spk_saw_whey_protein/views/calculate_whey_protein/widgets/calculate_info_dialog.dart';
 
 class CalculateWheyProtein extends StatefulWidget {
   const CalculateWheyProtein({
@@ -86,14 +87,40 @@ class CalculateWheyProteinState extends State<CalculateWheyProtein> {
   }
 
   Widget titleText() {
-    return const Text(
-      'Calculate Whey Protein',
-      style: TextStyle(
-        fontSize: 32,
-        fontWeight: FontWeight.bold,
-        color: Color.fromRGBO(2, 106, 199, 1),
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        const Text(
+          'Calculate Whey Protein',
+          style: TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+            color: Color.fromRGBO(2, 106, 199, 1),
+          ),
+        ),
+        const SizedBox(width: 20),
+        InkWell(
+          customBorder: const CircleBorder(),
+          splashColor: const Color.fromRGBO(2, 106, 199, 1),
+          onTap: () {
+            //IF ADMIN ALLOW FUNCTIONS
+            showDialog(
+              context: context,
+              builder: (_) {
+                return CalculateDialogInfo();
+              }
+            );
+          },
+          child: const Tooltip(
+            message: "Calculate Method Info",
+            child: Icon(
+              Icons.delete_outline,
+              color: Color.fromRGBO(2, 106, 199, 1),
+              size: 40.0,
+            ),
+          ),
+        ),
+      ],
     );
   }
-
 }

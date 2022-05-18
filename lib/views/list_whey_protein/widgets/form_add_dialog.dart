@@ -65,43 +65,67 @@ class FormAddAlertDialog extends StatelessWidget {
       actionsPadding: const EdgeInsets.symmetric(horizontal: 48)
           .copyWith(top: 32, bottom: 40),
       actions: [
-        SizedBox(
-          height: 45,
-          width: 313,
-          child: Container(
-            width: 180,
-            height: 45,
-            child: ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.saveAndValidate()) {
-                  final Map<String, dynamic> data =
-                      _formKey.currentState!.value;
-                  final AddDataListWheyProtein newListWheyData = AddDataListWheyProtein(
-                    wheyProteinName: data['wheyProtein'],
-                    pricePerServing: data['pricePerServ'], 
-                    proteinPerServing: data['proteinPerServ'], 
-                    caloriesPerServing: data['caloriesPerServ'], 
-                    availableVariants: data['availableVarProduct'], 
-                    otherIngredients: data['otherIngredients'], 
-                    moreDetails: data['moreDetails']
-                  );
-                  BlocProvider.of<PostListWheyProteinBloc>(context).add(PostListNewWheyProtein(newListWheyData: newListWheyData));
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              width: 300,
+              height: 45,
+              child: OutlinedButton(
+                onPressed: () {
                   Navigator.pop(context);
-                }
-              },
-              child: const Text(
-                'Submit Whey Product',
-                style: TextStyle(fontSize: 16),
+                },
+                child: const Text(
+                  'Cancel',
+                  style: TextStyle(fontSize: 16),
+                ),
+                style: OutlinedButton.styleFrom(
+                  // minimumSize: Size(double.infinity, 45),
+                  primary: const Color.fromRGBO(2, 106, 199, 1),
+                  side: const BorderSide(
+                    color: Color.fromRGBO(2, 106, 199, 1),
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
               ),
-              style: ElevatedButton.styleFrom(
-                elevation: 0,
-                primary: const Color.fromRGBO(2, 106, 199, 1),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                )),
             ),
-          ),
-        ),
+            Container(
+              width: 300,
+              height: 45,
+              child: ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.saveAndValidate()) {
+                    final Map<String, dynamic> data =
+                        _formKey.currentState!.value;
+                    final AddDataListWheyProtein newListWheyData = AddDataListWheyProtein(
+                      wheyProteinName: data['wheyProtein'],
+                      pricePerServing: data['pricePerServ'], 
+                      proteinPerServing: data['proteinPerServ'], 
+                      caloriesPerServing: data['caloriesPerServ'], 
+                      availableVariants: data['availableVarProduct'], 
+                      otherIngredients: data['otherIngredients'], 
+                      moreDetails: data['moreDetails']
+                    );
+                    BlocProvider.of<PostListWheyProteinBloc>(context).add(PostListNewWheyProtein(newListWheyData: newListWheyData));
+                    Navigator.pop(context);
+                  }
+                },
+                child: const Text(
+                  'Submit Whey Product',
+                  style: TextStyle(fontSize: 16),
+                ),
+                style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  primary: const Color.fromRGBO(2, 106, 199, 1),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  )),
+              ),
+            ),
+          ],
+        )
       ]
     );
   }

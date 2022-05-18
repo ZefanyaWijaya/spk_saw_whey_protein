@@ -211,7 +211,7 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
               Icons.settings_outlined,
               color: Color.fromRGBO(2, 106, 199, 1),
               size: 40.0,
-              semanticLabel: 'Text to announce in accessibility modes',
+              
             ),
           ),
         ),
@@ -236,7 +236,7 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
               Icons.delete_outline,
               color: Color.fromRGBO(2, 106, 199, 1),
               size: 40.0,
-              semanticLabel: 'Text to announce in accessibility modes',
+              
             ),
           ),
         ),
