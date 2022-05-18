@@ -42,6 +42,18 @@ class CalculateDialogInfo extends StatelessWidget {
                     TextSpan(text: "dan juga berdasarkan bobot dari setiap kriterianya." , style: TextStyle(fontSize: 16)),
                   ]
                 )
+              ),
+              const SizedBox(height: 20),
+              RichText(
+                text: const TextSpan(
+                  children: <TextSpan> [
+                    TextSpan(text: "Benefit " , style: TextStyle(fontSize : 16, fontWeight: FontWeight.bold)),
+                    TextSpan(text: "dapat diartikan suatu value asli pada suatu produk yang jumlahnya semakin tinggi semakin baik seperti berat protein (gr) , jumlah rasa yang tersedia, dan kandungan lain dalam whey protein itu sendiri. Sementara" ,
+                    style: TextStyle(fontSize: 16 )),
+                    TextSpan(text: " Cost ", style: TextStyle(fontSize : 16, fontWeight: FontWeight.bold)),
+                    TextSpan(text: "dapat diartikan suatu value asli pada suatu produk yang jumlah nya semakin tinggi maka akan semakin buruk, seperti jumlah harga dan kalori yang terdapat dalam produk - produk yang ada." , style:  TextStyle(fontSize: 16)),
+                  ]
+                )
               )
             ],
           )
