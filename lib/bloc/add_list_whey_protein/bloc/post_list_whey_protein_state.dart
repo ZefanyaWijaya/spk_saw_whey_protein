@@ -13,11 +13,17 @@ class PostListWheyProteinLoading extends PostListWheyProteinState {}
 
 class PostListWheyProteinDone extends PostListWheyProteinState {}
 
-class PostListWheyProteinFailed extends PostListWheyProteinState {}
+class PostListWheyProteinFailed extends PostListWheyProteinState {
+  final String errorMessage;
 
-class PostListWheyProteinFailedErrorInternalServer extends PostListWheyProteinFailed {}
+  PostListWheyProteinFailed ({
+    required this.errorMessage
+  });
+}
 
-class PostListWheyProteinFailedUnknownErrorCode extends PostListWheyProteinFailed {}
+// class PostListWheyProteinFailedErrorInternalServer extends PostListWheyProteinFailed {}
+
+// class PostListWheyProteinFailedUnknownErrorCode extends PostListWheyProteinFailed {}
 
 
 

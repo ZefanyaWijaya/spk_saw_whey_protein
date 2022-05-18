@@ -99,37 +99,17 @@ class ListWheyProteinRunner extends StatelessWidget {
                 ),
                 BlocListener<PostListWheyProteinBloc , PostListWheyProteinState>(
                   listener: (context , state) {
-                    if( state is PostListWheyProteinFailedErrorInternalServer) {
+                    if( state is PostListWheyProteinFailed) {
                       showDialog(
                         context: context,
                         builder: (_) {
                           return FailureAlertDialog(
-                            errorMessage: "Internal Server Error (500). Mohon coba kembali di lain waktu",
+                            errorMessage: state.errorMessage,
                             errorTitle: "Gagal Menambahkan Data",
                           );
                         },
                       );
-                    } else if (state is PostListWheyProteinFailedUnknownErrorCode) {
-                      showDialog(
-                        context: context,
-                        builder: (_) {
-                          return FailureAlertDialog(
-                            errorMessage: "Unknown Error Code. Segera hubungi pengembang webiste",
-                            errorTitle: "Gagal Menambahkan Data",
-                          );
-                        },
-                      );
-                    } else {
-                      showDialog(
-                        context: context,
-                        builder: (_) {
-                          return FailureAlertDialog(
-                            errorMessage: "Terjadi Kesalahan, segera hubungi pengembang website",
-                            errorTitle: "Gagal Menambahkan Data",
-                          );
-                        },
-                      );
-                    }
+                    } 
                   }
                 ),
               ],

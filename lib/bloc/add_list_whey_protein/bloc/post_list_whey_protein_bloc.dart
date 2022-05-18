@@ -20,15 +20,25 @@ class PostListWheyProteinBloc
           listWheyProteinDataRepo: event.newListWheyData
         );
         emit(PostListWheyProteinDone());
-      } on PostListWheyFailedErrorInternalServer {
-        emit(PostListWheyProteinFailedErrorInternalServer());
-      } on PostListWheyUnknownErrorCode {
-        emit (PostListWheyProteinFailedUnknownErrorCode());
-      } on PostListWheyFailed {
-        emit(PostListWheyProteinFailed());
-      } catch (exception) {
-        emit(PostListWheyProteinFailed());
+        print("finishdoneadd");
+      } 
+      catch (exception) {
+        print("tryexception");
+        String message = this.errorMessageList(exception);
+        emit(PostListWheyProteinFailed(
+          errorMessage:  message
+        ));
       }
     });
+  }
+
+  String errorMessageList(Object exception) {
+    if (exception is PostListWheyFailedErrorInternalServer) {
+      return 'Internal Server Error (500). Mohon coba kembali di lain waktu';
+    } else if (exception is PostListWheyUnknownErrorCode) {
+      return 'Unknown Error Code. Segera hubungi pengembang website';
+    } else {
+      return 'Terjadi kesalahan, segera hubungi pengembang website';
+    }
   }
 }
