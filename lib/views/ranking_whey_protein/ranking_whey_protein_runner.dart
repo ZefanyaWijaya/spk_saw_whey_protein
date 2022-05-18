@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/get_ranking_whey_protein/bloc/get_list_ranking_whey_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/get_ranking_whey_protein/cubit/cubit/settings_ranking_whey_cubit.dart';
 import 'package:spk_saw_whey_protein/bloc/layout_manager_cubit/cubit/layout_manager_cubit.dart';
+import 'package:spk_saw_whey_protein/custom_widget/failure_alert_dialog.dart';
 import 'package:spk_saw_whey_protein/views/ranking_whey_protein/ranking_whey_protein_ui.dart';
 
 class RankingWheyProteinRunner extends StatelessWidget {
@@ -32,24 +33,43 @@ class RankingWheyProteinRunner extends StatelessWidget {
                 )
               ),
             ],
-            child: BlocBuilder<LayoutManagerCubit, LayoutManagerState>(
-              bloc: settingsLayout,
-              builder: (context, state) {
-                if (state.layoutType != LayoutType.Desktop) { 
-                  return const Center(
-                    heightFactor: 60,
-                    child: Text(
-                      'View not supported for current layout',
-                      style: TextStyle(fontSize: 14),
-                    ),
-                  );
-                } else {
-                  return Padding(
-                    padding: const EdgeInsets.only(left: 48, top: 30),
-                    child: RankingWheyProtein(constraints: constraints),
-                  );
-                }
-              },
+            child: MultiBlocListener(
+              listeners: [
+                BlocListener<GetListRankingWheyBloc , GetListRankingWheyState>(
+                  listener: (context , state) {
+                    if( state is GetListRankingWheyFailed) {
+                      showDialog(
+                        context: context,
+                        builder: (_) {
+                          return FailureAlertDialog(
+                            errorMessage: state.errorMessage,
+                            errorTitle: "Gagal Memuat Data",
+                          );
+                        },
+                      );
+                    }
+                  }
+                ),
+              ],
+              child: BlocBuilder<LayoutManagerCubit, LayoutManagerState>(
+                bloc: settingsLayout,
+                builder: (context, state) {
+                  if (state.layoutType != LayoutType.Desktop) { 
+                    return const Center(
+                      heightFactor: 60,
+                      child: Text(
+                        'View not supported for current layout',
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    );
+                  } else {
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 48, top: 30),
+                      child: RankingWheyProtein(constraints: constraints),
+                    );
+                  }
+                },
+              ),
             ),
             
           ),
