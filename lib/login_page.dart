@@ -40,109 +40,156 @@ class LoginPageState extends State<LoginPage>{
 
 
   Widget _buildLoginForm() {
-    return Container(
-      width: 400,
-      child: Column(
-        children: [
-          const Text("Login Pengguna" , style: TextStyle(fontSize: 28 , fontWeight: FontWeight.bold ),),
-          const SizedBox(height: 30),
-          _emailForm(context),
-          const SizedBox(height: 30),
-          _passwordForm(context)
-
-        ],
-      ),
-    );
-  }
-
-  Widget _emailForm(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Padding(
-          padding: EdgeInsets.only(bottom: 12.0),
-          child: Text(
-            "Email",
-            style: TextStyle(
-              fontSize: 16,
-              color: Color.fromRGBO(83, 81, 81, 1),
-              fontWeight: FontWeight.bold,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text("Login Pengguna" , 
+              style: TextStyle(
+                fontSize: 28 , 
+                fontWeight: FontWeight.bold 
+              ),
+              textAlign: TextAlign.left,
             ),
-          ),
+            const SizedBox(height: 30),
+            _emailForm(context),
+            const SizedBox(height: 30),
+          ],
         ),
-        FormBuilderTextField(
-          name: "email",
-          decoration: const InputDecoration(
-            constraints: BoxConstraints(
-              maxWidth: 650,
-            ),
-            contentPadding: EdgeInsets.symmetric(horizontal: 32),
-            hintText: "Email",
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(
-              Radius.circular(12),
-            )),
-          ),
-          textInputAction: TextInputAction.next,
-          valueTransformer: (String? email) {
-            if (email != null) {
-              return email.trim();
-            } else {
-              return null;
-            }
-          },
-          validator: FormBuilderValidators.compose([
-            FormBuilderValidators.required(context,
-                errorText: 'Please enter your email.'),
-          ]),
-        ),
+        _passwordForm(context),
+        const SizedBox(height: 30),
+        _buildLoginButton(),
+        const SizedBox(height: 30),
+        _continueAsUser(),
+        const SizedBox(height: 30),
+        _contactUs()
       ],
     );
   }
 
+  Widget _emailForm(BuildContext context) {
+    return FormBuilderTextField(
+      name: "email",
+      decoration: const InputDecoration(
+        constraints: BoxConstraints(
+          maxWidth: 500,
+        ),
+        contentPadding: EdgeInsets.symmetric(horizontal: 32),
+        hintText: "Email",
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+          Radius.circular(12),
+        )),
+      ),
+      textInputAction: TextInputAction.next,
+      valueTransformer: (String? email) {
+        if (email != null) {
+          return email.trim();
+        } else {
+          return null;
+        }
+      },
+      validator: FormBuilderValidators.compose([
+        FormBuilderValidators.required(context,
+            errorText: 'Please enter your email.'),
+      ]),
+    );
+  }
+
   Widget _passwordForm(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Padding(
-          padding: EdgeInsets.only(bottom: 12.0),
-          child: Text(
-            "Password",
-            style: TextStyle(
-              fontSize: 16,
-              color: Color.fromRGBO(83, 81, 81, 1),
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+    return FormBuilderTextField(
+      name: "password",
+      decoration: const InputDecoration(
+        constraints: BoxConstraints(
+          maxWidth: 500,
         ),
-        FormBuilderTextField(
-          name: "password",
-          decoration: const InputDecoration(
-            constraints: BoxConstraints(
-              maxWidth: 650,
-            ),
-            contentPadding: EdgeInsets.symmetric(horizontal: 32),
-            hintText: "Password",
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(
-              Radius.circular(12),
+        contentPadding: EdgeInsets.symmetric(horizontal: 32),
+        hintText: "Password",
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+          Radius.circular(12),
+        )),
+      ),
+      textInputAction: TextInputAction.next,
+      valueTransformer: (String? password) {
+        if (password != null) {
+          return password.trim();
+        } else {
+          return null;
+        }
+      },
+      validator: FormBuilderValidators.compose([
+        FormBuilderValidators.required(context,
+            errorText: 'Please enter your password.'),
+      ]),
+    );
+  }
+
+  Widget _buildLoginButton () {
+    return Container(
+      width: 500,
+      height: 45,
+      child: ElevatedButton(
+        onPressed: () {
+          
+        },
+        child: const Text(
+          'Sign In',
+          style: TextStyle(fontSize: 16 , color:  Colors.white, fontWeight: FontWeight.bold),
+        ),
+        style: ElevatedButton.styleFrom(
+            elevation: 0,
+            primary: Colors.black,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
             )),
-          ),
-          textInputAction: TextInputAction.next,
-          valueTransformer: (String? password) {
-            if (password != null) {
-              return password.trim();
-            } else {
-              return null;
-            }
-          },
-          validator: FormBuilderValidators.compose([
-            FormBuilderValidators.required(context,
-                errorText: 'Please enter your password.'),
-          ]),
+      ),
+    );
+  }
+
+  Widget _continueAsUser () {
+    return TextButton(
+      onPressed: () {
+
+      },
+      child: const Text('Continue As User' , 
+        style: TextStyle(
+          fontSize: 18,
+          color: Colors.black, 
+          fontWeight: FontWeight.bold
         ),
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+
+  Widget _contactUs () {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text("Mengalami Kendala ? ", 
+          style: TextStyle(
+            fontSize: 18,
+            color: Colors.black
+          ),
+        ),
+        TextButton(
+          style: TextButton.styleFrom(
+            textStyle: const TextStyle(fontSize: 18),
+          ),
+          onPressed: () {
+
+          },
+          child: const Text('Hubungi Kami' , 
+            style: TextStyle(
+              color: Color.fromRGBO(2, 106, 199, 1),
+              fontWeight: FontWeight.bold
+            ),
+          ),
+        )
       ],
     );
   }
