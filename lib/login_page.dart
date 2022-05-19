@@ -1,6 +1,9 @@
 import 'dart:ui';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:spk_saw_whey_protein/spk_saw_runner.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -10,26 +13,48 @@ class LoginPage extends StatefulWidget {
 }
 
 class LoginPageState extends State<LoginPage>{
+  //LOGIN FUNCTION
+
+  static Future<User?> loginUsingEmailPassword({
+    required String email, 
+    required String password, 
+    required BuildContext context}) async {
+      FirebaseAuth auth = FirebaseAuth.instance;
+      User? user;
+      try { 
+        UserCredential userCredential = await auth.signInWithEmailAndPassword(email: email, password: password);
+        user = userCredential.user;
+      } on FirebaseAuthException catch (exception) {
+        if(exception.code == "user-not-found") {
+          print("No user found for that email");
+        }
+      }
+      return user;
+    }
+
+
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body : SingleChildScrollView(
-        child: Container(
-          constraints: BoxConstraints(maxHeight: window.physicalSize.height),
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/pict2.jpg'),
-              fit: BoxFit.cover,
-              
-            )
-          ),
-          child: Align(
-            alignment: Alignment.centerRight,
-            child: Container(
-              color: Colors.white,
-              width: 735,
-              child: _buildLoginForm(),
-            ),
+    //create controller
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
+
+    return SingleChildScrollView(
+      child: Container(
+        constraints: BoxConstraints(maxHeight: window.physicalSize.height),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/pict2.jpg'),
+            fit: BoxFit.cover,
+          )
+        ),
+        child: Align(
+          alignment: Alignment.centerRight,
+          child: Container(
+            color: Colors.white,
+            width: 735,
+            child: _buildLoginForm(emailController,passwordController),
           ),
         ),
       ),
@@ -37,7 +62,7 @@ class LoginPageState extends State<LoginPage>{
   }
 
 
-  Widget _buildLoginForm() {
+  Widget _buildLoginForm(TextEditingController email , TextEditingController password) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -53,13 +78,13 @@ class LoginPageState extends State<LoginPage>{
               textAlign: TextAlign.left,
             ),
             const SizedBox(height: 60),
-            _emailForm(context),
+            _emailFormTextField(context , email),
             const SizedBox(height: 30),
           ],
         ),
-        _passwordForm(context),
+        _passwordFormTextField(context , password),
         const SizedBox(height: 80),
-        _buildLoginButton(),
+        _buildLoginButton(email, password),
         const SizedBox(height: 10),
         _continueAsUser(),
         const SizedBox(height: 100),
@@ -68,71 +93,106 @@ class LoginPageState extends State<LoginPage>{
     );
   }
 
-  Widget _emailForm(BuildContext context) {
-    return FormBuilderTextField(
-      name: "email",
+  // Widget _emailForm(BuildContext context) {
+  //   return FormBuilderTextField(
+  //     name: "email",
+  //     decoration: const InputDecoration(
+  //       constraints: BoxConstraints(
+  //         maxWidth: 500,
+  //       ),
+  //       contentPadding: EdgeInsets.symmetric(horizontal: 32),
+  //       hintText: "Email",
+  //       border: OutlineInputBorder(
+  //           borderRadius: BorderRadius.all(
+  //         Radius.circular(12),
+  //       )),
+  //     ),
+  //     textInputAction: TextInputAction.next,
+  //     valueTransformer: (String? email) {
+  //       if (email != null) {
+  //         return email.trim();
+  //       } else {
+  //         return null;
+  //       }
+  //     },
+  //     validator: FormBuilderValidators.compose([
+  //       FormBuilderValidators.required(context,
+  //           errorText: 'Please enter your email.'),
+  //     ]),
+  //   );
+  // }
+
+  Widget _emailFormTextField(BuildContext context , TextEditingController email) {
+    return TextField(
+      controller: email,
+      keyboardType: TextInputType.emailAddress,
       decoration: const InputDecoration(
-        constraints: BoxConstraints(
-          maxWidth: 500,
-        ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 32),
-        hintText: "Email",
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-          Radius.circular(12),
-        )),
+        constraints: BoxConstraints(maxWidth: 500),
+        hintText: "Email Admin",
+        prefixIcon: Icon(Icons.mail, color: Colors.black)
       ),
-      textInputAction: TextInputAction.next,
-      valueTransformer: (String? email) {
-        if (email != null) {
-          return email.trim();
-        } else {
-          return null;
-        }
-      },
-      validator: FormBuilderValidators.compose([
-        FormBuilderValidators.required(context,
-            errorText: 'Please enter your email.'),
-      ]),
     );
   }
 
-  Widget _passwordForm(BuildContext context) {
-    return FormBuilderTextField(
-      name: "password",
+  Widget _passwordFormTextField(BuildContext context , TextEditingController password) {
+    return TextField(
+      controller: password,
+      obscureText: true,
+      keyboardType: TextInputType.emailAddress,
       decoration: const InputDecoration(
-        constraints: BoxConstraints(
-          maxWidth: 500,
-        ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 32),
-        hintText: "Password",
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-          Radius.circular(12),
-        )),
+        constraints: BoxConstraints(maxWidth: 500),
+        hintText: "Password Admin",
+        prefixIcon: Icon(Icons.lock, color: Colors.black)
       ),
-      textInputAction: TextInputAction.next,
-      valueTransformer: (String? password) {
-        if (password != null) {
-          return password.trim();
-        } else {
-          return null;
-        }
-      },
-      validator: FormBuilderValidators.compose([
-        FormBuilderValidators.required(context,
-            errorText: 'Please enter your password.'),
-      ]),
     );
   }
 
-  Widget _buildLoginButton () {
+  // Widget _passwordForm(BuildContext context) {
+  //   return FormBuilderTextField(
+  //     name: "password",
+  //     decoration: const InputDecoration(
+  //       constraints: BoxConstraints(
+  //         maxWidth: 500,
+  //       ),
+  //       contentPadding: EdgeInsets.symmetric(horizontal: 32),
+  //       hintText: "Password",
+  //       border: OutlineInputBorder(
+  //           borderRadius: BorderRadius.all(
+  //         Radius.circular(12),
+  //       )),
+  //     ),
+  //     textInputAction: TextInputAction.next,
+  //     valueTransformer: (String? password) {
+  //       if (password != null) {
+  //         return password.trim();
+  //       } else {
+  //         return null;
+  //       }
+  //     },
+  //     validator: FormBuilderValidators.compose([
+  //       FormBuilderValidators.required(context,
+  //           errorText: 'Please enter your password.'),
+  //     ]),
+  //   );
+  // }
+
+  Widget _buildLoginButton (TextEditingController emailController, TextEditingController passwordController ) {
     return Container(
       width: 500,
       height: 45,
       child: ElevatedButton(
-        onPressed: () {
-          
+        onPressed: () async {
+          print("TEST DARI BUTTON PERTAMA");
+          User ? user = await loginUsingEmailPassword(
+            email: emailController.text.trim(), 
+            password: passwordController.text.trim(), 
+            context: context
+          );
+          print("TEST DARI BUTTON KEDUA");
+          print(user);
+          if(user != null){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context)=> SpkSawRunner()));
+          }
         },
         child: const Text(
           'Sign In',

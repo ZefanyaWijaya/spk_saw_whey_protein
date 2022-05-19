@@ -22,9 +22,7 @@ environment:
  
 
   # Firebase Library
-  firebase_core: ^1.4.0
-  firebase_auth: ^3.0.1
-  cloud_firestore: ^2.4.0
+  
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -35,6 +33,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  firebase_core: ^1.4.0
+  firebase_auth: ^3.0.1
+  cloud_firestore: ^2.4.0
   get_it: ^7.2.0
   flutter_bloc: ^7.3.0
   equatable: ^2.0.3
@@ -69,7 +70,6 @@ dependencies:
   easy_rich_text: ^1.0.4
   vs_scrollbar: ^0.2.1
   badges: ^2.0.2
-
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
