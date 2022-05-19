@@ -1,43 +1,58 @@
 import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class LoginPage2 extends StatefulWidget {
+  const LoginPage2({Key? key}) : super(key: key);
 
   @override
   LoginPageState createState() => LoginPageState();
 }
 
-class LoginPageState extends State<LoginPage>{
+class LoginPageState extends State<LoginPage2>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body : SingleChildScrollView(
-        child: Container(
-          constraints: BoxConstraints(maxHeight: window.physicalSize.height),
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/pict2.jpg'),
-              fit: BoxFit.cover,
-              
-            )
-          ),
-          child: Align(
-            alignment: Alignment.centerRight,
-            child: Container(
+        child: Row(
+          children: [
+            Container(
+              width: 850,
+              height: 850,
+              // constraints: BoxConstraints(maxHeight: window.physicalSize.height),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/pict2.jpg'),
+                  fit: BoxFit.cover,
+                  
+                )
+              ),
+            ),
+            Container(
               color: Colors.white,
               width: 735,
               child: _buildLoginForm(),
             ),
-          ),
+          ],
+          
         ),
+        // child: Row(
+        //   mainAxisAlignment: MainAxisAlignment.start,
+        //   children: [
+        //     _buildImageWallpaper(),
+        //     _buildLoginForm()
+        //   ],
+        // ),
       ),
     );
   }
 
+  Widget _buildImageWallpaper () {
+    return Container(
+      constraints: BoxConstraints(),
+      child: Expanded(child: Image.asset('assets/images/pict1.jpg')),
+    );
+  }
 
   Widget _buildLoginForm() {
     return Container(

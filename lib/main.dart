@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:spk_saw_whey_protein/login_page.dart';
-import 'package:spk_saw_whey_protein/spk_saw_runner.dart';
 
 void main() {
   runApp(const MyApp());
