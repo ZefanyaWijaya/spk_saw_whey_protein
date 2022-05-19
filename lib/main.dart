@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spk_saw_whey_protein/login_page.dart';
 import 'package:spk_saw_whey_protein/spk_saw_runner.dart';
 
 void main() {
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
       // theme: ThemeData(
       //   primarySwatch: Colors.blue,
       // ),
-      home: SpkSawRunner(),
+      // home: SpkSawRunner(),
+      home: LoginPage(),
     );
   }
 }
