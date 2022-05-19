@@ -1,6 +1,4 @@
 import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
@@ -54,17 +52,17 @@ class LoginPageState extends State<LoginPage>{
               ),
               textAlign: TextAlign.left,
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 60),
             _emailForm(context),
             const SizedBox(height: 30),
           ],
         ),
         _passwordForm(context),
-        const SizedBox(height: 30),
+        const SizedBox(height: 80),
         _buildLoginButton(),
-        const SizedBox(height: 30),
+        const SizedBox(height: 10),
         _continueAsUser(),
-        const SizedBox(height: 30),
+        const SizedBox(height: 100),
         _contactUs()
       ],
     );
@@ -170,7 +168,7 @@ class LoginPageState extends State<LoginPage>{
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Mengalami Kendala ? ", 
+        const Text("Mengalami Kendala? ", 
           style: TextStyle(
             fontSize: 18,
             color: Colors.black
