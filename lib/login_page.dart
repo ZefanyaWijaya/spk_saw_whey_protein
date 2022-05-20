@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:spk_saw_whey_protein/spk_saw_runner.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -277,6 +278,30 @@ class LoginPageState extends State<LoginPage>{
     );
   }
 
+  // Future launchEmail ({
+  //   required String email,
+  //   required String subject,
+  //   required String message,
+  // }) async {
+  //   final url = Uri.parse("mailto:$email?subject${Uri.encodeFull(subject)}&body=${Uri.encodeFull(message)}");
+    
+  //   if(await canLaunchUrl(url)){
+  //     await launchUrl()
+  //   }
+  // }
+
+
+  void _launchUrl({
+    required String email,
+    required String subject,
+    required String message,
+  }) async {
+    if (!await launchUrl(
+      Uri.parse("mailto:$email?subject${Uri.encodeFull(subject)}&body=${Uri.encodeFull(message)}")
+    )) 
+      throw 'Could not launch to website';
+  }
+
   Widget _contactUs () {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -292,7 +317,11 @@ class LoginPageState extends State<LoginPage>{
             textStyle: const TextStyle(fontSize: 18),
           ),
           onPressed: () {
-
+            _launchUrl(
+              email: "zefanyawijaya54@gmail.com", 
+              subject: "Your Subject!", 
+              message: "Your Message"
+            );
           },
           child: const Text('Hubungi Kami' , 
             style: TextStyle(
