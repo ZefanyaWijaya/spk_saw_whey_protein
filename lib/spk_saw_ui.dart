@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/manage_saw_page_bloc/manage_page_saw_bloc.dart';
+import 'package:spk_saw_whey_protein/login_page.dart';
+import 'package:spk_saw_whey_protein/main.dart';
 import 'package:spk_saw_whey_protein/views/calculate_whey_protein/calculate_whey_protein_runner.dart';
 import 'package:spk_saw_whey_protein/views/list_whey_protein/list_whey_protein_runner.dart';
 import 'package:spk_saw_whey_protein/views/ranking_whey_protein/ranking_whey_protein_runner.dart';
@@ -31,7 +33,10 @@ class _SpkSawUiDashboard extends State<SpkSawUi> {
                     const SizedBox(height: 50),
                     iconState is ManagePageSawDoneToCalculateWheyPage ? _buildIconDashboardCalculateOnPressed() : _buildIconDashboardCalculate(),
                     const SizedBox(height: 50),
-                    iconState is ManagePageSawDoneToRankingWheyPage ? _buildIconDashboardRankingOnPressed() : _buildIconDashboardRanking()
+                    iconState is ManagePageSawDoneToRankingWheyPage ? _buildIconDashboardRankingOnPressed() : _buildIconDashboardRanking(),
+                    const SizedBox(height: 50),
+                    _buildLogoutIcon()
+
                   ],
                 );
               }
@@ -210,6 +215,30 @@ class _SpkSawUiDashboard extends State<SpkSawUi> {
               color: Colors.white,
               fontSize: 14,
               fontWeight: FontWeight.bold
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildLogoutIcon () {
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(builder: (context)=> MyApp()));
+      },
+      child: Column(
+        children: const [
+          Icon(
+            Icons.logout_outlined,
+            color: Colors.white,
+            size: 30,
+          ),
+          SizedBox(height: 5),
+          Text("Logout" , style: 
+            TextStyle(
+              color: Colors.white,
+              fontSize: 14,
             ),
           )
         ],
