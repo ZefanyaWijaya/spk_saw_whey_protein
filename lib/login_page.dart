@@ -106,7 +106,11 @@ class LoginPageState extends State<LoginPage>{
           maxWidth: 500,
         ),
         contentPadding: EdgeInsets.symmetric(horizontal: 32),
-        hintText: "Email",
+        hintText: "Email Admin",
+        prefixIcon: Padding(
+          padding: EdgeInsets.only(left: 15, right: 10),
+          child: Icon(Icons.mail , color:  Colors.black)
+        ),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(
           Radius.circular(12),
@@ -155,12 +159,17 @@ class LoginPageState extends State<LoginPage>{
   Widget _passwordForm(BuildContext context) {
     return FormBuilderTextField(
       name: "password",
+      obscureText: true,
       decoration: const InputDecoration(
         constraints: BoxConstraints(
           maxWidth: 500,
         ),
         contentPadding: EdgeInsets.symmetric(horizontal: 32),
-        hintText: "Password",
+        hintText: "Password Admin",
+        prefixIcon: Padding(
+          padding: EdgeInsets.only(left: 15 , right: 10),
+          child: Icon(Icons.lock , color:  Colors.black)
+        ),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(
           Radius.circular(12),
@@ -233,7 +242,7 @@ class LoginPageState extends State<LoginPage>{
             print(user);
             if(user != null){
               print("test masuk");
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=> SpkSawRunner()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const SpkSawRunner()));
             }
           }
           print("TEST DARI BUTTON KEDUA");
@@ -255,7 +264,7 @@ class LoginPageState extends State<LoginPage>{
   Widget _continueAsUser () {
     return TextButton(
       onPressed: () {
-
+        Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const SpkSawRunner()));
       },
       child: const Text('Continue As User' , 
         style: TextStyle(
