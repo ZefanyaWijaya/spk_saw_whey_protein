@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:spk_saw_whey_protein/custom_widget/failure_alert_dialog.dart';
 import 'package:spk_saw_whey_protein/spk_saw_runner.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -29,6 +30,15 @@ class LoginPageState extends State<LoginPage>{
         user = userCredential.user;
       } on FirebaseAuthException catch (exception) {
         if(exception.code == "user-not-found") {
+          showDialog(
+            context: context,
+            builder: (_) {
+              return FailureAlertDialog(
+                errorMessage: "User not found in our database!",
+                errorTitle: "Login Failed",
+              );
+            },
+          );
           print("No user found for that email");
         }
       }
@@ -278,26 +288,13 @@ class LoginPageState extends State<LoginPage>{
     );
   }
 
-  // Future launchEmail ({
-  //   required String email,
-  //   required String subject,
-  //   required String message,
-  // }) async {
-  //   final url = Uri.parse("mailto:$email?subject${Uri.encodeFull(subject)}&body=${Uri.encodeFull(message)}");
-    
-  //   if(await canLaunchUrl(url)){
-  //     await launchUrl()
-  //   }
-  // }
-
-
   void _launchUrl({
     required String email,
     required String subject,
     required String message,
   }) async {
     if (!await launchUrl(
-      Uri.parse("mailto:$email?subject${Uri.encodeFull(subject)}&body=${Uri.encodeFull(message)}")
+      Uri.parse("mailto:$email?subject=${Uri.encodeFull(subject)}&body=${Uri.encodeFull(message)}")
     )) 
       throw 'Could not launch to website';
   }
@@ -306,9 +303,10 @@ class LoginPageState extends State<LoginPage>{
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Mengalami Kendala? ", 
+        const Text("Have some questions ? ", 
           style: TextStyle(
             fontSize: 18,
+            decoration: TextDecoration.underline,
             color: Colors.black
           ),
         ),
@@ -323,7 +321,7 @@ class LoginPageState extends State<LoginPage>{
               message: "Your Message"
             );
           },
-          child: const Text('Hubungi Kami' , 
+          child: const Text('Contact Us' , 
             style: TextStyle(
               color: Color.fromRGBO(2, 106, 199, 1),
               fontWeight: FontWeight.bold
