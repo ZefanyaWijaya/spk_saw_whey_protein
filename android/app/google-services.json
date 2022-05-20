@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "376407238677",
+    "project_id": "skripsi-2022-zefanyawijaya",
+    "storage_bucket": "skripsi-2022-zefanyawijaya.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:376407238677:android:f5084f12f315c02510c61c",
+        "android_client_info": {
+          "package_name": "com.example.spk_saw_whey_protein"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "376407238677-ud2erctqonn1bj7jbrpoit0kontpksgb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAj2sDiP2BNTZEDA1t64W1uxNDb3i-jBfk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "376407238677-ud2erctqonn1bj7jbrpoit0kontpksgb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
