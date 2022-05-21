@@ -73,30 +73,40 @@ class ListWheyProteinState extends State<ListWheyProtein> {
       child: Container(
         width: 180,
         height: 45,
-        child: ElevatedButton(
-          onPressed: () {
-            showDialog(
-              context: context, 
-              builder: (_) {
-                // return FormAddAlertDialog();
-                return BlocProvider.value(
-                  value: BlocProvider.of<PostListWheyProteinBloc>(context),
-                  child: FormAddAlertDialog(),
-                );
-              }
-            );
-          },
-          child: const Text(
-            'Add Whey',
-            style: TextStyle(fontSize: 16),
+        child: Tooltip(
+          message: "Add Whey (Admin Only)",
+            padding: const EdgeInsets.all(10),
+            preferBelow: true,
+            verticalOffset: 20,
+            textStyle: const TextStyle(
+              fontSize: 14 , 
+              color: Colors.white
+            ),
+          child: ElevatedButton(
+            onPressed: () {
+              showDialog(
+                context: context, 
+                builder: (_) {
+                  // return FormAddAlertDialog();
+                  return BlocProvider.value(
+                    value: BlocProvider.of<PostListWheyProteinBloc>(context),
+                    child: FormAddAlertDialog(),
+                  );
+                }
+              );
+            },
+            child: const Text(
+              'Add Whey',
+              style: TextStyle(fontSize: 16),
+            ),
+            style: ElevatedButton.styleFrom(
+              elevation: 0,
+              // primary: const Color.fromRGBO(2, 106, 199, 1),
+              primary: Colors.black,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              )),
           ),
-          style: ElevatedButton.styleFrom(
-            elevation: 0,
-            // primary: const Color.fromRGBO(2, 106, 199, 1),
-            primary: Colors.black,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            )),
         ),
       ),
     );

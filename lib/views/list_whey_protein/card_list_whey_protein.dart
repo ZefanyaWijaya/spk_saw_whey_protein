@@ -208,6 +208,13 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
             //ELSE DO NOTHING
           },
           child: const Tooltip(
+            padding: EdgeInsets.all(10),
+            preferBelow: true,
+            verticalOffset: 20,
+            textStyle: TextStyle(
+              fontSize: 14 , 
+              color: Colors.white
+            ),
             message: "Edit Product (Admin Only)",
             child: Icon(
               Icons.settings_outlined,
@@ -235,6 +242,13 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
           },
           child: const Tooltip(
             message: "Delete Product (Admin Only)",
+            padding: EdgeInsets.all(10),
+            preferBelow: true,
+            verticalOffset: 20,
+            textStyle: TextStyle(
+              fontSize: 14 , 
+              color: Colors.white
+            ),
             child: Icon(
               Icons.delete_outline,
               // color: Color.fromRGBO(2, 106, 199, 1),

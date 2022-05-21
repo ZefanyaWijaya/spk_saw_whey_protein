@@ -1,9 +1,7 @@
 import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:mailto/mailto.dart';
 import 'package:spk_saw_whey_protein/custom_widget/failure_alert_dialog.dart';
 import 'package:spk_saw_whey_protein/spk_saw_runner.dart';
 import 'package:url_launcher/url_launcher.dart';

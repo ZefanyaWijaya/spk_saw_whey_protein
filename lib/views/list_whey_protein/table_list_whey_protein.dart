@@ -99,13 +99,23 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                         ),
                       ),
                       const SizedBox(width: 10),
-                      Container(
-                        width: 200,
-                        child: const Text(
-                          'Available Variants',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
+                      Tooltip(
+                        message: "Berbagai rasa yang tersedia pada produk whey",
+                        padding: const EdgeInsets.all(10),
+                        preferBelow: true,
+                        verticalOffset: 20,
+                        textStyle: const TextStyle(
+                          fontSize: 14 , 
+                          color: Colors.white
+                        ),
+                        child: Container(
+                          width: 200,
+                          child: const Text(
+                            'Available Variants',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
                           ),
                         ),
                       ),
