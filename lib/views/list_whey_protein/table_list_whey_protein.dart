@@ -100,7 +100,7 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                       ),
                       const SizedBox(width: 10),
                       Tooltip(
-                        message: "Berbagai rasa yang tersedia pada produk whey",
+                        message: "Jumlah berbagai rasa yang tersedia pada produk whey",
                         padding: const EdgeInsets.all(10),
                         preferBelow: true,
                         verticalOffset: 20,
