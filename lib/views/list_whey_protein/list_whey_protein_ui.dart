@@ -7,10 +7,13 @@ import 'package:spk_saw_whey_protein/views/list_whey_protein/widgets/form_add_di
 import 'package:spk_saw_whey_protein/views/list_whey_protein/widgets/searchbox_list_whey_protein.dart';
 class ListWheyProtein extends StatefulWidget {
   const ListWheyProtein({
-    Key? key, required this.constraints
+    Key? key, 
+    required this.constraints,
+    required this.isAdminLoginListWheyUi
   }) : super(key: key);
 
   final BoxConstraints constraints;
+  final bool isAdminLoginListWheyUi;
 
   @override
   ListWheyProteinState createState() => ListWheyProteinState();
@@ -66,7 +69,6 @@ class ListWheyProteinState extends State<ListWheyProtein> {
   }
 
   //FOR ADMIN ONLY
-
   Widget inputSampleButton() {
     return Padding(
       padding: const EdgeInsets.only(right: 30),
@@ -82,7 +84,24 @@ class ListWheyProteinState extends State<ListWheyProtein> {
               fontSize: 14 , 
               color: Colors.white
             ),
-          child: ElevatedButton(
+          child: widget.isAdminLoginListWheyUi == false ?
+          ElevatedButton(
+            onPressed: () {
+              //DO NOTHING
+            },
+            child: const Text(
+              'Add Whey',
+              style: TextStyle(fontSize: 16),
+            ),
+            style: ElevatedButton.styleFrom(
+              elevation: 0,
+              primary: Color.fromARGB(255, 150, 142, 142),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              )),
+          )
+          :
+          ElevatedButton(
             onPressed: () {
               showDialog(
                 context: context, 

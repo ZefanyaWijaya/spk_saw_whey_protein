@@ -5,7 +5,12 @@ import 'package:spk_saw_whey_protein/custom_widget/failure_alert_dialog.dart';
 import 'package:spk_saw_whey_protein/spk_saw_ui.dart';
 
 class SpkSawRunner extends StatelessWidget {
-  const SpkSawRunner({Key? key}) : super (key: key);
+  const SpkSawRunner({
+    Key? key,
+    required this.isAdminLoginRunner
+  }) : super (key: key);
+
+  final bool isAdminLoginRunner; 
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +41,8 @@ class SpkSawRunner extends StatelessWidget {
             }
           )
         ],
-        child: const SpkSawUi()
+        child: isAdminLoginRunner == true ?  const SpkSawUi(isAdminLoginSawUi: true)
+        : const SpkSawUi(isAdminLoginSawUi: false)
       )
     );
   }

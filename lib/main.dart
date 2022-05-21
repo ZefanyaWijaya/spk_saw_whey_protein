@@ -35,9 +35,6 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  // \
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
   @override
   Widget build(BuildContext context) {
     return const Scaffold(

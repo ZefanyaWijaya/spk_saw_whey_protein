@@ -10,8 +10,11 @@ import 'package:spk_saw_whey_protein/custom_widget/failure_alert_dialog.dart';
 import 'package:spk_saw_whey_protein/views/list_whey_protein/list_whey_protein_ui.dart';
 
 class ListWheyProteinRunner extends StatelessWidget {
-  ListWheyProteinRunner({Key? key}) : super(key: key);
+  ListWheyProteinRunner({Key? key,
+    required this.isAdminLoginListWheyRunner
+  }) : super(key: key);
 
+  final bool isAdminLoginListWheyRunner;
   final LayoutManagerCubit settingsLayout = LayoutManagerCubit();
   final ListWheyProteinSettingsCubit settingsCubit = ListWheyProteinSettingsCubit();
   final UpdateListWheyBloc updateListWheyBloc = UpdateListWheyBloc();
@@ -127,7 +130,7 @@ class ListWheyProteinRunner extends StatelessWidget {
                   } else {
                     return Padding(
                       padding: const EdgeInsets.only(left: 48, top: 30),
-                      child: ListWheyProtein(constraints: constraints),
+                      child: ListWheyProtein(constraints: constraints, isAdminLoginListWheyUi: isAdminLoginListWheyRunner),
                     );
                   }
                 },

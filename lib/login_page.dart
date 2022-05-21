@@ -258,7 +258,9 @@ class LoginPageState extends State<LoginPage>{
             print(user);
             if(user != null){
               print("test masuk");
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const SpkSawRunner()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const SpkSawRunner(
+                isAdminLoginRunner : true,
+              )));
             } else {
               showDialog(
                 context: context,
@@ -291,7 +293,9 @@ class LoginPageState extends State<LoginPage>{
   Widget _continueAsUser () {
     return TextButton(
       onPressed: () {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const SpkSawRunner()));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const SpkSawRunner(
+          isAdminLoginRunner : false,
+        )));
       },
       child: const Text('Continue As User' , 
         style: TextStyle(
