@@ -39,7 +39,7 @@ class ListWheyProteinState extends State<ListWheyProtein> {
               ),
               Flexible(
                 flex: 35,
-                child: inputSampleButton(),
+                child: widget.isAdminLoginListWheyUi == true? inputSampleButton() : Container(),
               ),
             ],
           ),
@@ -48,9 +48,10 @@ class ListWheyProteinState extends State<ListWheyProtein> {
           padding: EdgeInsets.only(top: 48),
           child: FilterListWheyProtein(),
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 50),
-          child: TabelListWheyProtein(),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 50),
+          child: widget.isAdminLoginListWheyUi == true ? const TabelListWheyProtein(isAdminLoginTable: true) 
+          :const TabelListWheyProtein(isAdminLoginTable: false),
         ),
       ],
     );
@@ -84,24 +85,7 @@ class ListWheyProteinState extends State<ListWheyProtein> {
               fontSize: 14 , 
               color: Colors.white
             ),
-          child: widget.isAdminLoginListWheyUi == false ?
-          ElevatedButton(
-            onPressed: () {
-              //DO NOTHING
-            },
-            child: const Text(
-              'Add Whey',
-              style: TextStyle(fontSize: 16),
-            ),
-            style: ElevatedButton.styleFrom(
-              elevation: 0,
-              primary: Color.fromARGB(255, 150, 142, 142),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              )),
-          )
-          :
-          ElevatedButton(
+          child : ElevatedButton(
             onPressed: () {
               showDialog(
                 context: context, 

@@ -12,11 +12,13 @@ class CardListWheyProtein extends StatefulWidget {
   final GetListWheyProteinData dataWhey;
   final String url;
   late final Uri _url;
+  final bool isAdminLoginCardList;
 
   CardListWheyProtein({
     Key? key,
     required this.dataWhey,
-    required this.url, 
+    required this.url,
+    required this.isAdminLoginCardList 
   }) : super (key: key); 
 
   @override
@@ -46,51 +48,53 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            width: 400,
+            width: widget.isAdminLoginCardList == true ? 400 : 420,
             child: wheyProteinName(),
           ),
           const SizedBox(
             width: 10
           ),
           Container(
-            width: 200,
+            width: widget.isAdminLoginCardList == true ? 200 : 220,
             child: pricePerServing(),
           ),
           const SizedBox(
             width: 10
           ),
           Container(
-            width: 250,
+            width: widget.isAdminLoginCardList == true ? 250 : 270,
             child: proteinPerServing(),
           ),
           const SizedBox(
             width: 10
           ),
           Container(
-            width: 200,
+            width: widget.isAdminLoginCardList == true ? 200 : 220,
             child: caloriesPerServing(),
           ),
           const SizedBox(
             width: 10
           ),
           Container(
-            width: 200,
+            width: widget.isAdminLoginCardList == true ? 200 : 220,
             child: availableVariants(),
           ),
           const SizedBox(
             width: 10
           ),
           Container(
-            width: 180,
+            width: widget.isAdminLoginCardList == true ? 180 : 200,
             child: details(),
           ),
           const SizedBox(
             width: 80
           ),
-          Container(
+          widget.isAdminLoginCardList == true ? Container(
             width: 120,
             child: settings(),
-          ),
+          ) :
+          Container(
+          ) 
         ],
       ),
     );

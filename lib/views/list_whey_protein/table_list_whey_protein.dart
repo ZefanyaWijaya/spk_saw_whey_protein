@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,11 +6,11 @@ import 'package:spk_saw_whey_protein/views/list_whey_protein/card_list_whey_prot
 
 class TabelListWheyProtein extends StatefulWidget {
   const TabelListWheyProtein({Key? key, 
-  // required this.constraints
+    required this.isAdminLoginTable
   })
       : super(key: key);
 
-  // final BoxConstraints constraints;
+  final bool isAdminLoginTable;
 
   @override
   TabelListWheyProteinState createState() => TabelListWheyProteinState();
@@ -56,7 +54,7 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                   Row(
                     children: [
                       Container(
-                        width: 400,
+                        width: widget.isAdminLoginTable == true ? 400 : 420,
                         child: const Text(
                           'Whey Protein Name',
                           style: TextStyle(
@@ -67,7 +65,7 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                       ),
                       const SizedBox(width: 10),
                       Container(
-                        width: 200,
+                        width: widget.isAdminLoginTable == true ? 200 : 220,
                         child: const Text(
                           'Price / Serving',
                           style: TextStyle(
@@ -78,7 +76,7 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                       ),
                       const SizedBox(width: 10,),
                       Container(
-                        width: 250,
+                        width: widget.isAdminLoginTable == true ? 250 : 270,
                         child: const Text(
                           'Protein (gr) / Serving',
                           style: TextStyle(
@@ -89,7 +87,7 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                       ),
                       const SizedBox(width: 10,),
                       Container(
-                        width: 200,
+                        width: widget.isAdminLoginTable == true ? 200 : 220,
                         child: const Text(
                           'Calories / Serving',
                           style: TextStyle(
@@ -109,7 +107,7 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                           color: Colors.white
                         ),
                         child: Container(
-                          width: 200,
+                          width: widget.isAdminLoginTable == true ? 200 : 220,
                           child: const Text(
                             'Available Variants',
                             style: TextStyle(
@@ -121,7 +119,7 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                       ),
                       const SizedBox(width: 10),
                       Container(
-                        width: 180,
+                        width: widget.isAdminLoginTable == true ? 180 : 200,
                         child: const Text(
                           'Details',
                           style: TextStyle(
@@ -131,6 +129,7 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                         ),
                       ),
                       const SizedBox(width: 80),
+                      widget.isAdminLoginTable == true ?  
                       Container(
                         width: 120,
                         child: const Text(
@@ -140,7 +139,11 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                             fontSize: 20,
                           ),
                         ),
-                      ),
+                      ) 
+                      : 
+                      Container(
+                        width: 0,
+                      )
                     ],
                   ),
                   const SizedBox(height: 10),
@@ -166,7 +169,9 @@ class TabelListWheyProteinState extends State<TabelListWheyProtein> {
                                   itemCount: state.listWheyProtein.length,
                                   itemBuilder: (context, index) {
                                     return  CardListWheyProtein(
-                                      dataWhey: state.listWheyProtein[index], url: state.listWheyProtein[index].moreDetail,
+                                      dataWhey: state.listWheyProtein[index], 
+                                      url: state.listWheyProtein[index].moreDetail,
+                                      isAdminLoginCardList: widget.isAdminLoginTable,
                                     );
                                   },
                                 ),
