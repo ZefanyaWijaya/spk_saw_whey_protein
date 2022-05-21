@@ -76,7 +76,8 @@ class CalculateWheyProteinState extends State<CalculateWheyProtein> {
             ),
             style: ElevatedButton.styleFrom(
                 elevation: 0,
-                primary: const Color.fromRGBO(2, 106, 199, 1),
+                // primary: const Color.fromRGBO(2, 106, 199, 1),
+                primary: Colors.black,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 )),
@@ -95,7 +96,8 @@ class CalculateWheyProteinState extends State<CalculateWheyProtein> {
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.bold,
-            color: Color.fromRGBO(2, 106, 199, 1),
+            // color: Color.fromRGBO(2, 106, 199, 1),
+            color: Colors.black
           ),
         ),
         const SizedBox(width: 10),
@@ -115,7 +117,8 @@ class CalculateWheyProteinState extends State<CalculateWheyProtein> {
             message: "Calculate Method Info",
             child: Icon(
               Icons.info_outline,
-              color: Color.fromRGBO(2, 106, 199, 1),
+              // color: Color.fromRGBO(2, 106, 199, 1),
+              color: Colors.black,
               size: 40.0,
             ),
           ),
