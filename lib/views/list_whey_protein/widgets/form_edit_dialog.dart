@@ -31,7 +31,8 @@ class FormEditAlertDialog extends StatelessWidget {
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: Color.fromRGBO(2, 106, 199, 1),
+            // color: Color.fromRGBO(2, 106, 199, 1),
+            color: Colors.black
           ),
         ),
       ),
@@ -85,9 +86,11 @@ class FormEditAlertDialog extends StatelessWidget {
                 ),
                 style: OutlinedButton.styleFrom(
                   // minimumSize: Size(double.infinity, 45),
-                  primary: const Color.fromRGBO(2, 106, 199, 1),
+                  // primary: const Color.fromRGBO(2, 106, 199, 1),
+                  primary : Colors.black,
                   side: const BorderSide(
-                    color: Color.fromRGBO(2, 106, 199, 1),
+                    // color: Color.fromRGBO(2, 106, 199, 1),
+                    color: Colors.black
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -122,11 +125,12 @@ class FormEditAlertDialog extends StatelessWidget {
                   style: TextStyle(fontSize: 16),
                 ),
                 style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    primary: const Color.fromRGBO(2, 106, 199, 1),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    )),
+                  elevation: 0,
+                  // primary: const Color.fromRGBO(2, 106, 199, 1),
+                  primary: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  )),
               ),
             ),
           ],

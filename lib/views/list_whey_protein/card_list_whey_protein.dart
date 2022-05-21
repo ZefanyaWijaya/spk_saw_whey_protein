@@ -190,7 +190,7 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
       children: [
         InkWell(
           customBorder: const CircleBorder(),
-          splashColor: const Color.fromRGBO(2, 106, 199, 1),
+          splashColor: const Color.fromARGB(255, 255, 174, 0),
           onTap: () {
             //IF ADMIN ALLOW FUNCTIONS
             showDialog(
@@ -211,7 +211,8 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
             message: "Edit Product (Admin Only)",
             child: Icon(
               Icons.settings_outlined,
-              color: Color.fromRGBO(2, 106, 199, 1),
+              // color: Color.fromRGBO(2, 106, 199, 1),
+              color: Color.fromARGB(255, 255, 174, 0),
               size: 40.0,
               
             ),
@@ -236,7 +237,8 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
             message: "Delete Product (Admin Only)",
             child: Icon(
               Icons.delete_outline,
-              color: Color.fromRGBO(2, 106, 199, 1),
+              // color: Color.fromRGBO(2, 106, 199, 1),
+              color: Color.fromRGBO(255, 0, 0, 1),
               size: 40.0,
               
             ),
