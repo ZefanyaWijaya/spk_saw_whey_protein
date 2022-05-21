@@ -171,8 +171,10 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
         style: OutlinedButton.styleFrom(
           // minimumSize: Size(double.infinity, 45),
           primary: const Color.fromRGBO(2, 106, 199, 1),
+          // primary:  const Color.fromRGBO(123, 123, 123, 1),
           side: const BorderSide(
             color: Color.fromRGBO(2, 106, 199, 1),
+            // color: Color.fromRGBO(123, 123, 123, 1),
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),

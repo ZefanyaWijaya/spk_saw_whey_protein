@@ -90,7 +90,8 @@ class SearchboxListWheyProteinState extends State<SearchboxListWheyProtein> {
   Widget searchButton() {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: const Color.fromRGBO(2, 106, 199, 1),
+        // primary: const Color.fromRGBO(2, 106, 199, 1),
+        primary: Colors.black,
         fixedSize: const Size(65, 45),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(

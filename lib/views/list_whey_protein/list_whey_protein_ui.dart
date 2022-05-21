@@ -59,7 +59,8 @@ class ListWheyProteinState extends State<ListWheyProtein> {
       style: TextStyle(
         fontSize: 32,
         fontWeight: FontWeight.bold,
-        color: Color.fromRGBO(2, 106, 199, 1),
+        // color : const Color.fromRGBO(2, 106, 199, 1),
+        color: Colors.black
       ),
     );
   }
@@ -90,11 +91,12 @@ class ListWheyProteinState extends State<ListWheyProtein> {
             style: TextStyle(fontSize: 16),
           ),
           style: ElevatedButton.styleFrom(
-              elevation: 0,
-              primary: const Color.fromRGBO(2, 106, 199, 1),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              )),
+            elevation: 0,
+            // primary: const Color.fromRGBO(2, 106, 199, 1),
+            primary: Colors.black,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            )),
         ),
       ),
     );

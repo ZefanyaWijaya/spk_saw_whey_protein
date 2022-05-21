@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:mailto/mailto.dart';
 import 'package:spk_saw_whey_protein/custom_widget/failure_alert_dialog.dart';
 import 'package:spk_saw_whey_protein/spk_saw_runner.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -88,6 +89,7 @@ class LoginPageState extends State<LoginPage>{
               const Text("Login Pengguna" , 
                 style: TextStyle(
                   fontSize: 28 , 
+                  
                   fontWeight: FontWeight.bold 
                 ),
                 textAlign: TextAlign.left,
@@ -120,7 +122,10 @@ class LoginPageState extends State<LoginPage>{
         hintText: "Email Admin",
         prefixIcon: Padding(
           padding: EdgeInsets.only(left: 15, right: 10),
-          child: Icon(Icons.mail , color:  Colors.black)
+          child: Icon(
+            Icons.mail , 
+            color:  Colors.black
+          )
         ),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(
@@ -136,6 +141,8 @@ class LoginPageState extends State<LoginPage>{
         }
       },
       validator: FormBuilderValidators.compose([
+        FormBuilderValidators.email(context,
+              errorText: 'Use email format to login.'),
         FormBuilderValidators.required(context,
             errorText: 'Please enter your email.'),
       ]),
@@ -254,6 +261,16 @@ class LoginPageState extends State<LoginPage>{
             if(user != null){
               print("test masuk");
               Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const SpkSawRunner()));
+            } else {
+              showDialog(
+                context: context,
+                builder: (_) {
+                  return FailureAlertDialog(
+                    errorMessage: "Email or Password is incorrect!",
+                    errorTitle: "Login Failed",
+                  );
+                },
+              );
             }
           }
           print("TEST DARI BUTTON KEDUA");
@@ -265,6 +282,7 @@ class LoginPageState extends State<LoginPage>{
         style: ElevatedButton.styleFrom(
             elevation: 0,
             primary: Colors.black,
+            // primary: const Color.fromRGBO(2, 106, 199, 1),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             )),
@@ -281,6 +299,7 @@ class LoginPageState extends State<LoginPage>{
         style: TextStyle(
           fontSize: 18,
           color: Colors.black, 
+          // color : const Color.fromRGBO(2, 106, 199, 1),
           fontWeight: FontWeight.bold
         ),
         textAlign: TextAlign.center,
@@ -298,6 +317,19 @@ class LoginPageState extends State<LoginPage>{
     )) 
       throw 'Could not launch to website';
   }
+
+  // launchMailto() async {
+  //   final mailtoLink = Mailto(
+  //       to: ['to@example.com'],
+  //       cc: ['cc1@example.com', 'cc2@example.com'],
+  //       subject: 'mailto example subject',
+  //       body: 'mailto example body',
+  //   );
+  //   // Convert the Mailto instance into a string.
+  //   // Use either Dart's string interpolation
+  //   // or the toString() method.
+  //   await launchUrl(Uri.parse("$mailtoLink"));
+  // }
 
   Widget _contactUs () {
     return Row(
