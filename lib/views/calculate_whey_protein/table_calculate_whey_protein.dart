@@ -37,6 +37,7 @@ class TabelCalculateWheyProteinState extends State<TabelCalculateWheyProtein>{
             PointerDeviceKind.mouse,
             PointerDeviceKind.stylus,
             PointerDeviceKind.touch,
+            PointerDeviceKind.invertedStylus,
           }),
           child: Scrollbar(
             controller: horizontalScrollController,

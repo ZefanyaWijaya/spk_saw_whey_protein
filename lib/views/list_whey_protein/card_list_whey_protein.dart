@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:spk_saw_whey_protein/bloc/delete_list_whey_protein/bloc/delete_list_whey_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/update_list_whey_protein/bloc/update_list_whey_bloc.dart';
 import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/list_whey_protein_model.dart';
@@ -113,8 +114,8 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
 
   Widget pricePerServing() {
     return Text(
-      // "Rp. 13.800",
-      widget.dataWhey.pricePerServing.toString(),
+      NumberFormat("Rp #,###", "id_ID").format(widget.dataWhey.pricePerServing),
+      // widget.dataWhey.pricePerServing.toString(),
       style: const TextStyle(
         fontSize: 20,
         color: Color.fromRGBO(83, 81, 81, 1), 

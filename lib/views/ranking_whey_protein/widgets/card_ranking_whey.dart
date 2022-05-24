@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/layout_manager_cubit/cubit/layout_manager_cubit.dart';
 import 'package:spk_saw_whey_protein/data_model/ranking_whey_protein_model/ranking_whey_protein_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CardRankingWheyProtein extends StatelessWidget {
   const CardRankingWheyProtein({
@@ -14,12 +15,21 @@ class CardRankingWheyProtein extends StatelessWidget {
 
   final GetListRankingWheyProteinData dataRanking;
   final int ranking;
+  
+
+  void _launchUrl(String url) async {
+    if (!await launchUrl(Uri.parse(url))) 
+      throw 'Could not launch to website';
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LayoutManagerCubit,LayoutManagerState>(
       builder: (context , state) {
-        return Container(   
+        return InkWell(
+          onTap: () {
+            _launchUrl(dataRanking.moreDetail);
+          },
           child: Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
