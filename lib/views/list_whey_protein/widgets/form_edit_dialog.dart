@@ -478,6 +478,23 @@ class FormEditAlertDialog extends StatelessWidget {
             FormBuilderValidators.required(context,
                 errorText: 'Please enter more details (source of link).'),
           ]),
+          onSubmitted: (value) {
+            if (_formKey.currentState!.saveAndValidate()) {
+              final Map<String, dynamic> data =
+                  _formKey.currentState!.value;
+              final UpdateDataListWheyProtein updatedListWheyData = UpdateDataListWheyProtein(
+                idWheyProtein: dataWheyInitialValue.idWheyProtein,
+                wheyProteinName: data['wheyProtein'],
+                pricePerServing: data['pricePerServ'], 
+                proteinPerServing: data['proteinPerServ'], 
+                caloriesPerServing: data['caloriesPerServ'], 
+                availableVariants: data['availableVarProduct'], 
+                otherIngredients: data['otherIngredients'], 
+                moreDetails: data['moreDetails']
+              );
+              BlocProvider.of<UpdateListWheyBloc>(context).add(UpdateListWheyByIdWheyProtein(dataWheyUpdated: updatedListWheyData));
+            }
+          },
         ),
       ],
     );
