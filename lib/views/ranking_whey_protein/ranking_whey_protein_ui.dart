@@ -148,7 +148,8 @@ class RankingWheyProteinState extends State<RankingWheyProtein> {
       style: TextStyle(
         fontSize: 32,
         fontWeight: FontWeight.bold,
-        color: Color.fromRGBO(2, 106, 199, 1),
+        // color: Color.fromRGBO(2, 106, 199, 1),
+        color: Colors.black
       ),
     );
   }
@@ -159,7 +160,8 @@ class RankingWheyProteinState extends State<RankingWheyProtein> {
       style: TextStyle(
         fontSize: 26,
         fontWeight: FontWeight.bold,
-        color: Color.fromRGBO(2, 106, 199, 1),
+        // color: Color.fromRGBO(2, 106, 199, 1),
+        color: Colors.black
       ),
     );
   }

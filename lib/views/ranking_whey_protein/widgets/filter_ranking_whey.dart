@@ -283,7 +283,8 @@ class FilterRankingWheyProteinState extends State<FilterRankingWheyProtein> {
       style: TextStyle(
         fontSize: 28,
         fontWeight: FontWeight.bold,
-        color: Color.fromRGBO(2, 106, 199, 1),
+        // color: Color.fromRGBO(2, 106, 199, 1),
+        color: Colors.black
       ),
     );
   }
@@ -304,7 +305,8 @@ class FilterRankingWheyProteinState extends State<FilterRankingWheyProtein> {
           ),
           style: ElevatedButton.styleFrom(
               elevation: 0,
-              primary: const Color.fromRGBO(2, 106, 199, 1),
+              // primary: const Color.fromRGBO(2, 106, 199, 1),
+              primary: Colors.black,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               )),

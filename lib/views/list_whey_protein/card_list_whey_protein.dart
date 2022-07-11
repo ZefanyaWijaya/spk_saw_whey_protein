@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:spk_saw_whey_protein/bloc/delete_list_whey_protein/bloc/delete_list_whey_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/update_list_whey_protein/bloc/update_list_whey_bloc.dart';
 import 'package:spk_saw_whey_protein/data_model/list_whey_protein_model/list_whey_protein_model.dart';
@@ -12,11 +13,13 @@ class CardListWheyProtein extends StatefulWidget {
   final GetListWheyProteinData dataWhey;
   final String url;
   late final Uri _url;
+  final bool isAdminLoginCardList;
 
   CardListWheyProtein({
     Key? key,
     required this.dataWhey,
-    required this.url, 
+    required this.url,
+    required this.isAdminLoginCardList 
   }) : super (key: key); 
 
   @override
@@ -46,51 +49,53 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            width: 400,
+            width: widget.isAdminLoginCardList == true ? 400 : 420,
             child: wheyProteinName(),
           ),
           const SizedBox(
             width: 10
           ),
           Container(
-            width: 200,
+            width: widget.isAdminLoginCardList == true ? 200 : 220,
             child: pricePerServing(),
           ),
           const SizedBox(
             width: 10
           ),
           Container(
-            width: 250,
+            width: widget.isAdminLoginCardList == true ? 250 : 270,
             child: proteinPerServing(),
           ),
           const SizedBox(
             width: 10
           ),
           Container(
-            width: 200,
+            width: widget.isAdminLoginCardList == true ? 200 : 220,
             child: caloriesPerServing(),
           ),
           const SizedBox(
             width: 10
           ),
           Container(
-            width: 200,
+            width: widget.isAdminLoginCardList == true ? 200 : 220,
             child: availableVariants(),
           ),
           const SizedBox(
             width: 10
           ),
           Container(
-            width: 180,
+            width: widget.isAdminLoginCardList == true ? 180 : 200,
             child: details(),
           ),
           const SizedBox(
             width: 80
           ),
-          Container(
+          widget.isAdminLoginCardList == true ? Container(
             width: 120,
             child: settings(),
-          ),
+          ) :
+          Container(
+          ) 
         ],
       ),
     );
@@ -109,8 +114,8 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
 
   Widget pricePerServing() {
     return Text(
-      // "Rp. 13.800",
-      widget.dataWhey.pricePerServing.toString(),
+      NumberFormat("Rp #,###", "id_ID").format(widget.dataWhey.pricePerServing),
+      // widget.dataWhey.pricePerServing.toString(),
       style: const TextStyle(
         fontSize: 20,
         color: Color.fromRGBO(83, 81, 81, 1), 
@@ -171,8 +176,10 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
         style: OutlinedButton.styleFrom(
           // minimumSize: Size(double.infinity, 45),
           primary: const Color.fromRGBO(2, 106, 199, 1),
+          // primary:  const Color.fromRGBO(123, 123, 123, 1),
           side: const BorderSide(
             color: Color.fromRGBO(2, 106, 199, 1),
+            // color: Color.fromRGBO(123, 123, 123, 1),
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
@@ -188,7 +195,7 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
       children: [
         InkWell(
           customBorder: const CircleBorder(),
-          splashColor: const Color.fromRGBO(2, 106, 199, 1),
+          splashColor: const Color.fromARGB(255, 255, 174, 0),
           onTap: () {
             //IF ADMIN ALLOW FUNCTIONS
             showDialog(
@@ -206,10 +213,18 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
             //ELSE DO NOTHING
           },
           child: const Tooltip(
+            padding: EdgeInsets.all(10),
+            preferBelow: true,
+            verticalOffset: 20,
+            textStyle: TextStyle(
+              fontSize: 14 , 
+              color: Colors.white
+            ),
             message: "Edit Product (Admin Only)",
             child: Icon(
               Icons.settings_outlined,
-              color: Color.fromRGBO(2, 106, 199, 1),
+              // color: Color.fromRGBO(2, 106, 199, 1),
+              color: Color.fromARGB(255, 255, 174, 0),
               size: 40.0,
               
             ),
@@ -232,9 +247,17 @@ class CardListWheyProteinState extends State<CardListWheyProtein> {
           },
           child: const Tooltip(
             message: "Delete Product (Admin Only)",
+            padding: EdgeInsets.all(10),
+            preferBelow: true,
+            verticalOffset: 20,
+            textStyle: TextStyle(
+              fontSize: 14 , 
+              color: Colors.white
+            ),
             child: Icon(
               Icons.delete_outline,
-              color: Color.fromRGBO(2, 106, 199, 1),
+              // color: Color.fromRGBO(2, 106, 199, 1),
+              color: Color.fromRGBO(255, 0, 0, 1),
               size: 40.0,
               
             ),

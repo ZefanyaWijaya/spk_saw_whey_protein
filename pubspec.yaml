@@ -62,6 +62,7 @@ dependencies:
   pluto_grid : ^2.5.0
   isolated_worker: ^0.1.0
   url_launcher: ^6.0.13
+  mailto: ^2.0.0
   timeline_tile : ^2.0.0
   visibility_detector: ^0.2.2
   flutter_staggered_grid_view: ^0.4.1

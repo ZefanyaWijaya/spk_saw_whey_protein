@@ -27,7 +27,8 @@ class FormAddAlertDialog extends StatelessWidget {
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: Color.fromRGBO(2, 106, 199, 1),
+            // color: Color.fromRGBO(2, 106, 199, 1),
+            color: Colors.black
           ),
         ),
       ),
@@ -80,10 +81,11 @@ class FormAddAlertDialog extends StatelessWidget {
                   style: TextStyle(fontSize: 16),
                 ),
                 style: OutlinedButton.styleFrom(
-                  // minimumSize: Size(double.infinity, 45),
-                  primary: const Color.fromRGBO(2, 106, 199, 1),
+                  // primary: const Color.fromRGBO(2, 106, 199, 1),
+                  primary: Colors.black,
                   side: const BorderSide(
-                    color: Color.fromRGBO(2, 106, 199, 1),
+                    // color: Color.fromRGBO(2, 106, 199, 1),
+                    color: Colors.black
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -118,7 +120,8 @@ class FormAddAlertDialog extends StatelessWidget {
                 ),
                 style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  primary: const Color.fromRGBO(2, 106, 199, 1),
+                  // primary: const Color.fromRGBO(2, 106, 199, 1),
+                  primary: Colors.black,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   )),
@@ -462,6 +465,22 @@ class FormAddAlertDialog extends StatelessWidget {
             FormBuilderValidators.required(context,
                 errorText: 'Please enter more details (source of link).'),
           ]),
+          onSubmitted: (value) {
+            if (_formKey.currentState!.saveAndValidate()) {
+              final Map<String, dynamic> data =
+                  _formKey.currentState!.value;
+              final AddDataListWheyProtein newListWheyData = AddDataListWheyProtein(
+                wheyProteinName: data['wheyProtein'],
+                pricePerServing: data['pricePerServ'], 
+                proteinPerServing: data['proteinPerServ'], 
+                caloriesPerServing: data['caloriesPerServ'], 
+                availableVariants: data['availableVarProduct'], 
+                otherIngredients: data['otherIngredients'], 
+                moreDetails: data['moreDetails']
+              );
+              BlocProvider.of<PostListWheyProteinBloc>(context).add(PostListNewWheyProtein(newListWheyData: newListWheyData));
+            }
+          },
         ),
       ],
     );

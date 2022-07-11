@@ -37,6 +37,7 @@ class TabelCalculateWheyProteinState extends State<TabelCalculateWheyProtein>{
             PointerDeviceKind.mouse,
             PointerDeviceKind.stylus,
             PointerDeviceKind.touch,
+            PointerDeviceKind.invertedStylus,
           }),
           child: Scrollbar(
             controller: horizontalScrollController,
@@ -94,24 +95,44 @@ class TabelCalculateWheyProteinState extends State<TabelCalculateWheyProtein>{
                         ),
                       ),
                       const SizedBox(width: 10),
-                      Container(
-                        width: 300,
-                        child: const Text(
-                          'Available Variants (Benefit)',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
+                      Tooltip(
+                        message: "Jumlah berbagai rasa yang tersedia pada produk whey",
+                        padding: const EdgeInsets.all(10),
+                        preferBelow: true,
+                        verticalOffset: 20,
+                        textStyle: const TextStyle(
+                          fontSize: 14 , 
+                          color: Colors.white
+                        ),
+                        child: Container(
+                          width: 300,
+                          child: const Text(
+                            'Available Variants (Benefit)',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
                           ),
                         ),
                       ),
                       const SizedBox(width: 10),
-                      Container(
-                        width: 300,
-                        child: const Text(
-                          'Other Ingredients (Benefit)',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
+                      Tooltip(
+                        message: "Jumlah kandungan gizi pendukung lain (Contoh : Vit A,B,...)",
+                        padding: const EdgeInsets.all(10),
+                        preferBelow: true,
+                        verticalOffset: 20,
+                        textStyle: const TextStyle(
+                          fontSize: 14 , 
+                          color: Colors.white
+                        ),
+                        child: Container(
+                          width: 300,
+                          child: const Text(
+                            'Other Ingredients (Benefit)',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
                           ),
                         ),
                       ),

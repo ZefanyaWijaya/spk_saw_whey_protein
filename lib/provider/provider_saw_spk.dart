@@ -12,7 +12,8 @@ class SpkSawWheyProtein {
   SpkSawWheyProtein({Dio? dio}) 
       : _dio = dio ??
           Dio(BaseOptions(
-            baseUrl: 'http://localhost:3000',
+            baseUrl: 'https://saw-test.vercel.app',
+            // baseUrl: 'http://localhost:3000',
             connectTimeout: 30000,
             receiveTimeout: 3500,
           ));

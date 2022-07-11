@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spk_saw_whey_protein/bloc/manage_saw_page_bloc/manage_page_saw_bloc.dart';
+import 'package:spk_saw_whey_protein/main.dart';
 import 'package:spk_saw_whey_protein/views/calculate_whey_protein/calculate_whey_protein_runner.dart';
 import 'package:spk_saw_whey_protein/views/list_whey_protein/list_whey_protein_runner.dart';
 import 'package:spk_saw_whey_protein/views/ranking_whey_protein/ranking_whey_protein_runner.dart';
 
 class SpkSawUi extends StatefulWidget {
-  const SpkSawUi({Key? key }) : super(key: key);
+  const SpkSawUi({
+    Key? key,
+    required this.isAdminLoginSawUi
+  }) : super(key: key);
 
   @override
   State<SpkSawUi> createState() => _SpkSawUiDashboard(); 
+
+  final bool isAdminLoginSawUi;
 }
 
 class _SpkSawUiDashboard extends State<SpkSawUi> {
@@ -20,7 +26,9 @@ class _SpkSawUiDashboard extends State<SpkSawUi> {
         children: [
           Container(
             width: 80,
-            color: const Color.fromARGB(162, 0, 65, 150),
+            // color : Color.fromARGB(255, 10, 112, 201),
+            color: const Color.fromARGB(255, 56, 56, 56),
+            // color: const Color.fromRGBO(123, 123, 123, 1),
             child: BlocBuilder<ManagePageSawBloc , ManagePageSawState>(
               builder: (context , iconState) {
                 return Column(
@@ -31,7 +39,10 @@ class _SpkSawUiDashboard extends State<SpkSawUi> {
                     const SizedBox(height: 50),
                     iconState is ManagePageSawDoneToCalculateWheyPage ? _buildIconDashboardCalculateOnPressed() : _buildIconDashboardCalculate(),
                     const SizedBox(height: 50),
-                    iconState is ManagePageSawDoneToRankingWheyPage ? _buildIconDashboardRankingOnPressed() : _buildIconDashboardRanking()
+                    iconState is ManagePageSawDoneToRankingWheyPage ? _buildIconDashboardRankingOnPressed() : _buildIconDashboardRanking(),
+                    const SizedBox(height: 50),
+                    _buildLogoutIcon()
+
                   ],
                 );
               }
@@ -45,7 +56,7 @@ class _SpkSawUiDashboard extends State<SpkSawUi> {
                     child: CircularProgressIndicator(),
                   );
                 } else if(state is ManagePageSawDoneToListWheyPage) {
-                  return ListWheyProteinRunner();
+                  return ListWheyProteinRunner(isAdminLoginListWheyRunner: widget.isAdminLoginSawUi);
                   // return const Text("test calculate Whey");
                 } else if (state is ManagePageSawDoneToCalculateWheyPage) {
                   // return const Text("test calculate Whey");
@@ -210,6 +221,30 @@ class _SpkSawUiDashboard extends State<SpkSawUi> {
               color: Colors.white,
               fontSize: 14,
               fontWeight: FontWeight.bold
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildLogoutIcon () {
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(builder: (context)=> MyApp()));
+      },
+      child: Column(
+        children: const [
+          Icon(
+            Icons.logout_outlined,
+            color: Colors.white,
+            size: 30,
+          ),
+          SizedBox(height: 5),
+          Text("Logout" , style: 
+            TextStyle(
+              color: Colors.white,
+              fontSize: 14,
             ),
           )
         ],

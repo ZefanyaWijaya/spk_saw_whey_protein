@@ -20,7 +20,8 @@ class CalculateDialogInfo extends StatelessWidget {
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: Color.fromRGBO(2, 106, 199, 1),
+            // color: Color.fromRGBO(2, 106, 199, 1),
+            color: Colors.black
           ),
         ),
       ),
@@ -75,7 +76,8 @@ class CalculateDialogInfo extends StatelessWidget {
             ),
             style: ElevatedButton.styleFrom(
               elevation: 0,
-              primary: const Color.fromRGBO(2, 106, 199, 1),
+              // primary: const Color.fromRGBO(2, 106, 199, 1),
+              primary: Colors.black,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               )),

@@ -7,10 +7,13 @@ import 'package:spk_saw_whey_protein/views/list_whey_protein/widgets/form_add_di
 import 'package:spk_saw_whey_protein/views/list_whey_protein/widgets/searchbox_list_whey_protein.dart';
 class ListWheyProtein extends StatefulWidget {
   const ListWheyProtein({
-    Key? key, required this.constraints
+    Key? key, 
+    required this.constraints,
+    required this.isAdminLoginListWheyUi
   }) : super(key: key);
 
   final BoxConstraints constraints;
+  final bool isAdminLoginListWheyUi;
 
   @override
   ListWheyProteinState createState() => ListWheyProteinState();
@@ -36,7 +39,7 @@ class ListWheyProteinState extends State<ListWheyProtein> {
               ),
               Flexible(
                 flex: 35,
-                child: inputSampleButton(),
+                child: widget.isAdminLoginListWheyUi == true? inputSampleButton() : Container(),
               ),
             ],
           ),
@@ -45,9 +48,10 @@ class ListWheyProteinState extends State<ListWheyProtein> {
           padding: EdgeInsets.only(top: 48),
           child: FilterListWheyProtein(),
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 50),
-          child: TabelListWheyProtein(),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 50),
+          child: widget.isAdminLoginListWheyUi == true ? const TabelListWheyProtein(isAdminLoginTable: true) 
+          :const TabelListWheyProtein(isAdminLoginTable: false),
         ),
       ],
     );
@@ -59,42 +63,53 @@ class ListWheyProteinState extends State<ListWheyProtein> {
       style: TextStyle(
         fontSize: 32,
         fontWeight: FontWeight.bold,
-        color: Color.fromRGBO(2, 106, 199, 1),
+        // color : const Color.fromRGBO(2, 106, 199, 1),
+        color: Colors.black
       ),
     );
   }
 
   //FOR ADMIN ONLY
-
   Widget inputSampleButton() {
     return Padding(
       padding: const EdgeInsets.only(right: 30),
       child: Container(
         width: 180,
         height: 45,
-        child: ElevatedButton(
-          onPressed: () {
-            showDialog(
-              context: context, 
-              builder: (_) {
-                // return FormAddAlertDialog();
-                return BlocProvider.value(
-                  value: BlocProvider.of<PostListWheyProteinBloc>(context),
-                  child: FormAddAlertDialog(),
-                );
-              }
-            );
-          },
-          child: const Text(
-            'Add Whey',
-            style: TextStyle(fontSize: 16),
-          ),
-          style: ElevatedButton.styleFrom(
+        child: Tooltip(
+          message: "Add Whey (Admin Only)",
+            padding: const EdgeInsets.all(10),
+            preferBelow: true,
+            verticalOffset: 20,
+            textStyle: const TextStyle(
+              fontSize: 14 , 
+              color: Colors.white
+            ),
+          child : ElevatedButton(
+            onPressed: () {
+              showDialog(
+                context: context, 
+                builder: (_) {
+                  // return FormAddAlertDialog();
+                  return BlocProvider.value(
+                    value: BlocProvider.of<PostListWheyProteinBloc>(context),
+                    child: FormAddAlertDialog(),
+                  );
+                }
+              );
+            },
+            child: const Text(
+              'Add Whey',
+              style: TextStyle(fontSize: 16),
+            ),
+            style: ElevatedButton.styleFrom(
               elevation: 0,
-              primary: const Color.fromRGBO(2, 106, 199, 1),
+              // primary: const Color.fromRGBO(2, 106, 199, 1),
+              primary: Colors.black,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               )),
+          ),
         ),
       ),
     );

@@ -33,27 +33,6 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyDfIAasFkz2Z7d6WNOp79eeCpYnx-_8MAs",
-      authDomain: "skripsi-2022-zefanyawijaya.firebaseapp.com",
-      projectId: "skripsi-2022-zefanyawijaya",
-      storageBucket: "skripsi-2022-zefanyawijaya.appspot.com",
-      messagingSenderId: "376407238677",
-      appId: "1:376407238677:web:01bfeaad46dc453e10c61c"
-    };
-  
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-  </script>
-
-  
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
@@ -66,7 +45,7 @@
       }
       scriptLoaded = true;
       var scriptTag = document.createElement('script');
-      scriptTag.src = 'main.dart.js';
+      scriptTag.src = 'main.dart.js?version=1.0.0';
       scriptTag.type = 'application/javascript';
       document.body.append(scriptTag);
     }
@@ -121,6 +100,29 @@
       loadMainDartJs();
     }
   </script>
+
+
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    import { } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js"
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDfIAasFkz2Z7d6WNOp79eeCpYnx-_8MAs",
+      authDomain: "skripsi-2022-zefanyawijaya.firebaseapp.com",
+      projectId: "skripsi-2022-zefanyawijaya",
+      storageBucket: "skripsi-2022-zefanyawijaya.appspot.com",
+      messagingSenderId: "376407238677",
+      appId: "1:376407238677:web:01bfeaad46dc453e10c61c"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+</script>
   
 </body>
 </html>
